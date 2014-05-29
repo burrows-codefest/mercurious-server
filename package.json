@@ -4,7 +4,6 @@
   "private": true,
   "scripts": {
     "start": "app.js",
-    "preinstall": "npm install -g bower",
     "install": "node post-install.js"
   },
   "dependencies": {
