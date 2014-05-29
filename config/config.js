@@ -26,7 +26,7 @@ var config = {
     app: {
       name: 'mercurious-server'
     },
-    port: 3000,
+    port: process.env.PORT,
     db: 'mongodb://localhost/mercurious-server-production'
   }
 };
