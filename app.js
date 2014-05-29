@@ -19,6 +19,7 @@ var app = express();
 
 require('./config/express')(app, config);
 require('./config/routes')(app);
+var server = require('./config/socketIO')(app);
 
 //load default value
 var ArticlesModel = mongoose.model('Article');
@@ -31,5 +32,5 @@ var firstRecord = new ArticlesModel({
 firstRecord.save();
 
 
-app.listen(config.port);
+server.listen(config.port);
 console.log('Started Server on port ' + config.port);
