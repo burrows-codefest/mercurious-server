@@ -5,13 +5,12 @@ angular.module('mercuriousApp')
 
         $scope.newValue = 'edit socket';
 
-        socket.on('that', function (data) {
+        socket.on('message', function (data) {
             $scope.test = data;
         });
 
         $scope.editSocket = function() {
-            socket.emit('that', $scope.newValue);
-            console.log($scope.newValue);
+            socket.emit('message', $scope.newValue);
         };
 
         dataSourceService.getSources().forEach(function(feed) {
