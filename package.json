@@ -5,7 +5,7 @@
     "scripts": {
         "start": "app.js",
         "preinstall": "node pre-install.js",
-        "postinstall": "node post-install.js"
+        "install": "node post-install.js"
     },
     "dependencies": {
         "ejs": "^1.0.0",
