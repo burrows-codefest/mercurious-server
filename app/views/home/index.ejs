@@ -52,20 +52,13 @@
 
 <script src="/scripts/directives/feedStatus.js"></script>
 
+<script src="/scripts/factories/socketFactory.js"></script>
+
 <script src="/scripts/services/rssFeedService.js"></script>
 <script src="/scripts/services/dataSourceService.js"></script>
+
 <script src="/socket.io/socket.io.js"></script>
-<script>
-    var socket = io();
 
-    socket.on('this', function (data) {
-        console.log(data);
-    });
-
-    socket.on('that', function (data) {
-        console.log(data);
-    });
-</script>
 <!-- endbuild -->
 </body>
 </html>
