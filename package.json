@@ -6,6 +6,7 @@
     "start": "app.js"
   },
   "dependencies": {
+    "angular": "^1.2.16",
     "ejs": "^1.0.0",
     "express": "~3.3.4",
     "jade": "~0.34.0",
