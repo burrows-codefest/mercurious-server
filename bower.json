@@ -14,12 +14,5 @@
         "angular-cookies": "~1.2",
         "angular-sanitize": "~1.2",
         "angular-route": "~1.2"
-    },
-    "resolutions": {
-        "angular": "~1.2",
-        "angular-resource": "~1.2",
-        "angular-cookies": "~1.2",
-        "angular-sanitize": "~1.2",
-        "angular-route": "~1.2"
     }
 }
