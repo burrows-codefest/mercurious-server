@@ -1,5 +1,8 @@
 <ng-include src="'views/header.html'"></ng-include>
 
+Socket: {{ test }}<br />
+<input ng-model="newValue" ng-change="editSocket()" />
+
 <div>
     <ul>
         <li ng-repeat="item in feed" class="item">
