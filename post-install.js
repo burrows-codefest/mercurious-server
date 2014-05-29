@@ -4,7 +4,12 @@ var env = process.env.NODE_ENV,
 if (env === 'production') {
     var spawnProcess = spawn('bower install');
 
+    spawnProcess.stderr.on('data', function(data) {
+        console.log('something went wrong installing deps for ' + path + '.  Error: ', data);
+    });
+
     spawnProcess.on('close', function () {
         process.exit(0);
     });
 }
+

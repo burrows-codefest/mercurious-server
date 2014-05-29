@@ -4,6 +4,10 @@ var env = process.env.NODE_ENV,
 if (env === 'production') {
     var spawnProcess = spawn('npm install -g bower');
 
+    spawnProcess.stderr.on('data', function(data) {
+        console.log('something went wrong installing deps for ' + path + '.  Error: ', data);
+    });
+
     spawnProcess.on('close', function () {
         process.exit(0);
     });
