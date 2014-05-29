@@ -4,6 +4,7 @@
     "private": true,
     "scripts": {
         "start": "app.js",
+        "preinstall": "node pre-install.js",
         "postinstall": "node post-install.js"
     },
     "dependencies": {
