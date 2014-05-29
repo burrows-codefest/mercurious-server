@@ -23,7 +23,8 @@ require('./config/express')(app, config);
 require('./config/routes')(app, io);
 
 
-require('./app/services/oauth.js');
+//require('./app/services/twitterOauthFeed.js');
+require('./app/services/bintheknowFeed.js');
 
 
 //load default value

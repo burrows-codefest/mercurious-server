@@ -13,7 +13,8 @@
     "jade": "~0.34.0",
     "mongoose": "~3.6.14",
     "oauth": "^0.9.12",
-    "socket.io": "^1.0.2"
+    "socket.io": "^1.0.2",
+    "parserss": "0.0.1"
   },
   "devDependencies": {
     "grunt": "~0.4.1",
