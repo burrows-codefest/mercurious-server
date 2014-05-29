@@ -1,5 +1,11 @@
 module.exports = function (app, io) {
 
+    //Github Webhook
+    app.get('/api/github', function (req, res) {
+        io.sockets.emit('message', req.body);
+        res.send('200');
+    });
+
     //home route
     var home = require('../app/controllers/home');
     app.get('/', home.index);
@@ -44,5 +50,4 @@ module.exports = function (app, io) {
 
         startTrafficStatus(io.sockets);
     });
-
 };
