@@ -26,24 +26,29 @@
 <div class="container" ng-view="">I'm listening to the Star Wars sound track and now I feel #EPIC</div>
 
 <!--[if lt IE 9]>
-<script src="bower_components/es5-shim/es5-shim.js"></script>
-<script src="bower_components/json3/lib/json3.min.js"></script>
+<script src="components/es5-shim/es5-shim.js"></script>
+<script src="components/json3/lib/json3.min.js"></script>
 <![endif]-->
 
 <!-- build:js scripts/vendor.js -->
 <!-- bower:js -->
-<script src="../node_modules/angular/lib/angular.min.js"></script>
+<script src="/components/angular/angular.js"></script>
+<script src="/components/angular-resource/angular-resource.js"></script>
+<script src="/components/angular-cookies/angular-cookies.js"></script>
+<script src="/components/angular-sanitize/angular-sanitize.js"></script>
+<script src="/components/angular-route/angular-route.js"></script>
 <!-- endbower -->
 <!-- endbuild -->
 
 <!-- build:js({.tmp,app}) scripts/scripts.js -->
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
+<script src="/scripts/app.js"></script>
 
-<script src="scripts/directives/feedStatus.js"></script>
+<script src="/scripts/controllers/main.js"></script>
 
-<script src="scripts/services/rssFeedService.js"></script>
-<script src="scripts/services/dataSourceService.js"></script>
+<script src="/scripts/directives/feedStatus.js"></script>
+
+<script src="/scripts/services/rssFeedService.js"></script>
+<script src="/scripts/services/dataSourceService.js"></script>
 <!-- endbuild -->
 </body>
 </html>

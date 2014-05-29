@@ -1,0 +1,12 @@
+<ng-include src="'views/header.html'"></ng-include>
+
+<div>
+    <ul>
+        <li ng-repeat="item in feed" class="item">
+            <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
+            <div class="item-desc" ng-bind-html="item.content"></div>
+        </li>
+    </ul>
+</div>
+
+<mer-feed-status></mer-feed-status>
