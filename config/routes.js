@@ -4,7 +4,20 @@ module.exports = function (app, io) {
     var home = require('../app/controllers/home');
     app.get('/', home.index);
 
-    function trafficWarningEngine(sockets) {
+    function startTrafficStatus(sockets) {
+        function getRandomStatus() {
+            return Math.floor(Math.random() * 2);
+        }
+
+        function getStatus(index) {
+            var status = [
+                'good',
+                'accident'
+            ];
+
+            return status[index];
+        }
+
         function getNewRoadStatus(id, status) {
             return {
                 id: id,
@@ -13,14 +26,12 @@ module.exports = function (app, io) {
         }
 
         setInterval(function () {
-            sockets.emit('trafficWarning', {
-                roads: {
-                    'A12': getNewRoadStatus('A12', 0),
-                    'A13': getNewRoadStatus('A12', 0),
-                    'M11': getNewRoadStatus('A12', 0),
-                    'A130': getNewRoadStatus('A12', 0),
-                    'M25': getNewRoadStatus('A12', 0)
-                }
+            sockets.emit('trafficStatus', {
+                'A12': getNewRoadStatus('A12', getStatus(getRandomStatus())),
+                'A13': getNewRoadStatus('A13', getStatus(getRandomStatus())),
+                'M11': getNewRoadStatus('M11', getStatus(getRandomStatus())),
+                'A130': getNewRoadStatus('A130', getStatus(getRandomStatus())),
+                'M25': getNewRoadStatus('M25', getStatus(getRandomStatus()))
             });
         }, 10000);
     }
@@ -31,7 +42,7 @@ module.exports = function (app, io) {
             io.sockets.emit('message', data);
         });
 
-        trafficWarningEngine(io.sockets);
+        startTrafficStatus(io.sockets);
     });
 
 };

@@ -1,5 +1,26 @@
 /*! normalize.css v3.0.1 | MIT License | git.io/normalize */
 
+.traffic-status {
+    position: absolute;
+}
+
+.traffic-status .roads {
+    width: 50px;
+}
+
+.traffic-status .road {
+    width: 50px;
+}
+
+.traffic-status .road.good {
+    background-color: green;
+    color: #ffffff;
+}
+
+.traffic-status .road.accident {
+    background-color: red;
+}
+
 @media -sass-debug-info {
     filename {
         font-family: file\:\/\/\/workspace\/mercurious\/app\/bower_components\/bootstrap-sass-official\/vendor\/assets\/stylesheets\/bootstrap\/_normalize\.scss;
