@@ -14,5 +14,5 @@ exports.index = function(req, res){
 
 
 exports.index = function(req, res) {
-    res.send('Ricky and Yordan Rule the World!');
+    res.send('Ricky and Yordan Rule the World');
 };
