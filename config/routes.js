@@ -12,8 +12,9 @@ module.exports = function(app, io){
 
         socket.emit('that', 'this is a linked emit');
 
-        socket.on('private message', function (from, msg) {
-            console.log('I received a private message by ', from, ' saying ', msg);
+        socket.on('that', function (from) {
+            console.log('I received a private message by ', from);
+            socket.emit('that', from);
         });
 
         socket.on('disconnect', function () {
