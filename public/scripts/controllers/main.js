@@ -38,19 +38,19 @@ angular.module('mercuriousApp')
         $scope.submit = function() {
 
             var memeObj = {};
-
-            memeObj.line1 = $scope.memeLine1;
-            memeObj.line2 = $scope.memeLine2;
+            memeObj.type = 'meme';
+            memeObj.data.line1 = $scope.memeLine1;
+            memeObj.data.line2 = $scope.memeLine2;
 
             if ($scope.memeImgUrl == undefined || $scope.memeImgUrl == "") {
-                memeObj.imgUrl = "/images/meme.jpg";
+                memeObj.data.imgUrl = "/images/meme.jpg";
             }
             else {
-                memeObj.imgUrl = $scope.memeImgUrl;
+                memeObj.data.imgUrl = $scope.memeImgUrl;
             }
 
 
-            socket.emit('meme', memeObj);
+            socket.emit('message', memeObj);
 
         };
 
