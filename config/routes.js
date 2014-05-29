@@ -6,6 +6,7 @@ module.exports = function(app, io){
 
 
     //socket IO
+    var socketIO = require('../app/controllers/socketIO');
     io.sockets.on('connection', function (socket) {
         console.log('a user connected');
 
