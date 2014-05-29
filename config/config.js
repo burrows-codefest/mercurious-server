@@ -26,7 +26,7 @@ var config = {
     app: {
       name: 'mercurious-server'
     },
-    port: 3000,
+    port: process.env.PORT,
     db: 'mongodb://MongoLab-xa:T_t1cea7PCIdVAk.m1I78VXax2EcyRM1N4ftFfhH9iQ-@ds031088.mongolab.com:31088/MongoLab-xa'
   }
 };
