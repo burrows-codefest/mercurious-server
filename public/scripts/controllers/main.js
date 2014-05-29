@@ -6,6 +6,7 @@ angular.module('mercuriousApp')
         $scope.newValue = 'edit socket';
 
         socket.on('message', function (data) {
+            console.log(data);
             $scope.test = data;
         });
 
