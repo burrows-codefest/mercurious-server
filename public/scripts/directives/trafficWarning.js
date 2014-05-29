@@ -6,7 +6,9 @@ angular.module('mercuriousApp')
             restrict: 'E',
             templateUrl: '/scripts/directives/templates/traffic-warning.html',
             link: function (scope) {
-                socket.on('trafficWarning', function () {
+                socket.on('trafficWarning', function (data) {
+                    console.log(data);
+
                     scope.warning = 'Traffic Update';
 
                     scope.showWarning = true;
