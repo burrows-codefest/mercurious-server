@@ -1,5 +1,5 @@
 var OAuth = require('oauth');
-
+var https = require('https');
 
 var OAuth2 = OAuth.OAuth2;
 var twitterConsumerKey = '2xBlAkskMzAxGun1IB3WNuk3d';
@@ -15,29 +15,25 @@ var oauth2 = new OAuth2(
 oauth2.getOAuthAccessToken(
     '',
     {'grant_type': 'client_credentials'},
-    function (e, access_token, refresh_token, results) {
+    function (e, access_token) {
         console.log('bearer: ', access_token);
-        oauth2.get(
-            'https://api.twitter.com/1.1/search/tweets.json?q=%23freebandnames&count=4',
-            access_token,
-            function (e, data, res) {
-                console.log(res);
-                if (e) {
-                    return callback(e, null);
-                }
-                if (res.statusCode != 200) {
-                    return callback(new Error(
-                            'OAuth2 request failed: ' +
-                            res.statusCode), null);
-                }
-                try {
-                    data = JSON.parse(data);
-                }
-                catch (e) {
-                    return callback(e, null);
-                }
-                return callback(e, data);
+
+        var options = {
+            hostname: 'api.twitter.com',
+            path: '/1.1/statuses/user_timeline.json?screen_name=mostlyharmlessd',
+            headers: {
+                Authorization: 'Bearer ' + access_token
+            }
+        };
+
+        https.get(options, function(result){
+            result.setEncoding('utf8');
+            result.on('data', function(data){
+                console.log(data); //the response!
             });
+        });
+
+
     });
 function callback(e, data) {
     console.log(e, data);
