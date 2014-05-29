@@ -22,10 +22,6 @@ var app = express(),
 require('./config/express')(app, config);
 require('./config/routes')(app, io);
 
-
-require('./app/services/oauth.js');
-
-
 //load default value
 var ArticlesModel = mongoose.model('Article');
 var firstRecord = new ArticlesModel({
