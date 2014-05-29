@@ -1,7 +1,8 @@
 // Example model
 
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
+  Schema = mongoose.Schema,
+    ArticlesModel;
 
 var ArticleSchema = new Schema({
   title: String,
@@ -14,4 +15,4 @@ ArticleSchema.virtual('date')
     return this._id.getTimestamp();
   });
 
-mongoose.model('Article', ArticleSchema);
+ArticlesModel = mongoose.model('Article', ArticleSchema);

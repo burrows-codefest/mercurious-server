@@ -1,8 +1,7 @@
 var express = require('express'),
-/*  mongoose = require('mongoose'),*/
+  mongoose = require('mongoose'),
   fs = require('fs'),
   config = require('./config/config');
-/*
 mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', function () {
@@ -14,12 +13,23 @@ fs.readdirSync(modelsPath).forEach(function (file) {
   if (file.indexOf('.js') >= 0) {
     require(modelsPath + '/' + file);
   }
-});*/
+});
 
 var app = express();
 
 require('./config/express')(app, config);
 require('./config/routes')(app);
+
+//load default value
+var ArticlesModel = mongoose.model('Article');
+var firstRecord = new ArticlesModel({
+    title: 'article 1',
+    url: 'http://localhost',
+    text: 'this is an article'
+});
+
+firstRecord.save();
+
 
 app.listen(config.port);
 console.log('Started Server on port ' + config.port);
