@@ -2,7 +2,7 @@ module.exports = function(app, io){
 
     //Github Webhook
     app.get('/api/github', function (req, res) {
-        io.sockets.on('message', req.body);
+        io.sockets.emit('message', req.body);
         res.send('200');
     });
 
