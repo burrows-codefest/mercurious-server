@@ -15,3 +15,8 @@ exports.incomingMessage = function (io, socket, data) {
         socket.emit('error',{'message': 'no message type was passed'})
     }
 };
+
+exports.outgoingMessage = function (io, data) {
+    console.log('fired');
+    io.sockets.emit('message', data);
+};

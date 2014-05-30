@@ -1,6 +1,7 @@
 var OAuth = require('oauth'),
     https = require('https'),
     mongoose = require('mongoose'),
+    socketIO = require('../controllers/socketIO'),
     FeedModel = mongoose.model('Feed'),
     io,
 
@@ -25,6 +26,8 @@ exports.loadFeed = function (socketIO) {
 };
 
 exports.getFeed = function () {
+    console.log('twit');
+
     var options = {
         hostname: 'api.twitter.com',
         path: '/1.1/statuses/user_timeline.json?screen_name=megaherosquad',
@@ -43,18 +46,19 @@ exports.getFeed = function () {
             getDataFeed(JSON.parse(tweets));
         });
     });
+
+    setTimeout(this.getFeed, 10000);
 };
 
 function getDataFeed(feed) {
     feed.forEach(function (item) {
         FeedModel.find({'twitterId': item.id}, function (err, feeds) {
             if(feeds.length === 0) {
-                var record = new FeedModel({
-                twitterId: item.id,
-                title: 'Mega Hero Squad',
-                text: item.text
-            });
-                record.save();
+                var record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text},
+                    dbRecord = new FeedModel(record);
+
+                dbRecord.save();
+                socketIO.outgoingMessage(io, record);
             }
         });
 
