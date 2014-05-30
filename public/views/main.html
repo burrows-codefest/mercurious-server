@@ -4,7 +4,7 @@ Socket: {{ test }}<br />
 <input ng-model="newValue" ng-change="editSocket()" />
 
 <div>
-    <ul>
+    <ul class="feed-list">
         <li ng-repeat="item in feed" class="item">
             <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
             <div class="item-desc" ng-bind-html="item.content"></div>
