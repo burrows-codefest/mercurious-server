@@ -43,9 +43,10 @@ module.exports = function (app, io) {
     }
 
     //socket IO
+    var socketIO = require('../app/controllers/socketIO');
     io.sockets.on('connection', function (socket) {
         socket.on('message', function (data) {
-            io.sockets.emit('message', data);
+            socketIO.incomingMessage(io, socket, data);
         });
 
         startTrafficStatus(io.sockets);
