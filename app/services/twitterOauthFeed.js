@@ -45,14 +45,17 @@ exports.getFeed = function () {
         });
     });
 
-    setTimeout(self.getFeed, (1000*60*15));
+    setTimeout(self.getFeed, (1000 * 60 * 15));
 };
 
 function getDataFeed(feed) {
     feed.forEach(function (item) {
+
         FeedModel.find({'twitterId': item.id}, function (err, feeds) {
-            if(feeds.length === 0) {
-                var record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text, type:'twitter'},
+            if (feeds.length === 0) {
+                var date = new Date(item.created_at),
+                    record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text,
+                        type: 'twitter', 'publishedDate': date.getTime()},
                     dbRecord = new FeedModel(record);
 
                 dbRecord.save();
