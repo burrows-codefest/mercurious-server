@@ -23,20 +23,14 @@ require('./config/express')(app, config);
 require('./config/routes')(app, io);
 
 
-require('./app/services/twitterOauthFeed.js');
-require('./app/services/bintheknowFeed.js');
-
-
-//load default value
-var ArticlesModel = mongoose.model('Article');
-var firstRecord = new ArticlesModel({
-    title: 'article 1',
-    url: 'http://localhost',
-    text: 'this is an article'
+var servicesPath = __dirname + '/app/services';
+fs.readdirSync(servicesPath).forEach(function (file) {
+    var service;
+    if (file.indexOf('.js') >= 0) {
+        service = require(servicesPath + '/' + file);
+        service.loadFeed(io);
+    }
 });
-
-firstRecord.save();
-
 
 server.listen(config.port);
 console.log('Started Server on port ' + config.port);
