@@ -60,6 +60,7 @@ input {
 
 ul.feed-list {
     padding: 0;
+    list-style: none;
 }
 
 .item {
@@ -74,6 +75,12 @@ ul.feed-list {
     text-align: center;
 }
 
+.item h3 {
+    margin: 10px 0 0 23px;
+    padding: 0;
+    width: 200px;
+}
+
 .item.item_b-intheknow {
     background-image: url('../images/burrows_logo.png');
     background-size: 10%;
@@ -82,7 +89,6 @@ ul.feed-list {
 }
 
 .item.item_twitter {
-    height: 150px;
     background-image: url('../images/twitter_logo_blue.png');
     background-size: 10%;
     background-repeat: no-repeat;
@@ -100,6 +106,13 @@ ul.feed-list {
 .item_twitter .item-desc {
     font-size: 15px;
     height: 85px;
+    padding-top: 15px;
+}
+
+.item-date {
+    font-size: 11px;
+    padding: 0;
+    margin: 0;
 }
 
 .item-desc img {
@@ -125,6 +138,10 @@ ul.feed-list {
 
 .traffic-status .road.accident {
     background-color: red;
+}
+
+.selected {
+    opacity: 0.6;
 }
 
 /* MEME */
