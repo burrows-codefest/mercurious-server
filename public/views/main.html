@@ -1,15 +1,15 @@
 <ng-include src="'views/header.html'"></ng-include>
 
-Search: <input ng-model="searchText.$">
+Search: <input ng-model="search.$">
 
-<button ng-click="searchText.type = ''">All</button>
+<button ng-click="search.type = ''">All</button>
 
-<button ng-click="searchText.type = 'b-intheknow'">b-intheknow</button>
+<button ng-click="search.type = 'b-intheknow'">b-intheknow</button>
 
-<button ng-click="searchText.type = 'twitter'">twitter</button>
+<button ng-click="search.type = 'twitter'">twitter</button>
 
 <ul class="feed-list">
-    <li ng-repeat="item in feed | filter: searchText" class="item item_{{ item.type }}">
+    <li ng-repeat="item in feed | filter: search" class="item item_{{ item.type }}">
         <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
 
         <div class="item-desc" ng-bind-html="item.text"></div>
