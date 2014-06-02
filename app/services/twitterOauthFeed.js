@@ -26,8 +26,6 @@ exports.loadFeed = function (socketIO) {
 };
 
 exports.getFeed = function () {
-    console.log('twit');
-
     var options = {
         hostname: 'api.twitter.com',
         path: '/1.1/statuses/user_timeline.json?screen_name=megaherosquad',

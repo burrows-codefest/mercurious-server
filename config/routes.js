@@ -1,13 +1,13 @@
-module.exports = function (app, io) {
+var home = require('../app/controllers/home'),
+    socketIO = require('../app/controllers/socketIO'),
+    feeds = require('../app/controllers/feeds');
 
-    //Github Webhook
+module.exports = function (app, io) {
     app.get('/api/github', function (req, res) {
         io.sockets.emit('message', req.body);
         res.send('200');
     });
 
-    //home route
-    var home = require('../app/controllers/home');
     app.get('/', home.index);
 
     function startTrafficStatus(sockets) {
@@ -42,9 +42,8 @@ module.exports = function (app, io) {
         }, 10000);
     }
 
-    //socket IO
-    var socketIO = require('../app/controllers/socketIO');
     io.sockets.on('connection', function (socket) {
+        feeds.loadAllFeeds(socket);
         socket.on('message', function (data) {
             socketIO.incomingMessage(io, socket, data);
         });

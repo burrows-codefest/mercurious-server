@@ -17,6 +17,5 @@ exports.incomingMessage = function (io, socket, data) {
 };
 
 exports.outgoingMessage = function (io, data) {
-    console.log('fired');
     io.sockets.emit('message', data);
 };
