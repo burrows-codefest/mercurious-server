@@ -34,6 +34,15 @@ input {
     color: #999999;
 }
 
+.search {
+    position: absolute;
+    top: 16px;
+    left: 256px;
+    background-color: white;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+    padding: 14px;
+}
+
 ul.feed-list {
     padding: 0;
 }
