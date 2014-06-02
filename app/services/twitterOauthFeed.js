@@ -3,7 +3,7 @@ var OAuth = require('oauth'),
     mongoose = require('mongoose'),
     socketIO = require('../controllers/socketIO'),
     FeedModel = mongoose.model('Feed'),
-    io,
+    io, self = this,
 
     OAuth2 = OAuth.OAuth2,
     twitterConsumerKey = '2xBlAkskMzAxGun1IB3WNuk3d',
@@ -44,8 +44,8 @@ exports.getFeed = function () {
             getDataFeed(JSON.parse(tweets));
         });
     });
-
-    setTimeout(this.getFeed, 10000);
+    
+    setTimeout(self.getFeed, (1000*60*15));
 };
 
 function getDataFeed(feed) {
