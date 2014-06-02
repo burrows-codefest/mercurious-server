@@ -1,22 +1,31 @@
-var OAuth = require('oauth');
-var https = require('https');
+var io,
+    cached_access_token,
+    self = this,
+    OAuth = require('oauth'),
+    https = require('https'),
+    mongoose = require('mongoose'),
+    socketIO = require('../controllers/socketIO'),
+    FeedModel = mongoose.model('Feed'),
 
-var OAuth2 = OAuth.OAuth2;
-var twitterConsumerKey = '2xBlAkskMzAxGun1IB3WNuk3d';
-var twitterConsumerSecret = 'Tu1PYdVPLdbQ6hXVUHy0JzRSL5mLntF9jbPmC4oLpkNxDrMDKk';
+    OAuth2 = OAuth.OAuth2,
+    twitterConsumerKey = '2xBlAkskMzAxGun1IB3WNuk3d',
+    twitterConsumerSecret = 'Tu1PYdVPLdbQ6hXVUHy0JzRSL5mLntF9jbPmC4oLpkNxDrMDKk',
+    oauth2 = new OAuth2(twitterConsumerKey, twitterConsumerSecret, 'https://api.twitter.com/', null, 'oauth2/token',
+        null);
 
-var oauth2 = new OAuth2(
-    twitterConsumerKey,
-    twitterConsumerSecret,
-    'https://api.twitter.com/',
-    null,
-    'oauth2/token',
-    null);
+exports.loadFeed = function (socketIO) {
+    var self = this;
 
-var cached_access_token;
-function getTwitterFeed(access_token){
+    io = socketIO;
 
-    cached_access_token = access_token;
+    oauth2.getOAuthAccessToken('', {'grant_type': 'client_credentials'}, function (e, access_token) {
+        cached_access_token = access_token;
+        self.getFeed();
+    });
+
+};
+
+exports.getFeed = function () {
     var options = {
         hostname: 'api.twitter.com',
         path: '/1.1/statuses/user_timeline.json?screen_name=megaherosquad',
@@ -25,20 +34,34 @@ function getTwitterFeed(access_token){
         }
     };
     https.get(options, function (result) {
+        var tweets = '';
         result.setEncoding('utf8');
-        result.on('data', getDataFeed);
+        result.on('data', function (data) {
+            tweets += data;
+        });
+
+        result.on('end', function () {
+            getDataFeed(JSON.parse(tweets));
+        });
     });
 
-    function getDataFeed(feed) {
-        console.log(feed);
-        global.feed = feed;
-    }
+    setTimeout(self.getFeed, (1000 * 60 * 15));
+};
+
+function getDataFeed(feed) {
+    feed.forEach(function (item) {
+
+        FeedModel.find({'twitterId': item.id}, function (err, feeds) {
+            if (feeds.length === 0) {
+                var date = new Date(item.created_at),
+                    record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text,
+                        type: 'twitter', 'publishedDate': date.getTime()},
+                    dbRecord = new FeedModel(record);
+
+                dbRecord.save();
+                socketIO.outgoingMessage(io, record);
+            }
+        });
+
+    });
 }
-
-oauth2.getOAuthAccessToken(
-    '',
-    {'grant_type': 'client_credentials'},
-    function (e, access_token) {
-        getTwitterFeed(access_token);
-    });
-
