@@ -1,16 +1,11 @@
 <ng-include src="'views/header.html'"></ng-include>
-
-Socket: {{ test }}<br />
-<input ng-model="newValue" ng-change="editSocket()" />
-
 <div>
     <ul class="feed-list">
         <li ng-repeat="item in feed" class="item">
             <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
-            <div class="item-desc" ng-bind-html="item.content"></div>
+            <div class="item-desc" ng-bind-html="item.text"></div>
         </li>
     </ul>
 </div>
 
-<mer-feed-status></mer-feed-status>
 <mer-traffic-status></mer-traffic-status>
