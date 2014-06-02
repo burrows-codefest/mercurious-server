@@ -11,8 +11,16 @@ module.exports = function (app, io) {
 
     app.get('/', home.index);
 
-    app.get('/login', function (req, res) {
-       var user = require('../apps/controller/user'),
+    app.get('/signin', function (req, res) {
+        res.render('home/login');
+    });
+
+    app.get('/user', function (req, res) {
+        res.render('home/user');
+    });
+
+    app.post('/login', function (req, res) {
+       var user = require('../apps/controllers/user'),
            username = req.body.user,
            password = req.body.pass;
 
