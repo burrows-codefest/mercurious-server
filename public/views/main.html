@@ -1,10 +1,12 @@
 <ng-include src="'views/header.html'"></ng-include>
 
 <div class="search">
-    <input ng-model="search.$" placeholder="Search"> [<a ng-click="search = ''">x</a>]<br/>
-    <button ng-click="search.type = ''">All</button>
-    <button ng-click="search.type = 'b-intheknow'">b-intheknow</button>
-    <button ng-click="search.type = 'twitter'">twitter</button>
+    <input ng-model="search.$" placeholder="Search"> [<a ng-click="search = ''">x</a>]
+    <ul class="filter">
+        <li><a ng-click="search.type = ''">All</a></li>
+        <li><a ng-click="search.type = 'b-intheknow'"><img src="../images/burrows_logo.png" class="filter-image" /></a></li>
+        <li><a ng-click="search.type = 'twitter'"><img src="../images/twitter_logo_blue.png" class="filter-image" /></a></li>
+    </ul>
 </div>
 
 <ul class="feed-list">
