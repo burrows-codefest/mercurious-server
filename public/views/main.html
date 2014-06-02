@@ -1,11 +1,17 @@
 <ng-include src="'views/header.html'"></ng-include>
-<div>
-    <ul class="feed-list">
-        <li ng-repeat="item in feed" class="item">
-            <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
-            <div class="item-desc" ng-bind-html="item.text"></div>
-        </li>
-    </ul>
-</div>
 
-<mer-traffic-status></mer-traffic-status>
+Search: <input ng-model="searchText.$">
+
+<button ng-click="searchText.type = ''">All</button>
+
+<button ng-click="searchText.type = 'b-intheknow'">b-intheknow</button>
+
+<button ng-click="searchText.type = 'twitter'">twitter</button>
+
+<ul class="feed-list">
+    <li ng-repeat="item in feed | filter: searchText" class="item item_{{ item.type }}">
+        <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
+
+        <div class="item-desc" ng-bind-html="item.text"></div>
+    </li>
+</ul>
