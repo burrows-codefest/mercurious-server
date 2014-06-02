@@ -52,7 +52,7 @@ function getDataFeed(feed) {
     feed.forEach(function (item) {
         FeedModel.find({'twitterId': item.id}, function (err, feeds) {
             if(feeds.length === 0) {
-                var record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text},
+                var record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text, type:'twitter'},
                     dbRecord = new FeedModel(record);
 
                 dbRecord.save();

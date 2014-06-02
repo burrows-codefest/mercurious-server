@@ -17,7 +17,7 @@ exports.getFeed = function () {
                 .where('url').equals(item.link)
                 .exec(function (err, feeds) {
                     if (feeds.length === 0) {
-                        var record = {title: item.title, url: item.link, text: item.description},
+                        var record = {title: item.title, url: item.link, text: item.description, type: 'b-intheknow'},
                             dbRecord = new FeedModel(record);
 
                         dbRecord.save();

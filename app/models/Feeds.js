@@ -4,6 +4,7 @@ var mongoose = require('mongoose'),
 
 var FeedSchema = new Schema({
   title: String,
+  type: String,
   url: String,
   text: String,
   twitterId: String
