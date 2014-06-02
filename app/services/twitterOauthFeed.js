@@ -1,15 +1,15 @@
-var OAuth = require('oauth'),
+var io,
+    cached_access_token,
+    self = this,
+    OAuth = require('oauth'),
     https = require('https'),
     mongoose = require('mongoose'),
     socketIO = require('../controllers/socketIO'),
     FeedModel = mongoose.model('Feed'),
-    io, self = this,
 
     OAuth2 = OAuth.OAuth2,
     twitterConsumerKey = '2xBlAkskMzAxGun1IB3WNuk3d',
     twitterConsumerSecret = 'Tu1PYdVPLdbQ6hXVUHy0JzRSL5mLntF9jbPmC4oLpkNxDrMDKk',
-    cached_access_token,
-
     oauth2 = new OAuth2(twitterConsumerKey, twitterConsumerSecret, 'https://api.twitter.com/', null, 'oauth2/token',
         null);
 
@@ -44,7 +44,7 @@ exports.getFeed = function () {
             getDataFeed(JSON.parse(tweets));
         });
     });
-    
+
     setTimeout(self.getFeed, (1000*60*15));
 };
 
