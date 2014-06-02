@@ -17,7 +17,9 @@ exports.getFeed = function () {
                 .where('url').equals(item.link)
                 .exec(function (err, feeds) {
                     if (feeds.length === 0) {
-                        var record = {title: item.title, url: item.link, text: item.description, type: 'b-intheknow'},
+                        var date = new Date(item.pubdate),
+                            record = {title: item.title, url: item.link,
+                                text: item.description, type: 'b-intheknow', 'publishedDate': date.getTime()},
                             dbRecord = new FeedModel(record);
 
                         dbRecord.save();
@@ -27,5 +29,5 @@ exports.getFeed = function () {
                 });
         });
     });
-    setTimeout(self.getFeed,(1000*60*15));
+    setTimeout(self.getFeed, (1000 * 60 * 15));
 };

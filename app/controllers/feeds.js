@@ -3,7 +3,7 @@ var mongoose = require('mongoose'),
 
 exports.loadAllFeeds = function (socket) {
     FeedModel.find()
-        .sort('-date')
+        .sort('-publishedDate')
         .limit('20')
         .exec(function (err, results) {
             socket.emit('message', results);
