@@ -1,31 +1,31 @@
 var rss = require('parserss'),
     mongoose = require('mongoose'),
-    FeedModel = mongoose.model('Feed');
+    FeedModel = mongoose.model('Feed'),
+    socketIO = require('../controllers/socketIO'),
+    io;
 
-exports.loadFeed = function () {
-    //this.getFeed();
+exports.loadFeed = function (socketIO) {
+    io = socketIO;
+    this.getFeed();
 };
 
 exports.getFeed = function () {
-    var cleansedResult = [];
     //this function is running twice for some unknown reason
     rss('http://b-intheknow.com/rss', 10, function (err, res) {
         res.articles.forEach(function (item) {
-            FeedModel.find({'url': item.link}), function (err, feeds) {
-                if(feeds.length === 0) {
-                    cleansedResult.push(item);
-                }
-            }
+            FeedModel.find()
+                .where('url').equals(item.link)
+                .exec(function (err, feeds) {
+                    if (feeds.length === 0) {
+                        var record = {title: item.title, url: item.link, text: item.description},
+                            dbRecord = new FeedModel(record);
+
+                        dbRecord.save();
+
+                        socketIO.outgoingMessage(io, record);
+                    }
+                });
         });
     });
-    console.log(cleansedResult);
     //setTimeout(this.getFeed, 60000);
 };
-/*
-var record = new FeedModel({
-    title: item.title,
-    url: item.link,
-    text: item.description
-});
-
-record.save();*/
