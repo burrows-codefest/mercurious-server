@@ -6,14 +6,20 @@ function encryptPassword(password) {
     return crypto.createHash('sha1').update(password).digest('hex').toString('base64');
 }
 
-exports.authenticate = function (username, password, callback) {
+exports.loginPage = function (req, res) {
+    res.render('home/login');
+};
+
+exports.authenticate = function (req, res) {
     UserModel.find()
-        .where('username').equals(username)
-        .where('password').equals(encryptPassword(password))
+        .where('username').equals(req.body.username)
+        .where('password').equals(encryptPassword(req.body.password))
         .exec(function (err, results) {
-            if(results.length === 1) {
-                callback(true);
+            if (results.length === 1) {
+                req.session.user = true;
+                res.redirect('/admin');
+            } else {
+                res.redirect('/signin');
             }
-                callback(false);
         });
 };
