@@ -15,7 +15,7 @@ exports.incomingWebhook = function (req, res) {
           url: requestBody.compare,
           text: requestBody.pusher.name + ' pushed ' + numOfCommits + ' commits to ' + requestBody.ref.replace('refs/heads/',''),
           publishedDate: new Date().getTime(),
-          gibhubBody: requestBody
+          githubBody: requestBody
         };
 
         githubService.addRecord(newRecord);

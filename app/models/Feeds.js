@@ -9,7 +9,7 @@ var FeedSchema = new Schema({
     text: String,
     twitterId: String,
     publishedDate: String,
-    gibhubBody: Object
+    githubBody: Object
 });
 
 FeedSchema.virtual('date')
