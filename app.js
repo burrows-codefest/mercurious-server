@@ -1,6 +1,5 @@
 var express = require('express'),
     mongoose = require('mongoose'),
-    UserModel = mongoose.model('User'),
     fs = require('fs'),
     config = require('./config/config');
 mongoose.connect(config.db);
@@ -33,6 +32,7 @@ fs.readdirSync(servicesPath).forEach(function (file) {
     }
 });
 
+var UserModel = mongoose.model('User');
 
 UserModel.find()
     .where('username').equals('admin')
