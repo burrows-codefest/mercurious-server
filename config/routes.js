@@ -1,6 +1,8 @@
 var home = require('../app/controllers/home'),
     socketIO = require('../app/controllers/socketIO'),
     traffic = require('../app/controllers/traffic'),
+    user = require('../app/controllers/user'),
+    admin = require('../app/controllers/admin'),
     feeds = require('../app/controllers/feeds');
 
 module.exports = function (app, io) {
@@ -8,8 +10,11 @@ module.exports = function (app, io) {
         io.sockets.emit('message', req.body);
         res.send('200');
     });
-
+    app.get('/signin', user.loginPage);
+    app.get('/admin',admin.index);
     app.get('/', home.index);
+
+    app.post('/login',user.authenticate);
 
     io.sockets.on('connection', function (socket) {
 
