@@ -21,8 +21,6 @@ angular.module('mercuriousApp')
                 scope.submit = function() {
                     var d = new Date();
 
-                    scope.meme.title = 'Meme Line 1';
-                    scope.meme.text = 'Meme Line 2';
                     scope.meme.type = 'meme';
                     scope.meme.publishedDate =  d.getTime();
 
