@@ -1,6 +1,7 @@
-exports.handleMessage = function (data) {
-    //parse record
-    //add record to DB
+var mongoose = require('mongoose'),
+    FeedModel = mongoose.model('Feed');
 
-    console.log(data);
+exports.handleMessage = function (data) {
+    dbRecord = new FeedModel(data);
+	dbRecord.save();
 };
