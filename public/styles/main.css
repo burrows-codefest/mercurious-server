@@ -145,49 +145,39 @@ ul.feed-list {
 }
 
 /* MEME */
-#meme {
-    float: left;
-    margin-top: 20px;
-    padding: 20px;
-    background-color: #000;
-    color: #fff;
+.meme {
     text-align: center;
     font-size: 20px;
 }
 
-#meme .meme__textline {
+.meme-template {
+    margin: 10px 0 0 0;
+}
+
+.meme .meme-textline {
     display: block;
+    color: white;
+    font-size: 20px;
 }
 
-#meme .meme__textline--top {
-    margin-bottom: 20px;
-}
-#meme .meme__textline--bottom {
-    margin-top: 20px;
+.meme .meme-textline-top {
+    position: relative;
+    top: -180px;
 }
 
-#meme #meme__img {
-    width: 400px;
-    height: 300px;
-    background: transparent url('/images/meme.jpg') no-repeat 50% 50%/contain;
+.meme .meme-textline-bottom {
+    position: relative;
+    top: -75px;
 }
 
-#meme input {
+.meme input[type=text] {
     background: transparent;
     border: 0;
     width: 100%;
     text-align: center;
-    box-shadow: 0 0 10px 1px #fff;
-    border-radius: 10px;
-}
-#meme input:focus {
-    outline: 0;
-    box-shadow: 0 0 10px 1px #0cf;
 }
 
-#memeForm__submit {
-    float: left;
-    clear: both;
-    width: 100px;
-    margin: 30px 0 0 170px;
+.meme input:focus {
+    outline: 0;
+    box-shadow: 0 0 10px 1px #0cf;
 }

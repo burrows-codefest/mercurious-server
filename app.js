@@ -32,5 +32,17 @@ fs.readdirSync(servicesPath).forEach(function (file) {
     }
 });
 
+var UserModel = mongoose.model('User');
+
+UserModel.find()
+    .where('username').equals('admin')
+    .exec(function (err, results) {
+        if (results.length === 0) {
+            var dbRecord = new UserModel({username: 'admin', password: 'd033e22ae348aeb5660fc2140aec35850c4da997'});
+            dbRecord.save();
+        }
+    });
+
+
 server.listen(config.port);
 console.log('Started Server on port ' + config.port);

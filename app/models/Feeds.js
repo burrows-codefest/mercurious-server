@@ -7,8 +7,10 @@ var FeedSchema = new Schema({
     type: String,
     url: String,
     text: String,
+    imgUrl: String,
     twitterId: String,
     publishedDate: String,
+    githubBody: Object
 });
 
 FeedSchema.virtual('date')

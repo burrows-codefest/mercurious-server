@@ -1,15 +1,18 @@
 var home = require('../app/controllers/home'),
     socketIO = require('../app/controllers/socketIO'),
     traffic = require('../app/controllers/traffic'),
+    user = require('../app/controllers/user'),
+    github = require('../app/controllers/github'),
+    admin = require('../app/controllers/admin'),
     feeds = require('../app/controllers/feeds');
 
 module.exports = function (app, io) {
-    app.get('/api/github', function (req, res) {
-        io.sockets.emit('message', req.body);
-        res.send('200');
-    });
-
+    app.get('/signin', user.loginPage);
+    app.get('/admin',admin.index);
     app.get('/', home.index);
+
+    app.post('/login',user.authenticate);
+    app.post('/api/github',github.incomingWebhook);
 
     io.sockets.on('connection', function (socket) {
 
