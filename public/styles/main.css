@@ -100,12 +100,11 @@ ul.feed-list {
     height: 230px;
     text-align: left;
     font-size: 11px;
-    overflow: scroll;
+    overflow-y: auto;
 }
 
 .item_twitter .item-desc {
     font-size: 15px;
-    height: 85px;
     padding-top: 15px;
 }
 
