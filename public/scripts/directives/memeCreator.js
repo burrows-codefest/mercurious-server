@@ -22,7 +22,7 @@ angular.module('mercuriousApp')
                     var d = new Date();
 
                     scope.meme.type = 'meme';
-                    scope.meme.publishedDate =  d.getTime();
+                    scope.meme.publishedDate =  String(d.getTime());
 
                     socket.emit('message', scope.meme);
                 };
