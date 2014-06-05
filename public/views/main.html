@@ -16,7 +16,10 @@
     </ul>
 </div>
 
-<div ng-show="feed"><a ng-click="createMeme = true">Add Meme</a></div>
+<div ng-show="feed">
+    <a ng-hide="createMeme" ng-click="createMeme = true">Add Meme</a>
+    <a ng-show="createMeme" ng-click="createMeme = false">Hide Meme Creator</a>
+</div>
 
 <ul class="feed-list">
     <li ng-show="createMeme" class="item item_{{ item.type }}">
