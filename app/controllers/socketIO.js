@@ -6,11 +6,12 @@ exports.incomingMessage = function (io, socket, data) {
 
     if(messageType) {
         messageHandlerPath = './messageHandlers/' + messageType + 'Handler.js';
-        if(fs.existsSync(messageHandlerPath)) {
-            messageHandler = require(messageHandlerPath);
-            messageHandler.handleMessage(data);
-            //emit new record to clients
-        }
+
+        messageHandler = require(messageHandlerPath);
+        messageHandler.handleMessage(data);
+
+        io.sockets.emit('new item', data);
+
     } else {
         socket.emit('error',{'message': 'no message type was passed'})
     }
