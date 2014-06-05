@@ -1,16 +1,16 @@
 <ng-include src="'views/header.html'"></ng-include>
 
 <div class="search">
-    <input ng-model="search.$" placeholder="Search"> [<a ng-click="search = ''">x</a>]
+    <input ng-model="search.$" placeholder="Search"> <a ng-click="search = ''" href>&#9447;</a>
     <ul class="filter">
-        <li><a ng-click="search.type = ''; twitterClass=''; inTheKnowClass=''">All</a></li>
+        <li><a ng-click="search.type = ''; twitterClass=''; inTheKnowClass=''" href>All</a></li>
         <li>
             <a ng-click="search.type = 'b-intheknow'; inTheKnowClass='selected'; twitterClass=''"
-               ng-class="inTheKnowClass">
+               ng-class="inTheKnowClass" href>
                 <img src="../images/burrows_logo.png" class="filter-image"/></a>
         </li>
         <li>
-            <a ng-click="search.type = 'twitter'; twitterClass='selected'; inTheKnowClass=''" ng-class="twitterClass">
+            <a ng-click="search.type = 'twitter'; twitterClass='selected'; inTheKnowClass=''" ng-class="twitterClass" href>
                 <img src="../images/twitter_logo_blue.png" class="filter-image"/></a>
         </li>
     </ul>
