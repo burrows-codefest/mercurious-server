@@ -1,10 +1,11 @@
-<form id="meme" ng-submit="submit()">
+<form class="meme" ng-submit="submit()">
     <div class="meme-template">
-        <img ng-src="{{ meme.imgUrl }}" width="250" height="180" />
+        <img ng-src="{{ meme.imgObj.imgUrl }}" width="250" height="180" />
         <input type="text" ng-model="meme.title" class="meme-textline meme-textline-top"
                autofocus="autofocus"/>
         <input type="text" class="meme-textline meme-textline-bottom" ng-model="meme.text"/>
     </div>
-    <input type="text" ng-model="meme.imgUrl" placeholder="URL"/>
+    <select ng-model="meme.imgObj" ng-options="memeTemplate.name for memeTemplate in memeTemplates">
+    </select>
     <input type="submit" value="Submit" id="memeForm__submit"/>
 </form>

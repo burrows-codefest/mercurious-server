@@ -28,7 +28,7 @@
             <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
             <div class="item-desc" ng-bind-html="item.text"></div>
         </div>
-        <div ng-switch-when="meme">
+        <div ng-switch-when="meme" class="meme">
             <div class="meme-template">
                 <img ng-src="{{ item.imgUrl }}" width="250" height="180" />
                 <span class="meme-textline meme-textline-top">{{ item.title }}</span>

@@ -145,7 +145,7 @@ ul.feed-list {
 }
 
 /* MEME */
-#meme {
+.meme {
     text-align: center;
     font-size: 20px;
 }
@@ -154,29 +154,30 @@ ul.feed-list {
     margin: 10px 0 0 0;
 }
 
-#meme .meme-textline {
+.meme .meme-textline {
     display: block;
     color: white;
     font-size: 20px;
 }
 
-#meme .meme-textline-top {
+.meme .meme-textline-top {
     position: relative;
     top: -180px;
 }
-#meme .meme-textline-bottom {
+
+.meme .meme-textline-bottom {
     position: relative;
     top: -75px;
 }
 
-#meme input[type=text] {
+.meme input[type=text] {
     background: transparent;
     border: 0;
     width: 100%;
     text-align: center;
 }
 
-#meme input:focus {
+.meme input:focus {
     outline: 0;
     box-shadow: 0 0 10px 1px #0cf;
 }
