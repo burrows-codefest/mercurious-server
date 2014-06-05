@@ -34,6 +34,11 @@ angular.module('mercuriousApp')
                         imgUrl: 'images/memeTemplates/1w6tn.jpg',
                         name: 'Well That Escalated Quickly'
                     },
+                    {
+                        id: 5,
+                        imgUrl: 'images/memeTemplates/1bhf.jpg',
+                        name: 'First World Problems'
+                    }
                 ];
 
                 scope.meme = {};
