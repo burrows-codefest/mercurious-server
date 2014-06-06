@@ -1,7 +1,9 @@
+var constants = require('../../config/constants');
+
 exports.index = function (req, res) {
     if (req.session.user) {
-        res.render('home/user');
+        res.render(constants.TEMPLATE.USER);
     } else {
-        res.render('home/login');
+        res.render(constants.TEMPLATE.LOGIN);
     }
 };
