@@ -1,24 +1,24 @@
 <ng-include src="'views/header.html'"></ng-include>
 
 <div class="search">
-    <input ng-model="search.$" placeholder="Search"> [<a ng-click="search = ''">x</a>]
+    <input ng-model="search.$" placeholder="Search"> <a ng-click="search = ''" href>&#9447;</a>
     <ul class="filter">
-        <li><a ng-click="search.type = ''; twitterClass=''; inTheKnowClass=''">All</a></li>
+        <li><a ng-click="search.type = ''; twitterClass=''; inTheKnowClass=''" href>All</a></li>
         <li>
             <a ng-click="search.type = 'b-intheknow'; inTheKnowClass='selected'; twitterClass=''"
-               ng-class="inTheKnowClass">
+               ng-class="inTheKnowClass" href>
                 <img src="../images/burrows_logo.png" class="filter-image"/></a>
         </li>
         <li>
-            <a ng-click="search.type = 'twitter'; twitterClass='selected'; inTheKnowClass=''" ng-class="twitterClass">
+            <a ng-click="search.type = 'twitter'; twitterClass='selected'; inTheKnowClass=''" ng-class="twitterClass" href>
                 <img src="../images/twitter_logo_blue.png" class="filter-image"/></a>
         </li>
     </ul>
 </div>
 
 <div ng-show="feed">
-    <a ng-hide="createMeme" ng-click="createMeme = true">Add Meme</a>
-    <a ng-show="createMeme" ng-click="createMeme = false">Hide Meme Creator</a>
+    <a ng-hide="createMeme" ng-click="createMeme = true" href class="meme-button">Add Meme</a>
+    <a ng-show="createMeme" ng-click="createMeme = false" href class="meme-button">Hide Meme Creator</a>
 </div>
 
 <ul class="feed-list">

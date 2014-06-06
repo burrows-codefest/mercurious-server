@@ -100,12 +100,11 @@ ul.feed-list {
     height: 230px;
     text-align: left;
     font-size: 11px;
-    overflow: scroll;
+    overflow-y: auto;
 }
 
 .item_twitter .item-desc {
     font-size: 15px;
-    height: 85px;
     padding-top: 15px;
 }
 
@@ -180,4 +179,14 @@ ul.feed-list {
 .meme input:focus {
     outline: 0;
     box-shadow: 0 0 10px 1px #0cf;
+}
+
+.meme-button {
+    border: 2px solid #428bca;
+    background-color: #fff;
+    padding: 10px;
+    height: 24px;
+    top: 6px;
+    left: 440px;
+    position: absolute;
 }
