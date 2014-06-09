@@ -20,13 +20,15 @@ angular.module('mercuriousApp')
         
         $scope.raceReports.$on('loaded', function(races) {
             for (var race in races) {
-                $scope.feed.push(raceReportService.compileRaceReport(races[race]));
+                if (races[race]) {
+                    $scope.feed.push(raceReportService.compileRaceReport(races[race]));
+                }
             }
             raceReportsLoaded = true;
         });
         
         $scope.raceReports.$on('change', function(raceId) {
-            if (raceReportsLoaded === true) {
+            if (raceReportsLoaded === true && $scope.raceReports[raceId]) {
                 $scope.feed.push(raceReportService.compileRaceReport($scope.raceReports[raceId]));
             }
         });
