@@ -11,8 +11,6 @@ angular.module('mercuriousApp')
             text = text + 
                     '<strong>Class</strong>: ' + raceReport.carClass +
                     '<br />' + 
-                    '<strong>Date</strong>: ' + raceReport.date +
-                    '<br />' + 
                     '<strong>Laps</strong>: ' + raceReport.laps +
                     '<br />' +
                     '<strong>Fastest Lap</strong>: ' + raceReport.fastestLapDriver.name;
