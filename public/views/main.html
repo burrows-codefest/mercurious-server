@@ -5,6 +5,10 @@
     <ul class="filter">
         <li><a ng-click="search.type = ''; twitterClass=''; inTheKnowClass=''" href>All</a></li>
         <li>
+            <a ng-click="search.type = 'meme'; inTheKnowClass=''; twitterClass=''"
+               ng-class="memeClass" href>
+                <img src="../images/meme-logo.png" class="filter-image"/></a>
+        </li>        <li>
             <a ng-click="search.type = 'b-intheknow'; inTheKnowClass='selected'; twitterClass=''"
                ng-class="inTheKnowClass" href>
                 <img src="../images/burrows_logo.png" class="filter-image"/></a>
@@ -12,6 +16,10 @@
         <li>
             <a ng-click="search.type = 'twitter'; twitterClass='selected'; inTheKnowClass=''" ng-class="twitterClass" href>
                 <img src="../images/twitter_logo_blue.png" class="filter-image"/></a>
+        </li>
+        <li>
+            <a ng-click="search.type = 'raceReport'; twitterClass=''; inTheKnowClass=''" ng-class="forzaClass" href>
+                <img src="../images/forza-logo.jpg" class="filter-image"/></a>
         </li>
     </ul>
 </div>
