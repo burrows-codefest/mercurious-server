@@ -2,6 +2,9 @@
 
 angular.module('mercuriousApp')
     .controller('MainCtrl', function ($scope, socket, $firebase, raceReportService) {
+        var raceReportsLoaded = false,
+            raceReportsRef = new Firebase('https://forza.firebaseio.com/raceReports/');
+        
         $scope.createMeme = false;
         $scope.feed = [];
 
@@ -13,9 +16,6 @@ angular.module('mercuriousApp')
             $scope.feed.push(data);
         });
         
-        var raceReportsLoaded = false,
-            raceReportsRef = new Firebase('https://forza.firebaseio.com/raceReports/');
-        // Automatically syncs everywhere in realtime
         $scope.raceReports = $firebase(raceReportsRef);
         
         $scope.raceReports.$on('loaded', function(races) {
