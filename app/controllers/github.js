@@ -1,11 +1,12 @@
-var githubService = require('../services/githubFeed');
+var githubService = require('../services/githubFeed'),
+    constants = require('../../config/constants');
 
 exports.incomingWebhook = function (req, res) {
     var newRecord, numOfCommits,
         requestBody = req.body,
-        githubEvent = req.headers['x-github-event'];
+        githubEvent = req.headers[constants.GITHUB.EVENT_HEADER];
 
-    if (githubEvent === 'push') {
+    if (githubEvent === constants.GITHUB.EVENTS.PUSH) {
 
         numOfCommits = requestBody.commits.length;
 

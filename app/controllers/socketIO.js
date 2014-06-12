@@ -1,4 +1,4 @@
-var fs = require('fs');
+var constants = require('../../config/constants');
 
 exports.incomingMessage = function (io, socket, data) {
     var messageType = data.type,
@@ -8,15 +8,13 @@ exports.incomingMessage = function (io, socket, data) {
         messageHandlerPath = './messageHandlers/' + messageType + 'Handler.js';
 
         messageHandler = require(messageHandlerPath);
-        messageHandler.handleMessage(data);
-
-        io.sockets.emit('new item', data);
-
+        messageHandler.handleMessage(io, data);
     } else {
-        socket.emit('error',{'message': 'no message type was passed'})
+        socket.emit(constants.SOCKET.ERROR,{'message': 'no message type was passed'})
     }
 };
 
 exports.outgoingMessage = function (io, data) {
-    io.sockets.emit('message', data);
+
+    io.sockets.emit(constants.SOCKET.NEW_ITEM, data);
 };
