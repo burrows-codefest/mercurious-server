@@ -1,13 +1,14 @@
 var mongoose = require('mongoose'),
     crypto = require('crypto'),
-    UserModel = mongoose.model('User');
+    constants = require('../../config/constants'),
+    UserModel = mongoose.model(constants.MODEL.USER);
 
 function encryptPassword(password) {
     return crypto.createHash('sha1').update(password).digest('hex').toString('base64');
 }
 
 exports.loginPage = function (req, res) {
-    res.render('home/login');
+    res.render(constants.TEMPLATE.LOGIN);
 };
 
 exports.authenticate = function (req, res) {

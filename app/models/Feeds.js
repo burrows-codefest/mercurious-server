@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    constants = require('../../config/constants'),
     Schema = mongoose.Schema,
     FeedsModel;
 
@@ -18,4 +19,4 @@ FeedSchema.virtual('date')
         return this._id.getTimestamp();
     });
 
-FeedsModel = mongoose.model('Feed', FeedSchema);
+FeedsModel = mongoose.model(constants.MODEL.FEED, FeedSchema);

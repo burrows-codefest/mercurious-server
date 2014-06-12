@@ -4,7 +4,9 @@ var home = require('../app/controllers/home'),
     user = require('../app/controllers/user'),
     github = require('../app/controllers/github'),
     admin = require('../app/controllers/admin'),
-    feeds = require('../app/controllers/feeds');
+    feeds = require('../app/controllers/feeds'),
+
+    constants = require('./constants');
 
 module.exports = function (app, io) {
     app.get('/signin', user.loginPage);
@@ -19,7 +21,7 @@ module.exports = function (app, io) {
         feeds.loadAllFeeds(socket);
         traffic.startTrafficStatus(io.sockets);
 
-        socket.on('message', function (data) {
+        socket.on(constants.SOCKET.MESSAGE, function (data) {
             socketIO.incomingMessage(io, socket, data);
         });
     });
