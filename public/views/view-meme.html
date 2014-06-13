@@ -1,0 +1,11 @@
+<ng-include src="'views/header.html'"></ng-include>
+
+<div class="meme">
+    <div class="meme-template">
+        <img ng-src="{{ item.imgUrl }}" width="250" height="180" />
+        <span class="meme-textline meme-textline-top">{{ item.title }}</span>
+        <span class="meme-textline meme-textline-bottom">{{ item.text }}</span>
+    </div>
+
+    <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
+</div>

@@ -46,7 +46,10 @@
                 <span class="meme-textline meme-textline-bottom">{{ item.text }}</span>
             </div>
 
-            <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
+            <div class="item-date">
+                {{ item.publishedDate | date:'medium'}}
+            </div>
+            <a ng-href="/#/meme/{{ item._id }}" style="font-size: 13px">View</a>
         </div>
     </li>
 </ul>
