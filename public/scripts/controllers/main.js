@@ -32,6 +32,9 @@ angular.module('mercuriousApp')
         socket.on('new item', function (data) {
             $scope.feed.push(data);
         });
+        socket.on('ping', function () {
+            socket.emit('pong');
+        });
         
         $scope.raceReports = $firebase(raceReportsRef);
         

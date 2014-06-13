@@ -18,11 +18,14 @@ module.exports = function (app, io) {
 
     io.sockets.on('connection', function (socket) {
 
+        socket.join(constants.SOCKET.DEFAULT_CHANNEL);
+
         feeds.loadAllFeeds(socket);
         traffic.startTrafficStatus(io.sockets);
 
         socket.on(constants.SOCKET.MESSAGE, function (data) {
             socketIO.incomingMessage(io, socket, data);
         });
+        socket.on(constants.SOCKET.PING_RETURN, function () {});
     });
 };

@@ -1,4 +1,5 @@
-var constants = require('../../config/constants');
+var self = this,
+    constants = require('../../config/constants');
 
 exports.incomingMessage = function (io, socket, data) {
     var messageType = data.type,
@@ -15,6 +16,12 @@ exports.incomingMessage = function (io, socket, data) {
 };
 
 exports.outgoingMessage = function (io, data) {
+    io.to(constants.SOCKET.DEFAULT_CHANNEL).emit(constants.SOCKET.NEW_ITEM, data);
+};
 
-    io.sockets.emit(constants.SOCKET.NEW_ITEM, data);
+exports.startPingToClients = function (io) {
+    setTimeout(function () {
+        io.to(constants.SOCKET.DEFAULT_CHANNEL).emit(constants.SOCKET.PING);
+        self.startPingToClients(io);
+    }, 10000);
 };
