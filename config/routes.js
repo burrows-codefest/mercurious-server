@@ -8,7 +8,10 @@ var home = require('../app/controllers/home'),
 
     constants = require('./constants');
 
+var userCount = 0;
+
 module.exports = function (app, io) {
+
     app.get('/signin', user.loginPage);
     app.get('/admin',admin.index);
     app.get('/', home.index);
@@ -17,6 +20,13 @@ module.exports = function (app, io) {
     app.post('/api/github',github.incomingWebhook);
 
     io.sockets.on('connection', function (socket) {
+        userCount++;
+        console.log('user connects: ' + userCount);
+
+        socket.on('disconnect', function () {
+            userCount--;
+            console.log('user disconnects: ' + userCount);
+        });
 
         socket.join(constants.SOCKET.DEFAULT_CHANNEL);
 
