@@ -138,6 +138,26 @@ angular.module('mercuriousApp')
                         id: 25,
                         imgUrl: 'images/memeTemplates/25w4.jpg',
                         name: 'Sudden Clarity Clarence'
+                    },
+                    {
+                        id: 26,
+                        imgUrl: 'images/memeTemplates/troll-dog_o_635004.gif',
+                        name: 'Sneaky Mutt'
+                    },
+                    {
+                        id: 27,
+                        imgUrl: 'images/memeTemplates/fail_o_344718.gif',
+                        name: 'Smooth Fail'
+                    },
+                    {
+                        id: 28,
+                        imgUrl: 'images/memeTemplates/olympics_o_570488.gif',
+                        name: 'Bored Rowan'
+                    },
+                    {
+                        id: 28,
+                        imgUrl: 'images/memeTemplates/oh_hawkeye.gif',
+                        name: 'Ooooh Hawkeye'
                     }
                 ];
 
