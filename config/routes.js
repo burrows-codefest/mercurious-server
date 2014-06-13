@@ -26,5 +26,6 @@ module.exports = function (app, io) {
         socket.on(constants.SOCKET.MESSAGE, function (data) {
             socketIO.incomingMessage(io, socket, data);
         });
+        socket.on(constants.SOCKET.PING_RETURN, function () {});
     });
 };

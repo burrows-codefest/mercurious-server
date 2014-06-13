@@ -16,7 +16,8 @@ module.exports = {
         ERROR: 'error',
         MESSAGE: 'message',
         NEW_ITEM: 'new item',
-        PING: 'ping'
+        PING: 'ping',
+        PING_RETURN: 'pong'
 
     },
     TEMPLATE: {
