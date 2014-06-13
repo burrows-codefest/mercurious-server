@@ -18,6 +18,8 @@ module.exports = function (app, io) {
 
     io.sockets.on('connection', function (socket) {
 
+        socket.join(constants.SOCKET.DEFAULT_CHANNEL);
+
         feeds.loadAllFeeds(socket);
         traffic.startTrafficStatus(io.sockets);
 

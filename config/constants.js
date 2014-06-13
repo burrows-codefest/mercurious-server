@@ -12,9 +12,11 @@ module.exports = {
         USER: 'User'
     },
     SOCKET: {
+        DEFAULT_CHANNEL: 'mercurious',
         ERROR: 'error',
         MESSAGE: 'message',
-        NEW_ITEM: 'new item'
+        NEW_ITEM: 'new item',
+        PING: 'ping'
 
     },
     TEMPLATE: {
