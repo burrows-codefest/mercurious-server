@@ -158,7 +158,19 @@ angular.module('mercuriousApp')
                         id: 28,
                         imgUrl: 'images/memeTemplates/oh_hawkeye.gif',
                         name: 'Ooooh Hawkeye'
+                    },
+                    {
+                        id: 29,
+                        imgUrl: 'images/memeTemplates/tinafeyfive.gif',
+                        name: 'Self Gratification'
+                    },
+                    {
+                        id: 30,
+                        imgUrl: 'images/memeTemplates/buzz.gif',
+                        name: 'I Come In Peace'
                     }
+
+
                 ];
 
                 scope.meme = {};
