@@ -168,9 +168,17 @@ angular.module('mercuriousApp')
                         id: 31,
                         imgUrl: 'images/memeTemplates/buzz.gif',
                         name: 'I Come In Peace'
+                    },
+                    {
+                        id: 32,
+                        imgUrl: 'images/memeTemplates/sad-thuin.jpg',
+                        name: 'Sad Face'
+                    },
+                    {
+                        id: 33,
+                        imgUrl: 'images/memeTemplates/sad-batman.jpg',
+                        name: 'Sad Batman'
                     }
-
-
                 ];
 
                 scope.meme = {};
