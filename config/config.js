@@ -12,15 +12,6 @@ var config = {
     db: 'mongodb://localhost/mercurious-server-development'
   },
 
-  test: {
-    root: rootPath,
-    app: {
-      name: 'mercurious-server'
-    },
-    port: 3000,
-    db: 'mongodb://localhost/mercurious-server-test'
-  },
-
   production: {
     root: rootPath,
     app: {

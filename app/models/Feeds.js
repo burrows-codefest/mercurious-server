@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    constants = require('../../config/constants'),
     Schema = mongoose.Schema,
     FeedsModel;
 
@@ -10,6 +11,8 @@ var FeedSchema = new Schema({
     imgUrl: String,
     twitterId: String,
     publishedDate: String,
+    context: String,
+    fontColor: String,
     githubBody: Object
 });
 
@@ -18,4 +21,4 @@ FeedSchema.virtual('date')
         return this._id.getTimestamp();
     });
 
-FeedsModel = mongoose.model('Feed', FeedSchema);
+FeedsModel = mongoose.model(constants.MODEL.FEED, FeedSchema);

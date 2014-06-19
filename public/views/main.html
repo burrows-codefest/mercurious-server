@@ -5,6 +5,10 @@
     <ul class="filter">
         <li><a ng-click="search.type = ''; twitterClass=''; inTheKnowClass=''" href>All</a></li>
         <li>
+            <a ng-click="search.type = 'meme'; inTheKnowClass=''; twitterClass=''"
+               ng-class="memeClass" href>
+                <img src="../images/meme-logo.png" class="filter-image"/></a>
+        </li>        <li>
             <a ng-click="search.type = 'b-intheknow'; inTheKnowClass='selected'; twitterClass=''"
                ng-class="inTheKnowClass" href>
                 <img src="../images/burrows_logo.png" class="filter-image"/></a>
@@ -13,18 +17,18 @@
             <a ng-click="search.type = 'twitter'; twitterClass='selected'; inTheKnowClass=''" ng-class="twitterClass" href>
                 <img src="../images/twitter_logo_blue.png" class="filter-image"/></a>
         </li>
+        <li>
+            <a ng-click="search.type = 'raceReport'; twitterClass=''; inTheKnowClass=''" ng-class="forzaClass" href>
+                <img src="../images/forza-logo.jpg" class="filter-image"/></a>
+        </li>
     </ul>
 </div>
 
 <div ng-show="feed">
-    <a ng-hide="createMeme" ng-click="createMeme = true" href>Add Meme</a>
-    <a ng-show="createMeme" ng-click="createMeme = false" href>Hide Meme Creator</a>
+    <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
 </div>
 
 <ul class="feed-list">
-    <li ng-show="createMeme" class="item item_{{ item.type }}">
-        <mer-meme-creator createMeme="createMeme"></mer-meme-creator>
-    </li>
     <li ng-repeat="item in feed | filter: search | orderBy: '-publishedDate'" ng-switch="item.type" class="item item_{{ item.type }}">
         <div ng-switch-default>
             <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
@@ -38,7 +42,12 @@
                 <span class="meme-textline meme-textline-bottom">{{ item.text }}</span>
             </div>
 
-            <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
+            <a ng-href="/#/create-meme/{{ item._id }}"><img src="../images/reply-logo.png" width="25" height="25" /></a>
+            <div class="item-date">Context: <span ng-bind-html="item.context"></span></div>
+            <div class="item-date">
+                {{ item.publishedDate | date:'medium'}}
+            </div>
+            <a ng-href="/#/meme/{{ item._id }}" ng-show="item._id" style="font-size: 13px">View</a>
         </div>
     </li>
 </ul>

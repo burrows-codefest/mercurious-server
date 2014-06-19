@@ -1,7 +1,8 @@
 var express = require('express'),
     mongoose = require('mongoose'),
     fs = require('fs'),
-    config = require('./config/config');
+    config = require('./config/config'),
+    socketIO = require('./app/controllers/socketIO');
 mongoose.connect(config.db);
 var db = mongoose.connection;
 db.on('error', function () {
@@ -22,6 +23,7 @@ var app = express(),
 require('./config/express')(app, config);
 require('./config/routes')(app, io);
 
+socketIO.startPingToClients(io);
 
 var servicesPath = __dirname + '/app/services';
 fs.readdirSync(servicesPath).forEach(function (file) {
@@ -31,6 +33,8 @@ fs.readdirSync(servicesPath).forEach(function (file) {
         service.loadFeed(io);
     }
 });
+
+
 
 var UserModel = mongoose.model('User');
 

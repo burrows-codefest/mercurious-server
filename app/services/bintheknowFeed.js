@@ -1,7 +1,8 @@
 var rss = require('parserss'),
     mongoose = require('mongoose'),
-    FeedModel = mongoose.model('Feed'),
     socketIO = require('../controllers/socketIO'),
+    constants = require('../../config/constants'),
+    FeedModel = mongoose.model(constants.MODEL.FEED),
     io, self = this;
 
 exports.loadFeed = function (socketIO) {
@@ -10,7 +11,6 @@ exports.loadFeed = function (socketIO) {
 };
 
 exports.getFeed = function () {
-    //this function is running twice due to bug in module
     rss('http://b-intheknow.com/rss', 10, function (err, res) {
         res.articles.forEach(function (item) {
             FeedModel.find()
@@ -29,5 +29,5 @@ exports.getFeed = function () {
                 });
         });
     });
-    setTimeout(self.getFeed, (1000 * 60 * 15));
+    setTimeout(self.getFeed, constants.TIMER.MINUTES_15);
 };

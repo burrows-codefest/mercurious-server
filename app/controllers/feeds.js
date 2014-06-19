@@ -1,4 +1,5 @@
 var mongoose = require('mongoose'),
+    constants = require('../../config/constants'),
     FeedModel = mongoose.model('Feed');
 
 exports.loadAllFeeds = function (socket) {
@@ -17,7 +18,7 @@ exports.loadAllFeeds = function (socket) {
                     itemCount += 1;
                 }
             });
-            socket.emit('message', results);
+            socket.emit(constants.SOCKET.MESSAGE, results);
         });
 
 };

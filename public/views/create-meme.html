@@ -1,3 +1,5 @@
+<ng-include src="'views/header.html'"></ng-include>
+
 <form class="meme" ng-submit="submit()">
     <div class="meme-template">
         <img ng-src="{{ meme.imgObj.imgUrl }}" width="250" height="180" />
@@ -5,7 +7,9 @@
                autofocus="autofocus"/>
         <input type="text" class="meme-textline meme-textline-bottom" ng-model="meme.text"/>
     </div>
-    <select ng-model="meme.imgObj" ng-options="memeTemplate.name for memeTemplate in memeTemplates">
+
+    <input type="text" ng-model="meme.context" placeholder="Context" class="meme-context" />
+    <select ng-model="meme.imgObj" ng-options="memeTemplate.name for memeTemplate in memeTemplates | orderBy: 'name'">
     </select>
     <input type="submit" value="Submit" id="memeForm__submit"/>
 </form>

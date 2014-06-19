@@ -1,21 +1,21 @@
 var express = require('express');
 
-module.exports = function(app, config) {
-  app.configure(function () {
-    app.use(express.compress());
-    app.use(express.static(config.root + '/public'));
-    app.set('port', config.port);
-    app.set('views', config.root + '/app/views');
-    app.set('view engine', 'ejs');
-    //app.use(express.favicon(config.root + '/public/img/favicon.ico'));
-    app.use(express.logger('dev'));
-    app.use(express.bodyParser());
-    app.use(express.methodOverride());
-    app.use(express.cookieParser());
-    app.use(express.session({secret: 'mercurious'}));
-    app.use(app.router);
-    app.use(function(req, res) {
-      res.status(404).render('404', { title: '404' });
+module.exports = function (app, config) {
+    app.configure(function () {
+        app.use(express.compress())
+            .use(express.static(config.root + '/public'))
+            .set('port', config.port)
+            .set('views', config.root + '/app/views')
+            .set('view engine', 'ejs')
+            //.use(express.favicon(config.root + '/public/img/favicon.ico'))
+            .use(express.logger('dev'))
+            .use(express.bodyParser())
+            .use(express.methodOverride())
+            .use(express.cookieParser())
+            .use(express.session({secret: 'mercurious'}))
+            .use(app.router)
+            .use(function (req, res) {
+                res.status(404).render('404', { title: '404' });
+            });
     });
-  });
 };

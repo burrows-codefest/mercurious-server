@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
+    constants = require('../../config/constants'),
+    Schema = mongoose.Schema,
     UserModel;
 
 var UserSchema = new Schema({
@@ -8,8 +9,8 @@ var UserSchema = new Schema({
 });
 
 UserSchema.virtual('date')
-  .get(function(){
-    return this._id.getTimestamp();
-  });
+    .get(function () {
+        return this._id.getTimestamp();
+    });
 
-UserModel = mongoose.model('User', UserSchema);
+UserModel = mongoose.model(constants.MODEL.USER, UserSchema);
