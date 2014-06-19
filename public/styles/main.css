@@ -206,7 +206,7 @@ ul.feed-list {
     bottom: 0;
     z-index: 100;
     left: 0;
-    padding: 10px;
+    padding: 0 10px;
 }
 
 .sweepstake h2 {
@@ -246,4 +246,5 @@ ul.feed-list {
 
 .sweepstake .eliminated li {
     background-color: red;
+    color: #eee;
 }
