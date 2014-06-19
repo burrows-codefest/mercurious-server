@@ -14,6 +14,14 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
+            .when('/create-meme/', {
+                templateUrl: 'views/create-meme.html',
+                controller: 'CreateMemeCtrl'
+            })
+            .when('/create-meme/:context', {
+                templateUrl: 'views/create-meme.html',
+                controller: 'CreateMemeCtrl'
+            })
             .when('/meme/:id', {
                 templateUrl: 'views/view-meme.html',
                 controller: 'ViewMemeCtrl'

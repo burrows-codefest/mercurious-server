@@ -25,14 +25,10 @@
 </div>
 
 <div ng-show="feed">
-    <a ng-hide="createMeme" ng-click="createMeme = true" href class="meme-button">Add Meme</a>
-    <a ng-show="createMeme" ng-click="createMeme = false" href class="meme-button">Hide Meme Creator</a>
+    <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
 </div>
 
 <ul class="feed-list">
-    <li ng-show="createMeme" class="item item_{{ item.type }}">
-        <mer-meme-creator createMeme="createMeme"></mer-meme-creator>
-    </li>
     <li ng-repeat="item in feed | filter: search | orderBy: '-publishedDate'" ng-switch="item.type" class="item item_{{ item.type }}">
         <div ng-switch-default>
             <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
@@ -46,6 +42,8 @@
                 <span class="meme-textline meme-textline-bottom">{{ item.text }}</span>
             </div>
 
+            <a ng-href="/#/create-meme/{{ item._id }}"><img src="../images/reply-logo.png" width="25" height="25" /></a>
+            <div class="item-date">Context: <span ng-bind-html="item.context"></span></div>
             <div class="item-date">
                 {{ item.publishedDate | date:'medium'}}
             </div>
