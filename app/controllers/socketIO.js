@@ -9,7 +9,7 @@ exports.incomingMessage = function (io, socket, data) {
         messageHandlerPath = './messageHandlers/' + messageType + 'Handler.js';
 
         messageHandler = require(messageHandlerPath);
-        messageHandler.handleMessage(io, data);
+        messageHandler.handleMessage(io, socket, data);
     } else {
         socket.emit(constants.SOCKET.ERROR,{'message': 'no message type was passed'})
     }
