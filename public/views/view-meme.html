@@ -7,5 +7,7 @@
         <span class="meme-textline meme-textline-bottom">{{ item.text }}</span>
     </div>
 
+    <a ng-href="/#/create-meme/{{ item._id }}"><img src="../images/reply-logo.png" width="25" height="25" /></a>
+    <div class="item-date">Context: <span ng-bind-html="item.context"></span></div>
     <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
 </div>

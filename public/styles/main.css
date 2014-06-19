@@ -115,7 +115,7 @@ ul.feed-list {
 }
 
 .item-desc img {
-    width: 50%;
+    width: 100%;
 }
 
 .traffic-status {
@@ -150,6 +150,7 @@ ul.feed-list {
 }
 
 .meme-template {
+    height: 200px;
     margin: 10px 0 0 0;
 }
 
@@ -179,6 +180,11 @@ ul.feed-list {
 .meme input:focus {
     outline: 0;
     box-shadow: 0 0 10px 1px #0cf;
+}
+
+.meme-context {
+    color: #000;
+    font-size: 10px
 }
 
 .meme-button {
