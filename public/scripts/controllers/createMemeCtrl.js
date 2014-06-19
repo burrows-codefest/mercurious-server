@@ -171,6 +171,11 @@ angular.module('mercuriousApp')
                 id: 33,
                 imgUrl: 'images/memeTemplates/sad-batman.jpg',
                 name: 'Sad Batman'
+            },
+            {
+                id: 34,
+                imgUrl: 'images/memeTemplates/OM4syht.gif',
+                name: 'Celebrate'
             }
         ];
 
