@@ -28,6 +28,10 @@
     <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
 </div>
 
+<div ng-show="feed">
+    <mer-wc-sweepstake></mer-wc-sweepstake>
+</div>
+
 <ul class="feed-list">
     <li ng-repeat="item in feed | filter: search | orderBy: '-publishedDate'" ng-switch="item.type" class="item item_{{ item.type }}">
         <div ng-switch-default>
