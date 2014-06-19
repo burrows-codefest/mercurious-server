@@ -1,6 +1,6 @@
 'use strict';
 angular.module('mercuriousApp')
-    .controller('CreateMemeCtrl', function ($scope, $location, $routeParams, socket) {
+    .controller('CreateMemeCtrl', function ($scope, $location, $routeParams, $timeout, socket) {
         $scope.memeTemplates = [
             {
                 id: 0,
@@ -200,7 +200,10 @@ angular.module('mercuriousApp')
             $scope.meme.publishedDate = String(d.getTime());
 
             socket.emit('message', $scope.meme);
-            $location.path('/');
+            $timeout(function(){
+                $location.path('/');
+            }, 2000);
+
         };
 
     });
