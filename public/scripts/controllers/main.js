@@ -25,6 +25,8 @@ angular.module('mercuriousApp')
         $scope.createMeme = false;
         $scope.feed = [];
 
+        socket.emit('message', {type: 'feed'});
+
         socket.on('message', function (data) {
             $scope.feed = data;
         });
