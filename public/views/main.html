@@ -39,8 +39,8 @@
         <div ng-switch-when="meme" class="meme">
             <div class="meme-template">
                 <img ng-src="{{ item.imgUrl }}" width="250" height="180" />
-                <span class="meme-textline meme-textline-top">{{ item.title }}</span>
-                <span class="meme-textline meme-textline-bottom">{{ item.text }}</span>
+                <span class="meme-textline meme-textline-top" ng-class="item.fontColor" >{{ item.title }}</span>
+                <span class="meme-textline meme-textline-bottom" ng-class="item.fontColor" >{{ item.text }}</span>
             </div>
 
             <a ng-href="/#/create-meme/{{ item._id }}"><img src="../images/reply-logo.png" width="25" height="25" /></a>
