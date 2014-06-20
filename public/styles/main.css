@@ -140,10 +140,6 @@ ul.feed-list {
     background-color: red;
 }
 
-.selected {
-    opacity: 0.6;
-}
-
 /* MEME */
 .meme {
     text-align: center;
@@ -157,7 +153,6 @@ ul.feed-list {
 
 .meme .meme-textline {
     display: block;
-    color: white;
     font-size: 20px;
 }
 
@@ -246,4 +241,64 @@ ul.feed-list {
 .sweepstake .eliminated li {
     background-color: red;
     color: #eee;
+}
+
+ul.color-picker {
+    list-style: none;
+}
+
+ul.color-picker li {
+    float: left;
+    padding: 0;
+    margin: 5px;
+}
+
+.color-picker .meme-color {
+    width: 40px;
+    height: 40px;
+    border: 3px solid #e3e3e3;
+}
+
+.color-picker .selected {
+    border: 3px solid orange;
+}
+
+.color-picker .black-bg {
+    background-color: black;
+}
+
+.color-picker .white-bg {
+    background-color: white;
+}
+
+.color-picker .red-bg {
+    background-color: red;
+}
+
+.color-picker .blue-bg {
+    background-color: blue;
+}
+
+.color-picker .green-bg {
+    background-color: green;
+}
+
+.black-font {
+    color: black;
+}
+
+.white-font {
+    color: white;
+}
+
+.red-font {
+    color: red;
+}
+
+.blue-font {
+    color: blue;
+}
+
+.green-font {
+    color: green;
 }

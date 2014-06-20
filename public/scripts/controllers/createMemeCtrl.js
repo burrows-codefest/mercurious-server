@@ -11,15 +11,19 @@ angular.module('mercuriousApp')
             $scope.meme.context = '';
         }
 
-        $scope.meme.title = 'Meme Line 1';
-        $scope.meme.text = 'Meme Line 2';
-        $scope.meme.type = 'memeCreator';
+        $scope.meme.title = '';
+        $scope.meme.text = '';
+        $scope.meme.type = 'meme';
+        $scope.meme.fontColor = 'white-font';
         $scope.meme.imgObj = $scope.memeTemplates[0];
+
+        $scope.changeFontColor = function (color) {
+            $scope.meme.fontColor = color + '-font';
+        };
 
         $scope.submit = function () {
             var d = new Date();
 
-            $scope.meme.type = 'meme';
             $scope.meme.imgUrl = $scope.meme.imgObj.imgUrl;
             $scope.meme.publishedDate = d.getTime();
 
