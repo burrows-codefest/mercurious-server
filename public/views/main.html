@@ -2,30 +2,31 @@
 
 <div class="search">
     <input ng-model="search.$" placeholder="Search"> <a ng-click="search = ''" href>&#9447;</a>
-    <ul class="filter">
-        <li><a ng-click="search.type = ''; twitterClass=''; inTheKnowClass=''" href>All</a></li>
-        <li>
-            <a ng-click="search.type = 'meme'; inTheKnowClass=''; twitterClass=''"
-               ng-class="memeClass" href>
-                <img src="../images/meme-logo.png" class="filter-image"/></a>
-        </li>        <li>
-            <a ng-click="search.type = 'b-intheknow'; inTheKnowClass='selected'; twitterClass=''"
-               ng-class="inTheKnowClass" href>
-                <img src="../images/burrows_logo.png" class="filter-image"/></a>
-        </li>
-        <li>
-            <a ng-click="search.type = 'twitter'; twitterClass='selected'; inTheKnowClass=''" ng-class="twitterClass" href>
-                <img src="../images/twitter_logo_blue.png" class="filter-image"/></a>
-        </li>
-        <li>
-            <a ng-click="search.type = 'raceReport'; twitterClass=''; inTheKnowClass=''" ng-class="forzaClass" href>
-                <img src="../images/forza-logo.jpg" class="filter-image"/></a>
-        </li>
-    </ul>
+  
+    <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
+
+    <table class="filter">
+        <tr>
+            <td><a href>All</a></td>
+            <td><img src="../images/meme-logo.png" class="filter-image"/></td>
+            <td><img src="../images/burrows_logo.png" class="filter-image"/></td>
+            <td><img src="../images/twitter_logo_blue.png" class="filter-image" /></td>
+            <td><img src="../images/forza-logo.jpg" class="filter-image"/></td>
+            <td><img src="../images/git-logo.png" class="filter-image"/></td>
+        </tr>
+        <tr>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" value="" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" value="meme" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" value="b-intheknow" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" value="twitter" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" value="raceReport" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" value="github" /></td>
+        </tr>
+    </table>
 </div>
 
 <div ng-show="feed">
-    <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
+    <mer-wc-sweepstake></mer-wc-sweepstake>
 </div>
 
 <ul class="feed-list">
