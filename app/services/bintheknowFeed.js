@@ -19,7 +19,7 @@ exports.getFeed = function () {
                     if (feeds.length === 0) {
                         var date = new Date(item.pubdate),
                             record = {title: item.title, url: item.link,
-                                text: item.description, type: 'b-intheknow', 'publishedDate': date.getTime()},
+                                text: item.description, type: 'b-intheknow', 'publishedDate': date},
                             dbRecord = new FeedModel(record);
 
                         dbRecord.save();
