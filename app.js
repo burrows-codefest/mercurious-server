@@ -34,20 +34,5 @@ fs.readdirSync(servicesPath).forEach(function (file) {
     }
 });
 
-
-var UserModel = mongoose.model('Feed');
-
-UserModel.find().exec(function (err, results) {
-    results.forEach(function (record) {
-
-        record.publishedDate = new Date(Number(record.publishedDate));
-
-        var dbRecord = new UserModel(record);
-        dbRecord.save();
-    });
-
-});
-
-
 server.listen(config.port);
 console.log('Started Server on port ' + config.port);
