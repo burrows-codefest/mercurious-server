@@ -28,7 +28,7 @@ angular.module('mercuriousApp')
         socket.emit('message', {type: 'feed'});
 
         socket.on('message', function (data) {
-            $scope.feed = $scope.feed.concat(data);
+            $scope.feed = (data);
         });
 
         socket.on('new item', function (data) {
