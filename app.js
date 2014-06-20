@@ -35,17 +35,18 @@ fs.readdirSync(servicesPath).forEach(function (file) {
 });
 
 
+var UserModel = mongoose.model('Feeds');
 
-var UserModel = mongoose.model('User');
+UserModel.find().exec(function (err, results) {
+    results.forEach(function (record) {
 
-UserModel.find()
-    .where('username').equals('admin')
-    .exec(function (err, results) {
-        if (results.length === 0) {
-            var dbRecord = new UserModel({username: 'admin', password: 'd033e22ae348aeb5660fc2140aec35850c4da997'});
-            dbRecord.save();
-        }
+        record.publishedDate = new Date(Number(record.publishedDate));
+
+        var dbRecord = new UserModel(record);
+        dbRecord.save();
     });
+
+});
 
 
 server.listen(config.port);
