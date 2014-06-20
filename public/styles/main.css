@@ -40,18 +40,19 @@ input {
     left: 256px;
     background-color: white;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-    padding: 8px 12px;
+    padding: 8px 4px 8px 12px;
 }
 
 .filter {
     padding: 0;
-    list-style: none;
+    margin: 0;
 }
 
-.filter li {
-    font-size: 18px;
-    float: left;
-    padding: 0 5px;
+.filter td {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 30px;
 }
 
 .filter-image {
@@ -190,9 +191,59 @@ ul.feed-list {
 .meme-button {
     border: 2px solid #428bca;
     background-color: #fff;
-    padding: 10px;
+    padding: 5px;
     height: 24px;
-    top: 6px;
-    left: 460px;
-    position: absolute;
+    margin-left: 50px;
+}
+
+.sweepstake {
+    background-color: #fff;
+    box-shadow: 0 0 10px 1px #333;
+    width: 100%;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    z-index: 100;
+    left: 0;
+    padding: 0 10px;
+}
+
+.sweepstake h2 {
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+}
+
+.sweepstake ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    clear: both;
+    background-color: #fff;
+}
+
+.sweepstake li {
+    float: left;
+    font-size: 11px;
+    border: 1px #428bca solid;
+    margin: 2px;
+    padding: 2px;
+    height: 11px;
+    line-height: 10px
+}
+
+.sweepstake .team {
+    width: 142px;
+    float: left;
+}
+
+.sweepstake .owner {
+    width: 60px;
+    float: left;
+    clear: right;
+}
+
+.sweepstake .eliminated li {
+    background-color: red;
+    color: #eee;
 }

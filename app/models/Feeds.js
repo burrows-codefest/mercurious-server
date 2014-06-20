@@ -10,7 +10,7 @@ var FeedSchema = new Schema({
     text: String,
     imgUrl: String,
     twitterId: String,
-    publishedDate: String,
+    publishedDate: Date,
     context: String,
     fontColor: String,
     githubBody: Object
