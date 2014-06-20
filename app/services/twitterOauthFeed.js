@@ -56,7 +56,7 @@ function getDataFeed(feed) {
             if (feeds.length === 0) {
                 var date = new Date(item.created_at),
                     record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text,
-                        type: 'twitter', 'publishedDate': date.getTime()},
+                        type: 'twitter', 'publishedDate': date},
                     dbRecord = new FeedModel(record);
 
                 dbRecord.save();
