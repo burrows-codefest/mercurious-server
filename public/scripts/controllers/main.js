@@ -28,12 +28,10 @@ angular.module('mercuriousApp')
         socket.emit('message', {type: 'feed'});
 
         socket.on('message', function (data) {
-            console.log(data);
             $scope.feed = data;
         });
 
         socket.on('new item', function (data) {
-            console.log(data);
             $scope.feed.push(data);
         });
         socket.on('ping', function () {
