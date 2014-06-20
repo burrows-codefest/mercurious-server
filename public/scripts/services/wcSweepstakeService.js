@@ -141,7 +141,8 @@ angular.module('mercuriousApp')
                     id: 22,
                     country: 'England',
                     rank: 10,
-                    owner: 'Alan Evans'
+                    owner: 'Alan Evans',
+                    eliminated: true
                 },
                 {
                     id: 23,
