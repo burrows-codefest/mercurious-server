@@ -154,6 +154,7 @@ ul.feed-list {
 .meme .meme-textline {
     display: block;
     font-size: 20px;
+    color: white;
 }
 
 .meme .meme-textline-top {
@@ -283,22 +284,22 @@ ul.color-picker li {
     background-color: green;
 }
 
-.black-font {
+html body .container .black-font {
     color: black;
 }
 
-.white-font {
+html body .container .white-font {
     color: white;
 }
 
-.red-font {
+html body .container .red-font {
     color: red;
 }
 
-.blue-font {
+html body .container .blue-font {
     color: blue;
 }
 
-.green-font {
+html body .container .green-font {
     color: green;
 }
