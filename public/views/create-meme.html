@@ -4,9 +4,18 @@
     <div class="meme-template">
         <img ng-src="{{ meme.imgObj.imgUrl }}" width="250" height="180" />
         <input type="text" ng-model="meme.title" class="meme-textline meme-textline-top"
-               autofocus="autofocus"/>
-        <input type="text" class="meme-textline meme-textline-bottom" ng-model="meme.text"/>
+               autofocus="autofocus" ng-class="meme.fontColor" placeholder="Meme line 1" maxlength="18" />
+        <input type="text" class="meme-textline meme-textline-bottom" placeholder="Meme line 2"
+               ng-model="meme.text" ng-class="meme.fontColor"  maxlength="18" />
     </div>
+
+    <ul class="color-picker">
+        <li><div class="meme-color black-bg" ng-click="changeFontColor('black')"></div></li>
+        <li><div class="meme-color white-bg" ng-click="changeFontColor('white')"></div></li>
+        <li><div class="meme-color red-bg" ng-click="changeFontColor('red')"></div></li>
+        <li><div class="meme-color blue-bg" ng-click="changeFontColor('blue')"></div></li>
+        <li><div class="meme-color green-bg" ng-click="changeFontColor('green')"></div></li>
+    </ul>
 
     <input type="text" ng-model="meme.context" placeholder="Context" class="meme-context" />
     <select ng-model="meme.imgObj" ng-options="memeTemplate.name for memeTemplate in memeTemplates | orderBy: 'name'">
