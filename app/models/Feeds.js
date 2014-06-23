@@ -11,6 +11,8 @@ var FeedSchema = new Schema({
     imgUrl: String,
     twitterId: String,
     publishedDate: Date,
+    likes: Number,
+    dislikes: Number,
     context: String,
     fontColor: String,
     githubBody: Object

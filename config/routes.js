@@ -21,6 +21,33 @@ module.exports = function (app, io) {
     app.post('/login',user.authenticate);
     app.post('/api/github',github.incomingWebhook);
 
+    app.post('/api/sendVote/:reqId', function(req, res) {
+        var id = req.params.reqId;
+
+        FeedsModel.findById(id, function(err, item) {
+            var newTotal,
+                obj = {},
+                voteType = req.body.type;
+
+            if (!item[voteType]) {
+                item[voteType] = 0;
+            }
+            newTotal = item[voteType] + 1;
+
+            obj[voteType] = newTotal;
+
+            FeedsModel.findByIdAndUpdate(id, { $set: obj}, function () {
+                var changedObj = {};
+                changedObj.id = id;
+                changedObj.type = voteType;
+                changedObj.value = newTotal;
+
+                io.sockets.emit('vote', changedObj);
+                res.json(item);
+            });
+        });
+    });
+
     app.get('/api/getItem/:reqId', function(req, res) {
         FeedsModel.findById(req.params.reqId, function(err, item) {
             if (err) {
