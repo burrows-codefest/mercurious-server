@@ -39,7 +39,8 @@ angular.module('mercuriousApp')
                     id: 5,
                     country: 'Cameroon',
                     rank: 59,
-                    owner: 'Dan B'
+                    owner: 'Dan B',
+                    eliminated: true
                 },
                 {
                     id: 6,
@@ -129,7 +130,8 @@ angular.module('mercuriousApp')
                     id: 20,
                     country: 'Bosnia and Herzegovina',
                     rank: 16,
-                    owner: 'Gokhan'
+                    owner: 'Gokhan',
+                    eliminated: true
                 },
                 {
                     id: 21,
