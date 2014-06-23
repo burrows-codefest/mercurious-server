@@ -24,6 +24,8 @@ angular.module('mercuriousApp')
         $scope.submit = function () {
             var d = new Date();
 
+            $scope.meme.likes = 0;
+            $scope.meme.dislikes = 0;
             $scope.meme.imgUrl = $scope.meme.imgObj.imgUrl;
             $scope.meme.publishedDate = d.getTime();
 

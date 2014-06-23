@@ -14,4 +14,9 @@ angular.module('mercuriousApp')
 
             return defer.promise;
         };
+
+        this.sendVote = function (itemId, voteType) {
+            var updateObj = {type: voteType};
+            $http.post('/api/sendVote/' + itemId, updateObj).success(function () {});
+        };
     });
