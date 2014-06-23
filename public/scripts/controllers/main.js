@@ -18,7 +18,7 @@ function getEasterEgg(race) {
 }
 
 angular.module('mercuriousApp')
-    .controller('MainCtrl', function ($scope, socket, $firebase, raceReportService) {
+    .controller('MainCtrl', function ($scope, socket, $firebase, raceReportService, dbService) {
         var raceReportsLoaded = false,
             raceReportsRef = new Firebase('https://forza.firebaseio.com/raceReports/');
         
@@ -29,6 +29,18 @@ angular.module('mercuriousApp')
 
         socket.on('message', function (data) {
             $scope.feed = data;
+        });
+
+        socket.on('vote', function (data) {
+            var feed = $scope.feed;
+
+            for (var item in feed) {
+                if (feed[item]._id && (feed[item]._id.indexOf(data.id) !== -1)) {
+                    feed[item][data.type] = data.value;
+                }
+            }
+
+            $scope.feed = feed;
         });
 
         socket.on('new item', function (data) {
@@ -62,4 +74,8 @@ angular.module('mercuriousApp')
                 }
             }
         });
+
+        $scope.sendVote = function(memeId, action) {
+            dbService.sendVote(memeId, action);
+        };
     });
