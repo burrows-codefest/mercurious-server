@@ -153,8 +153,9 @@ ul.feed-list {
 
 .meme .meme-textline {
     display: block;
-    font-size: 20px;
+    font-size: 19px;
     color: white;
+    font-family: "Arial Narrow", Arial, sans-serif;
     text-transform: uppercase;
     text-shadow:
         2px 2px 0 #000,
