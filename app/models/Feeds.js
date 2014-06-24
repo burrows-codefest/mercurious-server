@@ -1,26 +1,42 @@
-var mongoose = require('mongoose'),
+var model,
+    mongoose = require('mongoose'),
     constants = require('../../config/constants'),
-    Schema = mongoose.Schema,
-    FeedsModel;
+    modelName = constants.MODEL.FEED;
 
-var FeedSchema = new Schema({
-    title: String,
-    type: String,
-    url: String,
-    text: String,
-    imgUrl: String,
-    twitterId: String,
-    publishedDate: Date,
-    likes: Number,
-    dislikes: Number,
-    context: String,
-    fontColor: String,
-    githubBody: Object
-});
+function getSchema() {
+    return {
+        title: String,
+        type: String,
+        url: String,
+        text: String,
+        imgUrl: String,
+        twitterId: String,
+        publishedDate: Date,
+        likes: Number,
+        dislikes: Number,
+        context: String,
+        fontColor: String,
+        githubBody: Object
+    }
+}
 
-FeedSchema.virtual('date')
-    .get(function () {
-        return this._id.getTimestamp();
-    });
+function initModel() {
+    var Schema = mongoose.Schema,
+        modelSchema = new Schema(getSchema());
 
-FeedsModel = mongoose.model(constants.MODEL.FEED, FeedSchema);
+    modelSchema.virtual('date')
+        .get(function () {
+            return this._id.getTimestamp();
+        });
+
+    model = mongoose.model(modelName, modelSchema);
+}
+
+module.exports = function () {
+    if(!model) {
+        initModel();
+    }
+    return model;
+};
+
+

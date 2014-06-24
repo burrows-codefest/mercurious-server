@@ -1,6 +1,7 @@
 var model,
     mongoose = require('mongoose'),
-    constants = require('../../config/constants');
+    constants = require('../../config/constants'),
+    modelName = constants.MODEL.GITHUB;
 
 function getSchema() {
     return {
@@ -11,14 +12,14 @@ function getSchema() {
 
 function initModel() {
     var Schema = mongoose.Schema,
-        githubSchema = new Schema(getSchema());
+        modelSchema = new Schema(getSchema());
 
-    githubSchema.virtual('date')
+    modelSchema.virtual('date')
         .get(function () {
             return this._id.getTimestamp();
         });
 
-    model = mongoose.model(constants.MODEL.GITHUB, githubSchema);
+    model = mongoose.model(modelName, modelSchema);
 }
 
 module.exports = function () {
@@ -27,5 +28,3 @@ module.exports = function () {
     }
     return model;
 };
-
-

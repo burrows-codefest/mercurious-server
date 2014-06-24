@@ -1,7 +1,6 @@
-var mongoose = require('mongoose'),
-    crypto = require('crypto'),
+var crypto = require('crypto'),
     constants = require('../../config/constants'),
-    UserModel = mongoose.model(constants.MODEL.USER);
+    UserModel = require('../models/User')();
 
 function encryptPassword(password) {
     return crypto.createHash('sha1').update(password).digest('hex').toString('base64');

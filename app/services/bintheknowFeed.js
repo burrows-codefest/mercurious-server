@@ -1,8 +1,7 @@
 var rss = require('parserss'),
-    mongoose = require('mongoose'),
     socketIO = require('../controllers/socketIO'),
     constants = require('../../config/constants'),
-    FeedModel = mongoose.model(constants.MODEL.FEED),
+    FeedModel = require('../models/Feeds')(),
     io, self = this;
 
 exports.loadFeed = function (socketIO) {
