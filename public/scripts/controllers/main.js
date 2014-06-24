@@ -11,15 +11,11 @@ angular.module('mercuriousApp')
         });
 
         socket.on('vote', function (data) {
-            var feed = $scope.feed;
-
-            for (var item in feed) {
-                if (feed[item]._id && (feed[item]._id.indexOf(data.id) !== -1)) {
-                    feed[item][data.type] = data.value;
+            for (var item in $scope.feed) {
+                if ($scope.feed[item]._id && ($scope.feed[item]._id.indexOf(data.id) !== -1)) {
+                    $scope.feed[item][data.type] = data.value;
                 }
             }
-
-            $scope.feed = feed;
         });
 
         socket.on('new item', function (data) {
