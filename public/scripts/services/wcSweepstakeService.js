@@ -137,7 +137,8 @@ angular.module('mercuriousApp')
                     id: 21,
                     country: 'Croatia',
                     rank: 18,
-                    owner: 'Grimmers'
+                    owner: 'Grimmers',
+                    eliminated: true
                 },
                 {
                     id: 22,
