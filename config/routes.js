@@ -59,13 +59,6 @@ module.exports = function (app, io) {
 
 
     io.sockets.on('connection', function (socket) {
-        userCount++;
-        console.log('user connects: ' + userCount);
-
-        socket.on('disconnect', function () {
-            userCount--;
-            console.log('user disconnects: ' + userCount);
-        });
 
         socket.join(constants.SOCKET.DEFAULT_CHANNEL);
 
