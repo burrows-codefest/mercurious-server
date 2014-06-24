@@ -1,10 +1,9 @@
 'use strict';
 
 var rss = require('parserss'),
-    mongoose = require('mongoose'),
     socketIO = require('../controllers/socketIO'),
     constants = require('../../config/constants'),
-    FeedModel = mongoose.model(constants.MODEL.FEED),
+    FeedModel = require('../models/Feeds')(),
     socks, self = this;
 
 exports.loadFeed = function (socketIO) {

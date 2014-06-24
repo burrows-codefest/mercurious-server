@@ -1,17 +1,32 @@
 'use strict';
 
-var mongoose = require('mongoose'),
+var model,
+    mongoose = require('mongoose'),
     constants = require('../../config/constants'),
-    Schema = mongoose.Schema,
-    UserModel,
-    UserSchema = new Schema({
+    modelName = constants.MODEL.USER;
+
+function getSchema() {
+    return {
         username: 'String',
         password: 'String'
-    });
+    }
+}
 
-UserSchema.virtual('date')
-    .get(function () {
-        return this._id.getTimestamp();
-    });
+function initModel() {
+    var Schema = mongoose.Schema,
+        modelSchema = new Schema(getSchema());
 
-UserModel = mongoose.model(constants.MODEL.USER, UserSchema);
+    modelSchema.virtual('date')
+        .get(function () {
+            return this._id.getTimestamp();
+        });
+
+    model = mongoose.model(modelName, modelSchema);
+}
+
+module.exports = function () {
+    if(!model) {
+        initModel();
+    }
+    return model;
+};
