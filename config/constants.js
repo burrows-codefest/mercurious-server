@@ -9,6 +9,7 @@ module.exports = {
     },
     MODEL: {
         FEED: 'Feed',
+        GITHUB: 'github',
         USER: 'User'
     },
     SOCKET: {

@@ -9,11 +9,11 @@ db.on('error', function () {
     throw new Error('unable to connect to database at ' + config.db);
 });
 
-var modelsPath = __dirname + '/app/models';
-fs.readdirSync(modelsPath).forEach(function (file) {
-    if (file.indexOf('.js') >= 0) {
-        require(modelsPath + '/' + file);
-    }
+var modelsPath = __dirname + '/app/models',
+    githubModel = require('./app/models/github.js')();
+
+githubModel.find({}, function(err, results) {
+    console.log(results);
 });
 
 var app = express(),
