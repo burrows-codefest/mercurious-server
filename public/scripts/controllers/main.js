@@ -1,25 +1,6 @@
 'use strict';
-
-function isRickyLast(result) {
-    var last = result.length - 1;
-    
-    return result[last].driver.id === 5;
-}
-
-function getEasterEgg(race) {
-    var item = {},
-        d = new Date();
-    
-    item.type = 'meme';
-    item.imgUrl = '/images/forza-groundhog.jpg';
-    item.publishedDate = race.publishedDate;
-    
-    return item;
-}
-
 angular.module('mercuriousApp')
     .controller('MainCtrl', function ($scope, socket, dbService) {
-
         $scope.createMeme = false;
         $scope.feed = [];
 
