@@ -126,7 +126,7 @@ angular.module('mercuriousApp')
                 },
                 {
                     id: 24,
-                    imgUrl: 'images/memeTemplates/25w8.jpg',
+                    imgUrl: 'images/memeTemplates/overly-attached-girlfriend-meme.gif',
                     name: 'Overly Attached Girlfriend'
                 },
                 {
@@ -183,7 +183,18 @@ angular.module('mercuriousApp')
                     id: 35,
                     imgUrl: 'images/memeTemplates/code_gay.jpg',
                     name: 'I love your code'
+                },
+                {
+                    id: 36,
+                    imgUrl: 'images/memeTemplates/Jennifer-Lawrence-Oscars-GIF-2.gif',
+                    name: 'YEAH!'
+                },
+                {
+                    id: 37,
+                    imgUrl: 'images/memeTemplates/Model-Selection.png',
+                    name: 'Design Fail'
                 }
+
             ];
 
             return memeImages;

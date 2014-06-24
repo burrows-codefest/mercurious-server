@@ -149,6 +149,7 @@ ul.feed-list {
 .meme-template {
     height: 180px;
     margin: 10px 0 0 0;
+    clear: both;
 }
 
 .meme .meme-textline {
@@ -175,7 +176,7 @@ ul.feed-list {
     top: -75px;
 }
 
-.meme input[type=text] {
+.meme input[type=text].meme-textline {
     background: transparent;
     border: 0;
     width: 100%;
@@ -190,6 +191,7 @@ ul.feed-list {
 .meme-context {
     color: #000;
     font-size: 10px
+    background-color: white;
 }
 
 .meme-button {
@@ -214,6 +216,35 @@ ul.feed-list {
 
 .meme-dislike {
     color: red;
+}
+
+.meme-creator-template {
+    width: 25%;
+    max-width: 250px;
+    float: left;
+    clear: left;
+}
+
+.choose-template {
+    width: 70%;
+    margin-left: 5%;
+    float: left;
+}
+
+ul.template-selection {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.template-selection li {
+    float: left;
+    margin: 0 5px 0 0;
+    padding: 0;
+}
+
+.template-selection li img {
+    cursor: pointer;
 }
 
 .sweepstake {
@@ -308,6 +339,10 @@ ul.color-picker li {
     background-color: green;
 }
 
+.color-picker .yellow-bg {
+    background-color: yellow;
+}
+
 html body .container .black-font {
     color: black;
 }
@@ -326,4 +361,8 @@ html body .container .blue-font {
 
 html body .container .green-font {
     color: green;
+}
+
+html body .container .yellow-font {
+    color: yellow;
 }
