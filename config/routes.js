@@ -10,8 +10,6 @@ var home = require('../app/controllers/home'),
 
     constants = require('./constants');
 
-var userCount = 0;
-
 module.exports = function (app, io) {
 
     app.get('/signin', user.loginPage);
