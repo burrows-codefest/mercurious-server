@@ -21,7 +21,8 @@ angular.module('mercuriousApp')
                     id: 2,
                     country: 'Japan',
                     rank: 44,
-                    owner: 'Mike'
+                    owner: 'Mike',
+                    eliminated: true
                 },
                 {
                     id: 3,
@@ -52,7 +53,8 @@ angular.module('mercuriousApp')
                     id: 7,
                     country: 'Ivory Coast',
                     rank: 17,
-                    owner: 'Bobert'
+                    owner: 'Bobert',
+                    eliminated: true
                 },
                 {
                     id: 8,
@@ -168,7 +170,8 @@ angular.module('mercuriousApp')
                     id: 26,
                     country: 'Italy',
                     rank: 9,
-                    owner: 'Bibha'
+                    owner: 'Bibha',
+                    eliminated: true
                 },
                 {
                     id: 27,
