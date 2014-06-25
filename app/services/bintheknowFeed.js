@@ -3,7 +3,7 @@
 var rss = require('parserss'),
     socketIO = require('../controllers/socketIO'),
     constants = require('../../config/constants'),
-    FeedModel = require('../models/Feeds')(),
+    FeedModel = require('../models/Feeds'),
     socks, self = this;
 
 exports.loadFeed = function (socketIO) {

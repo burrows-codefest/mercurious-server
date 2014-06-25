@@ -24,9 +24,9 @@ function initModel() {
     model = mongoose.model(modelName, modelSchema);
 }
 
-module.exports = function () {
+module.exports = (function () {
     if(!model) {
         initModel();
     }
     return model;
-};
+})();

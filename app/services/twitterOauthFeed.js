@@ -7,7 +7,7 @@ var socks,
     https = require('https'),
     socketIO = require('../controllers/socketIO'),
     constants = require('../../config/constants'),
-    FeedModel = require('../models/Feeds')(),
+    FeedModel = require('../models/Feeds'),
 
     OAuth2 = OAuth.OAuth2,
     twitterConsumerKey = '2xBlAkskMzAxGun1IB3WNuk3d',

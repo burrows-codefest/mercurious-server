@@ -1,6 +1,6 @@
 'use strict';
 
-var GithubModel = require('../models/Github')(),
+var GithubModel = require('../models/Github'),
     socketIO = require('../controllers/socketIO'),
     socks;
 
