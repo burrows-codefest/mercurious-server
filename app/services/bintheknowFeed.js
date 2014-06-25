@@ -1,12 +1,14 @@
+'use strict';
+
 var rss = require('parserss'),
     mongoose = require('mongoose'),
     socketIO = require('../controllers/socketIO'),
     constants = require('../../config/constants'),
     FeedModel = mongoose.model(constants.MODEL.FEED),
-    io, self = this;
+    socks, self = this;
 
 exports.loadFeed = function (socketIO) {
-    io = socketIO;
+    socks = socketIO;
     this.getFeed();
 };
 
@@ -24,7 +26,7 @@ exports.getFeed = function () {
 
                         dbRecord.save();
 
-                        socketIO.outgoingMessage(io, record);
+                        socketIO.outgoingMessage(socks, record);
                     }
                 });
         });

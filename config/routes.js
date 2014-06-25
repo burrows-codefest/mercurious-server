@@ -1,3 +1,5 @@
+'use strict';
+
 var home = require('../app/controllers/home'),
     socketIO = require('../app/controllers/socketIO'),
     traffic = require('../app/controllers/traffic'),
@@ -9,8 +11,6 @@ var home = require('../app/controllers/home'),
     FeedsModel = mongoose.model('Feed'),
 
     constants = require('./constants');
-
-var userCount = 0;
 
 module.exports = function (app, io) {
 
@@ -51,7 +51,7 @@ module.exports = function (app, io) {
     app.get('/api/getItem/:reqId', function(req, res) {
         FeedsModel.findById(req.params.reqId, function(err, item) {
             if (err) {
-                res.send(err)
+                res.send(err);
             }
             res.json(item);
         });

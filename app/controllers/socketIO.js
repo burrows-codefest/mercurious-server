@@ -1,3 +1,5 @@
+'use strict';
+
 var self = this,
     constants = require('../../config/constants');
 
@@ -11,7 +13,7 @@ exports.incomingMessage = function (io, socket, data) {
         messageHandler = require(messageHandlerPath);
         messageHandler.handleMessage(io, socket, data);
     } else {
-        socket.emit(constants.SOCKET.ERROR,{'message': 'no message type was passed'})
+        socket.emit(constants.SOCKET.ERROR,{'message': 'no message type was passed'});
     }
 };
 

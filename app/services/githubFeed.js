@@ -1,10 +1,12 @@
+'use strict';
+
 var mongoose = require('mongoose'),
     FeedModel = mongoose.model('Feed'),
     socketIO = require('../controllers/socketIO'),
-    io;
+    socks;
 
 exports.loadFeed = function (socketIO) {
-    io = socketIO;
+    socks = socketIO;
 };
 
 exports.addRecord = function (record) {
@@ -12,5 +14,5 @@ exports.addRecord = function (record) {
 
     dbRecord.save();
 
-    socketIO.outgoingMessage(io, record);
+    socketIO.outgoingMessage(socks, record);
 };

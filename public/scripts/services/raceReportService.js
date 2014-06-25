@@ -7,7 +7,8 @@ angular.module('mercuriousApp')
             raceReport.title = raceReport.result[0].driver.name + ' wins race ' +
                 (parseInt(raceReport.id) + 1);
             
-            var text = '<br />'
+            var text = '<br />';
+
             text = text + 
                     '<strong>Class</strong>: ' + raceReport.carClass +
                     '<br />' + 
@@ -16,11 +17,15 @@ angular.module('mercuriousApp')
                     '<strong>Fastest Lap</strong>: ' + raceReport.fastestLapDriver.name;
             
             text = text + '<h2>Result</h2><ol>';
+
             for (var position in raceReport.result) {
-                text = text + '<li>' + raceReport.result[position].driver.name + '</li>';
+                if (raceReport.result[position].driver) {
+                    text = text + '<li>' + raceReport.result[position].driver.name + '</li>';
+                }
             }
+
             text = text + '</ol>';
-            
+
             raceReport.text = text;
             raceReport.link = 'https://forza.firebaseapp.com/#/race-report/' + raceReport.id;
             

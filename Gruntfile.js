@@ -40,7 +40,7 @@ module.exports = function (grunt) {
     },
     jshint: {
       options: {
-        node: true
+        jshintrc: true
       },
       all: [
         'Gruntfile.js',
@@ -62,10 +62,11 @@ module.exports = function (grunt) {
     setTimeout(function () {
       request.get('http://localhost:' + reloadPort + '/changed?files=' + files.join(','),  function(err, res) {
           var reloaded = !err && res.statusCode === 200;
-          if (reloaded)
-            grunt.log.ok('Delayed live reload successful.');
-          else
-            grunt.log.error('Unable to make a delayed live reload.');
+          if (reloaded) {
+              grunt.log.ok('Delayed live reload successful.');
+          } else {
+              grunt.log.error('Unable to make a delayed live reload.');
+          }
           done(reloaded);
         });
     }, 500);

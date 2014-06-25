@@ -1,3 +1,5 @@
+'use strict';
+
 var feeds = require('../feeds');
 
 exports.handleMessage = function (io, socket) {
