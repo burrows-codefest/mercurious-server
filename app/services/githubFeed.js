@@ -1,7 +1,6 @@
 'use strict';
 
 var GithubModel = require('../models/Github'),
-    socketIO = require('../controllers/socketIO'),
     socks;
 
 exports.loadFeed = function (socketIO) {
@@ -12,6 +11,9 @@ exports.addRecord = function (record) {
     var dbRecord = new GithubModel(record);
 
     dbRecord.save();
+};
 
-    socketIO.outgoingMessage(socks, record);
+exports.updateRecord = function (record) {
+    GithubModel.findOneAndUpdate({id: record.id}, {$set: {status: record.status, closedDate: record.closedDate}},
+        function () {});
 };

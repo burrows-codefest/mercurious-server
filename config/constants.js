@@ -2,8 +2,13 @@
 
 module.exports = {
     GITHUB: {
+        ACTIONS: {
+          OPEN: 'opened',
+          CLOSE: 'closed'
+        },
         EVENTS: {
-            PUSH: 'push'
+            PUSH: 'push',
+            PULL_REQUEST: 'pull_request'
         },
         EVENT_HEADER: 'x-github-event'
     },

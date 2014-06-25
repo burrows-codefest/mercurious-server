@@ -5,8 +5,17 @@ var model,
 
 function getSchema() {
     return {
+        id: Number,
+        title: String,
+        body: String,
+        status: String,
+        url: String,
+        publishUserId: String,
+        publishedUserName: String,
         publishedDate: Date,
-        githubBody: Object
+        closedDate: Date,
+        repositoryId: Number,
+        repositoryName: String
     }
 }
 
