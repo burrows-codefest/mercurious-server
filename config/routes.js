@@ -12,7 +12,7 @@ var home = require('../app/controllers/home'),
 
     constants = require('./constants');
 
-module.exports = function (app, io) {
+module.exports = function (app, socks) {
 
     app.get('/signin', user.loginPage);
     app.get('/admin',admin.index);
@@ -42,7 +42,7 @@ module.exports = function (app, io) {
                 changedObj.type = voteType;
                 changedObj.value = newTotal;
 
-                io.sockets.emit('vote', changedObj);
+                socks.sockets.emit('vote', changedObj);
                 res.json(item);
             });
         });
@@ -58,15 +58,15 @@ module.exports = function (app, io) {
     });
 
 
-    io.sockets.on('connection', function (socket) {
+    socks.sockets.on('connection', function (socket) {
 
         socket.join(constants.SOCKET.DEFAULT_CHANNEL);
 
         feeds.loadAllFeeds(socket);
-        traffic.startTrafficStatus(io.sockets);
+        traffic.startTrafficStatus(socks.sockets);
 
         socket.on(constants.SOCKET.MESSAGE, function (data) {
-            socketIO.incomingMessage(io, socket, data);
+            socketIO.incomingMessage(socks, socket, data);
         });
         socket.on(constants.SOCKET.PING_RETURN, function () {});
     });

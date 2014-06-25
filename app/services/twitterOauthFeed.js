@@ -28,7 +28,7 @@ function getDataFeed(feed) {
                     dbRecord = new FeedModel(record);
 
                 dbRecord.save();
-                socketIO.outgoingMessage(io, record);
+                socketIO.outgoingMessage(socks, record);
             }
         });
 

@@ -3,7 +3,7 @@
 var self = this,
     constants = require('../../config/constants');
 
-exports.incomingMessage = function (io, socket, data) {
+exports.incomingMessage = function (socks, socket, data) {
     var messageType = data.type,
         messageHandlerPath, messageHandler;
 
@@ -11,19 +11,19 @@ exports.incomingMessage = function (io, socket, data) {
         messageHandlerPath = './messageHandlers/' + messageType + 'Handler.js';
 
         messageHandler = require(messageHandlerPath);
-        messageHandler.handleMessage(io, socket, data);
+        messageHandler.handleMessage(socks, socket, data);
     } else {
         socket.emit(constants.SOCKET.ERROR,{'message': 'no message type was passed'});
     }
 };
 
-exports.outgoingMessage = function (io, data) {
-    io.to(constants.SOCKET.DEFAULT_CHANNEL).emit(constants.SOCKET.NEW_ITEM, data);
+exports.outgoingMessage = function (socks, data) {
+    socks.to(constants.SOCKET.DEFAULT_CHANNEL).emit(constants.SOCKET.NEW_ITEM, data);
 };
 
-exports.startPingToClients = function (io) {
+exports.startPingToClients = function (socks) {
     setTimeout(function () {
-        io.to(constants.SOCKET.DEFAULT_CHANNEL).emit(constants.SOCKET.PING);
-        self.startPingToClients(io);
+        socks.to(constants.SOCKET.DEFAULT_CHANNEL).emit(constants.SOCKET.PING);
+        self.startPingToClients(socks);
     }, 10000);
 };
