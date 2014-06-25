@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('mercuriousApp')
     .factory('socket', function ($rootScope) {
     var socket = io.connect();
@@ -18,7 +20,7 @@ angular.module('mercuriousApp')
                         callback.apply(socket, args);
                     }
                 });
-            })
+            });
         }
     };
 });

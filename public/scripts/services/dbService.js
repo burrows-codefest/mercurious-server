@@ -9,7 +9,7 @@ angular.module('mercuriousApp')
                 defer.resolve(data);
             }).
             error(function (data, status) {
-                deferred.reject(status + ' | bad');
+                defer.reject(status + ' | bad');
             });
 
             return defer.promise;

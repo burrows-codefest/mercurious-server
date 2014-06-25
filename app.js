@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'),
     mongoose = require('mongoose'),
     fs = require('fs'),
@@ -18,19 +20,19 @@ fs.readdirSync(modelsPath).forEach(function (file) {
 
 var app = express(),
     server = require('http').Server(app),
-    io = require('socket.io')(server);
+    socks = require('socket.io')(server);
 
 require('./config/express')(app, config);
-require('./config/routes')(app, io);
+require('./config/routes')(app, socks);
 
-socketIO.startPingToClients(io);
+socketIO.startPingToClients(socks);
 
 var servicesPath = __dirname + '/app/services';
 fs.readdirSync(servicesPath).forEach(function (file) {
     var service;
     if (file.indexOf('.js') >= 0) {
         service = require(servicesPath + '/' + file);
-        service.loadFeed(io);
+        service.loadFeed(socks);
     }
 });
 

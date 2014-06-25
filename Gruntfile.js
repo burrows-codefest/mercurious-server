@@ -10,6 +10,8 @@ module.exports = function (grunt) {
 
   var reloadPort = 35729, files;
 
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     develop: {
@@ -26,7 +28,8 @@ module.exports = function (grunt) {
         files: [
           'app.js',
           'app/**/*.js',
-          'config/*.js'
+          'config/*.js',
+          'public/*.js'
         ],
         tasks: ['develop', 'delayed-livereload']
       },
@@ -34,6 +37,19 @@ module.exports = function (grunt) {
         files: ['app/views/**/*.jade'],
         options: { livereload: reloadPort }
       }
+    },
+    jshint: {
+      options: {
+        jshintrc: true
+      },
+      all: [
+        'Gruntfile.js',
+        'app.js',
+        'app/**/*.js',
+        'config/*.js',
+        'public/scripts/**/*.js',
+        'public/scripts/*.js'
+      ]
     }
   });
 
@@ -46,14 +62,15 @@ module.exports = function (grunt) {
     setTimeout(function () {
       request.get('http://localhost:' + reloadPort + '/changed?files=' + files.join(','),  function(err, res) {
           var reloaded = !err && res.statusCode === 200;
-          if (reloaded)
-            grunt.log.ok('Delayed live reload successful.');
-          else
-            grunt.log.error('Unable to make a delayed live reload.');
+          if (reloaded) {
+              grunt.log.ok('Delayed live reload successful.');
+          } else {
+              grunt.log.error('Unable to make a delayed live reload.');
+          }
           done(reloaded);
         });
     }, 500);
   });
 
-  grunt.registerTask('default', ['develop', 'watch']);
+  grunt.registerTask('default', ['develop', 'jshint', 'watch']);
 };

@@ -1,5 +1,7 @@
-var io,
-    cached_access_token,
+'use strict';
+
+var socks,
+    cachedAccessToken,
     self = this,
     OAuth = require('oauth'),
     https = require('https'),
@@ -14,13 +16,32 @@ var io,
     oauth2 = new OAuth2(twitterConsumerKey, twitterConsumerSecret, 'https://api.twitter.com/', null, 'oauth2/token',
         null);
 
+function getDataFeed(feed) {
+    feed.forEach(function (item) {
+
+        FeedModel.find({'twitterId': item.id}, function (err, feeds) {
+            if (feeds.length === 0) {
+                var dateTranslate = 'created_at',
+                    date = new Date(item[dateTranslate]),
+                    record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text,
+                        type: 'twitter', 'publishedDate': date},
+                    dbRecord = new FeedModel(record);
+
+                dbRecord.save();
+                socketIO.outgoingMessage(socks, record);
+            }
+        });
+
+    });
+}
+
 exports.loadFeed = function (socketIO) {
     var self = this;
 
-    io = socketIO;
+    socks = socketIO;
 
-    oauth2.getOAuthAccessToken('', {'grant_type': 'client_credentials'}, function (e, access_token) {
-        cached_access_token = access_token;
+    oauth2.getOAuthAccessToken('', {'grant_type': 'client_credentials'}, function (e, accessToken) {
+        cachedAccessToken = accessToken;
         self.getFeed();
     });
 
@@ -31,7 +52,7 @@ exports.getFeed = function () {
         hostname: 'api.twitter.com',
         path: '/1.1/statuses/user_timeline.json?screen_name=megaherosquad',
         headers: {
-            Authorization: 'Bearer ' + cached_access_token
+            Authorization: 'Bearer ' + cachedAccessToken
         }
     };
     https.get(options, function (result) {
@@ -48,21 +69,3 @@ exports.getFeed = function () {
 
     setTimeout(self.getFeed, constants.TIMER.MINUTES_15);
 };
-
-function getDataFeed(feed) {
-    feed.forEach(function (item) {
-
-        FeedModel.find({'twitterId': item.id}, function (err, feeds) {
-            if (feeds.length === 0) {
-                var date = new Date(item.created_at),
-                    record = {twitterId: item.id, title: 'Mega Hero Squad', text: item.text,
-                        type: 'twitter', 'publishedDate': date},
-                    dbRecord = new FeedModel(record);
-
-                dbRecord.save();
-                socketIO.outgoingMessage(io, record);
-            }
-        });
-
-    });
-}

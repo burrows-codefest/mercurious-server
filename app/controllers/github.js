@@ -1,3 +1,5 @@
+'use strict';
+
 var githubService = require('../services/githubFeed'),
     constants = require('../../config/constants');
 
@@ -14,7 +16,8 @@ exports.incomingWebhook = function (req, res) {
           title: numOfCommits + ' commits have been pushed to ' + requestBody.repository.name,
           type: 'github',
           url: requestBody.compare,
-          text: requestBody.pusher.name + ' pushed ' + numOfCommits + ' commits to ' + requestBody.ref.replace('refs/heads/',''),
+          text: requestBody.pusher.name + ' pushed ' + numOfCommits + ' commits to ' +
+              requestBody.ref.replace('refs/heads/',''),
           publishedDate: new Date().getTime(),
           githubBody: requestBody
         };
