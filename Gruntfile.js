@@ -10,6 +10,8 @@ module.exports = function (grunt) {
 
   var reloadPort = 35729, files;
 
+  grunt.loadNpmTasks('grunt-contrib-jshint');
+
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     develop: {
@@ -35,6 +37,19 @@ module.exports = function (grunt) {
         files: ['app/views/**/*.jade'],
         options: { livereload: reloadPort }
       }
+    },
+    jshint: {
+      options: {
+        node: true
+      },
+      all: [
+        'Gruntfile.js',
+        'app.js',
+        'app/**/*.js',
+        'config/*.js',
+        'public/scripts/**/*.js',
+        'public/scripts/*.js'
+      ]
     }
   });
 
