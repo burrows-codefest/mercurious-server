@@ -1,8 +1,6 @@
 'use strict';
-
-var mongoose = require('mongoose'),
-    constants = require('../../config/constants'),
-    FeedModel = mongoose.model('Feed');
+var constants = require('../../config/constants'),
+    FeedModel = require('../models/Feeds');
 
 exports.loadAllFeeds = function (socket) {
     FeedModel.find()

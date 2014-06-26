@@ -1,8 +1,6 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    FeedModel = mongoose.model('Feed'),
-    socketIO = require('../controllers/socketIO'),
+var GithubModel = require('../models/Github'),
     socks;
 
 exports.loadFeed = function (socketIO) {
@@ -10,9 +8,12 @@ exports.loadFeed = function (socketIO) {
 };
 
 exports.addRecord = function (record) {
-    var dbRecord = new FeedModel(record);
+    var dbRecord = new GithubModel(record);
 
     dbRecord.save();
+};
 
-    socketIO.outgoingMessage(socks, record);
+exports.updateRecord = function (record) {
+    GithubModel.findOneAndUpdate({id: record.id}, {$set: {status: record.status, closedDate: record.closedDate}},
+        function () {});
 };

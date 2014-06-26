@@ -1,14 +1,21 @@
-'use strict';
-
 var model,
     mongoose = require('mongoose'),
     constants = require('../../config/constants'),
-    modelName = constants.MODEL.USER;
+    modelName = constants.MODEL.GITHUB;
 
 function getSchema() {
     return {
-        username: 'String',
-        password: 'String'
+        id: Number,
+        title: String,
+        body: String,
+        status: String,
+        url: String,
+        publishUserId: String,
+        publishedUserName: String,
+        publishedDate: Date,
+        closedDate: Date,
+        repositoryId: Number,
+        repositoryName: String
     }
 }
 
