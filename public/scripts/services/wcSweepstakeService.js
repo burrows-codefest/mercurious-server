@@ -15,7 +15,8 @@ angular.module('mercuriousApp')
                     id: 1,
                     country: 'Iran',
                     rank: 49,
-                    owner: 'Cleggor'
+                    owner: 'Cleggor',
+                    eliminated: true
                 },
                 {
                     id: 2,
@@ -72,7 +73,8 @@ angular.module('mercuriousApp')
                     id: 10,
                     country: 'Honduras',
                     rank: 34,
-                    owner: 'Corndog'
+                    owner: 'Corndog',
+                    eliminated: true
                 },
                 {
                     id: 11,
@@ -114,7 +116,8 @@ angular.module('mercuriousApp')
                     id: 17,
                     country: 'Ecuador',
                     rank: 22,
-                    owner: 'Barbs'
+                    owner: 'Barbs',
+                    eliminated: true
                 },
                 {
                     id: 18,
