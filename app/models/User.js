@@ -9,7 +9,7 @@ function getSchema() {
     return {
         username: 'String',
         password: 'String'
-    }
+    };
 }
 
 function initModel() {

@@ -19,7 +19,7 @@ function getSchema() {
         context: String,
         fontColor: String,
         githubBody: Object
-    }
+    };
 }
 
 function initModel() {

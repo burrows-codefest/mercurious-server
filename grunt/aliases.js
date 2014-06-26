@@ -6,6 +6,11 @@ module.exports = {
             'watch'
         ],
 
+        'test-server-unit': [
+            'jshint',
+            'mocha-chai-sinon:unit'
+        ],
+
         'test': [
             'jshint',
             'karma'
