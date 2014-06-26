@@ -11,16 +11,15 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            '/public/components/angular/angular.js',
-            '/public/components/angular-mocks/angular-mocks.js',
-            '/public/components/angular-resource/angular-resource.js',
-            '/public/components/angular-cookies/angular-cookies.js',
-            '/public/components/angular-sanitize/angular-sanitize.js',
-            '/public/components/angular-route/angular-route.js',
-            '/public/scripts/*.js',
-            '/public/scripts/**/*.js',
-            'test/mock/**/*.js',
-            'test/spec/**/*.js'
+            'public/components/angular/angular.js',
+            'public/components/angular-resource/angular-resource.js',
+            'public/components/angular-cookies/angular-cookies.js',
+            'public/components/angular-sanitize/angular-sanitize.js',
+            'public/components/angular-route/angular-route.js',
+            'public/scripts/*.js',
+            'public/scripts/**/*.js',
+            'test/public/**/*.js',
+            'test/app/**/*.js'
         ],
 
         // list of files / patterns to exclude
