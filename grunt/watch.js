@@ -2,16 +2,22 @@
 
 module.exports = {
     options: {
-        nospawn: true,
-        livereload: reloadPort
+        nospawn: true
     },
-    js: {
+    node: {
         files: [
             'app.js',
             'app/**/*.js',
-            'config/*.js',
-            'public/*.js'
+            'config/*.js'
         ],
-        tasks: ['develop', 'delayed-livereload']
+        tasks: ['develop']
+    },
+    angular: {
+        files: [
+            'public/**/*.js'
+        ],
+        options: {
+            livereload: true
+        }
     }
 };
