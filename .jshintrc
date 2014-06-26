@@ -71,7 +71,6 @@
     "white": true,
 
     "predef": [
-        "expect", "define", "describe", "it", "beforeEach", "afterEach", "after", "before",
-        "after", "angular", "io"
+        "angular", "io"
     ]
 }
