@@ -7,20 +7,20 @@
 
     <table class="filter">
         <tr>
-            <td><a href>All</a></td>
-            <td><img src="../images/meme-logo.png" class="filter-image"/></td>
-            <td><img src="../images/burrows_logo.png" class="filter-image"/></td>
-            <td><img src="../images/twitter_logo_blue.png" class="filter-image" /></td>
-            <td><img src="../images/forza-logo.jpg" class="filter-image"/></td>
-            <td><img src="../images/git-logo.png" class="filter-image"/></td>
+            <td><label for="typeSearch-all"    >All</label></td>
+            <td><label for="typeSearch-meme"   ><img src="../images/meme-logo.png" class="filter-image"/></label></td>
+            <td><label for="typeSearch-b"      ><img src="../images/burrows_logo.png" class="filter-image"/></label></td>
+            <td><label for="typeSearch-twitter"><img src="../images/twitter_logo_blue.png" class="filter-image" /></label></td>
+            <td><label for="typeSearch-race"   ><img src="../images/forza-logo.jpg" class="filter-image"/></label></td>
+            <td><label for="typeSearch-git"    ><img src="../images/git-logo.png" class="filter-image"/></label></td>
         </tr>
         <tr>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" value="" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" value="meme" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" value="b-intheknow" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" value="twitter" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" value="raceReport" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" value="github" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-all"     value="all"  ng-checked="true" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-meme"    value="meme" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-b"       value="b-intheknow" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-twitter" value="twitter" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-race"    value="raceReport" /></td>
+            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-git"     value="github" /></td>
         </tr>
     </table>
 </div>

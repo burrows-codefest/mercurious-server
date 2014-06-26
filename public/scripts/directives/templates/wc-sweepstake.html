@@ -4,6 +4,7 @@
         <li ng-repeat="team in teams | orderBy: 'rank'" ng-hide="team.eliminated">
             <div class="owner">{{ team.owner }}</div>
             <div class="team">{{ team.country }} ({{ team.rank }})</div>
+            <img src="http://www.geonames.org/flags/x/{{ccodes[team.country] | lowercase}}.gif" height="11" />
         </li>
     </ul>
 
@@ -11,6 +12,7 @@
         <li ng-repeat="team in teams | orderBy: 'rank'" ng-show="team.eliminated">
             <div class="owner">{{ team.owner }}</div>
             <div class="team">{{ team.country }} ({{ team.rank }})</div>
+            <img src="http://www.geonames.org/flags/x/{{ccodes[team.country] | lowercase}}.gif" height="11" />
         </li>
     </ul>
 
