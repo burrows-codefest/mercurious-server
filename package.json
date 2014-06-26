@@ -22,6 +22,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-develop": "~0.2.2",
     "grunt-karma": "^0.8.3",
+    "grunt-mocha-chai-sinon": "0.0.8",
     "karma-chrome-launcher": "^0.1.4",
     "karma-jasmine": "^0.1.5",
     "load-grunt-config": "^0.10.0",
