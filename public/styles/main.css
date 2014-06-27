@@ -47,6 +47,10 @@ input {
     padding: 0;
     margin: 0;
 }
+.filter label,
+.filter input {
+    cursor: pointer;
+}
 
 .filter td {
     padding: 0;
@@ -280,11 +284,12 @@ ul.template-selection {
     margin: 2px;
     padding: 2px;
     height: 11px;
-    line-height: 10px
+    line-height: 10px;
+    width: 225px;
 }
 
 .sweepstake .team {
-    width: 142px;
+    width: 140px;
     float: left;
 }
 
@@ -292,6 +297,9 @@ ul.template-selection {
     width: 60px;
     float: left;
     clear: right;
+}
+.sweepstake img {
+    float: right;
 }
 
 .sweepstake .eliminated li {
