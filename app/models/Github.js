@@ -1,3 +1,5 @@
+'use strict';
+
 var model,
     mongoose = require('mongoose'),
     constants = require('../../config/constants'),
@@ -16,7 +18,7 @@ function getSchema() {
         closedDate: Date,
         repositoryId: Number,
         repositoryName: String
-    }
+    };
 }
 
 function initModel() {
