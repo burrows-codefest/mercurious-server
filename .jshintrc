@@ -3,7 +3,7 @@
     "maxerr": 100,
 
     "bitwise": true,
-    "camelcase": true,
+    "camelcase": false,
     "curly": true,
     "eqeqeq": true,
     "forin": true,
@@ -49,7 +49,7 @@
     "shadow": false,
     "sub": false,
     "supernew": false,
-    "validthis": false,
+    "validthis": true,
 
     "browser": true,
     "couch": false,
@@ -71,11 +71,6 @@
     "white": true,
 
     "predef": [
-        "expect", "define", "describe", "it", "sinon", "beforeEach", "afterEach", "after", "jQuery", "before",
-        "after", "_", "async", "cheerio", "browser", "gotoPaintPage", "mainNavEl", "getWebsiteLaunchFunction",
-        "P11_COUPE_S_DATA", "optionNavEl", "BASE_URL", "assert", "getNewFakeServer", "populateSessionModel",
-        "areaNavEl", "getCurrentVehicleOptionById", "globalSetters", "gotoAccessoriesPage", "gotoExteriorPage",
-        "gotoWheelsPage", "gotoSummaryPage", "gotoMSOPage", "QUERY_STRING", "buildQueryString", "XDomainRequest",
-        "asserters", "dataLayer", "escape", "spritespin"
+        "angular", "io"
     ]
 }

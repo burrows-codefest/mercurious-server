@@ -3,22 +3,21 @@
 var model,
     mongoose = require('mongoose'),
     constants = require('../../config/constants'),
-    modelName = constants.MODEL.FEED;
+    modelName = constants.MODEL.GITHUB;
 
 function getSchema() {
     return {
+        id: Number,
         title: String,
-        type: String,
+        body: String,
+        status: String,
         url: String,
-        text: String,
-        imgUrl: String,
-        twitterId: String,
+        publishUserId: String,
+        publishedUserName: String,
         publishedDate: Date,
-        likes: Number,
-        dislikes: Number,
-        context: String,
-        fontColor: String,
-        githubBody: Object
+        closedDate: Date,
+        repositoryId: Number,
+        repositoryName: String
     };
 }
 
@@ -40,5 +39,3 @@ module.exports = (function () {
     }
     return model;
 })();
-
-

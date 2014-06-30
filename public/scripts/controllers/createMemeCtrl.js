@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('mercuriousApp')
-    .controller('CreateMemeCtrl', function ($scope, $location, $routeParams, $timeout, socket, memeService, utilsService) {
+    .controller('CreateMemeCtrl', function (
+        $scope, $location, $routeParams, $timeout, socket, memeService, utilsService) {
 
         $scope.memeTemplates = memeService.getMemeImages();
 
@@ -27,7 +28,7 @@ angular.module('mercuriousApp')
             $scope.meme.imgUrl = template.imgUrl;
             $scope.imgUrl = '';
             $scope.invalidImg = false;
-        }
+        };
 
         $scope.customTemplate = function (url) {
             utilsService.isImage(url).then(function(test) {
@@ -39,7 +40,7 @@ angular.module('mercuriousApp')
                     $scope.invalidImg = true;
                 }
             });
-        }
+        };
 
         $scope.submit = function () {
             var d = new Date();

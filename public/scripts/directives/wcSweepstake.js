@@ -7,6 +7,7 @@ angular.module('mercuriousApp')
             templateUrl: '/scripts/directives/templates/wc-sweepstake.html',
             link: function (scope) {
                 scope.teams = wcSweepstakeService.getTeams();
+                scope.flags = wcSweepstakeService.getFlags();
             }
         };
     });

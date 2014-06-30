@@ -1,0 +1,33 @@
+{
+    "allFeeds": [
+
+        {
+            "_id": "53a411545193dda153000001",
+            "title": "Photo",
+            "url": "http://b-intheknow.com/post/88559324095",
+            "text": "<img src=\"http://37.media.tumblr.com/3645bb1cd715c3e8313a624b531da6cf/tumblr_n71uz7bWVV1s8z125o1_500.jpg\"/><br/><br/>",
+            "type": "b-intheknow",
+            "publishedDate": "Thu Jun 12 2014 10:42:43 GMT+0100 (BST)",
+            "__v": "0"
+        },
+        {
+            "_id": "53a4117c5193dda15300001f",
+            "title": "Meme",
+            "text": "Meme Line 2",
+            "type": "meme",
+            "imgUrl": "images/memeTemplates/1bij.jpg",
+            "publishedDate": "Fri Jun 20 2014 11:48:28 GMT+0100 (BST)",
+            "__v": "0"
+        },
+
+        {
+            "_id": "53a411555193dda15300000c",
+            "twitterId": "479588155793092600",
+            "title": "Mega Hero Squad",
+            "text": "RT @therealmossle: Thanks Rob for the digi office #WorldCup2014 decorations! #lookinggood http://t.co/QZzyGFNCYJ",
+            "type": "twitter",
+            "publishedDate": "Thu Jun 19 2014 12:35:01 GMT+0100 (BST)",
+            "__v": "0"
+        }
+    ]
+}

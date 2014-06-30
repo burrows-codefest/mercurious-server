@@ -17,5 +17,5 @@ angular.module('mercuriousApp')
             image.src = src;
 
             return deferred.promise;
-        }
+        };
     });

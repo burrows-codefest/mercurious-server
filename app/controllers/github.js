@@ -1,25 +1,37 @@
+'use strict';
+
 var githubService = require('../services/githubFeed'),
     constants = require('../../config/constants');
 
 exports.incomingWebhook = function (req, res) {
-    var newRecord, numOfCommits,
+    var newRecord,
         requestBody = req.body,
         githubEvent = req.headers[constants.GITHUB.EVENT_HEADER];
 
-    if (githubEvent === constants.GITHUB.EVENTS.PUSH) {
+    if (githubEvent === constants.GITHUB.EVENTS.PULL_REQUEST) {
+        if(requestBody.action === constants.GITHUB.ACTIONS.OPEN) {
+            newRecord = {
+                id: requestBody.pull_request.id,
+                title: requestBody.pull_request.title,
+                body: requestBody.pull_request.body,
+                status: requestBody.action,
+                url: requestBody.pull_request.html_url,
+                publishUserId: requestBody.pull_request.user.id,
+                publishedUserName: requestBody.pull_request.user.login,
+                publishedDate: new Date(requestBody.pull_request.created_at),
+                repositoryId: requestBody.repository.id,
+                repositoryName: requestBody.repository.name,
+                githubBody: requestBody
+            };
 
-        numOfCommits = requestBody.commits.length;
-
-        newRecord = {
-          title: numOfCommits + ' commits have been pushed to ' + requestBody.repository.name,
-          type: 'github',
-          url: requestBody.compare,
-          text: requestBody.pusher.name + ' pushed ' + numOfCommits + ' commits to ' + requestBody.ref.replace('refs/heads/',''),
-          publishedDate: new Date().getTime(),
-          githubBody: requestBody
-        };
-
-        githubService.addRecord(newRecord);
+            githubService.addRecord(newRecord);
+        } else if (requestBody.action === constants.GITHUB.ACTIONS.CLOSE) {
+            githubService.updateRecord({
+                id: requestBody.pull_request.id,
+                status: requestBody.action,
+                closedDate: new Date(requestBody.pull_request.closed_at)
+            });
+        }
     }
 
     res.send();
