@@ -8,7 +8,7 @@ exports.incomingMessage = function (socks, socket, data) {
         messageHandlerPath, messageHandler;
 
     if(messageType) {
-        messageHandlerPath = './messageHandlers/' + messageType + 'Handler.js';
+        messageHandlerPath = './messageHandlers/' + messageType + 'Handler';
 
         messageHandler = require(messageHandlerPath);
         messageHandler.handleMessage(socks, socket, data);
