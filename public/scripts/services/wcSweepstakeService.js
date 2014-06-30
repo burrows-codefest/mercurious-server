@@ -29,7 +29,8 @@ angular.module('mercuriousApp')
                     id: 3,
                     country: 'South Korea',
                     rank: 56,
-                    owner: 'Bread'
+                    owner: 'Bread',
+                    eliminated: true
                 },
                 {
                     id: 4,
@@ -48,7 +49,8 @@ angular.module('mercuriousApp')
                     id: 6,
                     country: 'Ghana',
                     rank: 23,
-                    owner: 'Pete'
+                    owner: 'Pete',
+                    eliminated: true
                 },
                 {
                     id: 7,
@@ -80,7 +82,8 @@ angular.module('mercuriousApp')
                     id: 11,
                     country: 'Mexico',
                     rank: 24,
-                    owner: 'Jengles'
+                    owner: 'Jengles',
+                    eliminated: true
                 },
                 {
                     id: 12,
@@ -104,7 +107,8 @@ angular.module('mercuriousApp')
                     id: 15,
                     country: 'Chile',
                     rank: 12,
-                    owner: 'Chappers'
+                    owner: 'Chappers',
+                    eliminated: true
                 },
                 {
                     id: 16,
@@ -123,7 +127,8 @@ angular.module('mercuriousApp')
                     id: 18,
                     country: 'Uruguay',
                     rank: 6,
-                    owner: 'George'
+                    owner: 'George',
+                    eliminated: true
                 },
                 {
                     id: 19,
@@ -168,7 +173,8 @@ angular.module('mercuriousApp')
                     id: 25,
                     country: 'Greece',
                     rank: 15,
-                    owner: 'PM Dave'
+                    owner: 'PM Dave',
+                    eliminated: true
                 },
                 {
                     id: 26,
@@ -187,13 +193,15 @@ angular.module('mercuriousApp')
                     id: 28,
                     country: 'Portugal',
                     rank: 14,
-                    owner: 'Moss'
+                    owner: 'Moss',
+                    eliminated: true
                 },
                 {
                     id: 29,
                     country: 'Russia',
                     rank: 19,
-                    owner: 'Scunny'
+                    owner: 'Scunny',
+                    eliminated: true
                 },
                 {
                     id: 30,
