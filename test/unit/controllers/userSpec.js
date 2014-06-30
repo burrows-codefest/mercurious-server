@@ -1,14 +1,15 @@
 'use strict';
 describe('User Controller', function () {
-    var user, constants,
-        userPath = '../../../app/controllers/admin';
+    var user, constants, rewire,
+        userPath = '../../../app/controllers/user';
 
     before(function () {
-       constants = require('../../../config/constants');
+        rewire = require('rewire');
+        constants = require('../../../config/constants');
     });
 
     beforeEach(function () {
-        user = require(userPath);
+        user = rewire(userPath);
     });
 
     afterEach(function () {
@@ -37,8 +38,11 @@ describe('User Controller', function () {
                     sort: function () {
                         return this;
                     },
+                    equals: function () {
+                        return this;
+                    },
                     where: function () {
-                      return this;
+                        return this;
                     },
                     exec: execSpy
                 },
@@ -52,19 +56,35 @@ describe('User Controller', function () {
         }
 
         it('should successfully auth the user', function () {
-            var renderSpy = sinon.spy(),
+            var redirectSpy = sinon.spy(),
                 sessionData = {user: false},
                 execSpy = sinon.spy(function (callback) {
-                    callback(null, {username: 'jason', password: 'boo'});
+                    callback(null, [{username: 'jason', password: 'boo'}]);
                 });
 
-            user.__set__('FeedModel', getSpoofModelWithExecSpy(execSpy));
+            user.__set__('UserModel', getSpoofModelWithExecSpy(execSpy));
 
-            user.authenticate({body: {}, session: sessionData}, {render: renderSpy});
+            user.authenticate({body: {username: 'jason', password: 'boo'}, session: sessionData}, {redirect: redirectSpy});
 
-            expect(renderSpy.called).to.be.ok;
+            expect(redirectSpy.called).to.be.ok;
             expect(sessionData.user).to.be.ok;
-            expect(renderSpy.args[0][0]).to.equal(constants.PATH.ADMIN);
+            expect(redirectSpy.args[0][0]).to.equal(constants.PATH.ADMIN);
+        });
+
+        it('should not successfully auth the user', function () {
+            var redirectSpy = sinon.spy(),
+                sessionData = {user: false},
+                execSpy = sinon.spy(function (callback) {
+                    callback(null, []);
+                });
+
+            user.__set__('UserModel', getSpoofModelWithExecSpy(execSpy));
+
+            user.authenticate({body: {username: 'jason', password: 'bad pass'}, session: sessionData}, {redirect: redirectSpy});
+
+            expect(redirectSpy.called).to.be.ok;
+            expect(sessionData.user).to.not.be.ok;
+            expect(redirectSpy.args[0][0]).to.equal(constants.PATH.LOGIN);
         });
     });
 });
