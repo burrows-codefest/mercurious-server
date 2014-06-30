@@ -6,22 +6,6 @@ exports.loadAllFeeds = function (socket) {
     FeedModel.find()
         .sort('type')
         .exec(function (err, results) {
-            var type = '',
-                itemCount,
-                items = [];
-
-            results.forEach(function (item) {
-                if (item.type !== type) {
-                    itemCount = 0;
-                    type = item.type;
-                }
-
-                if (itemCount < 20 && type === item.type) {
-                    items.push(item);
-                    itemCount += 1;
-                }
-            });
-
             socket.emit(constants.SOCKET.MESSAGE, results);
         });
 
