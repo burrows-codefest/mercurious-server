@@ -22,7 +22,7 @@ exports.loadAllFeeds = function (socket) {
                 }
             });
 
-            socket.emit(constants.SOCKET.MESSAGE, items);
+            socket.emit(constants.SOCKET.MESSAGE, results);
         });
 
 };
