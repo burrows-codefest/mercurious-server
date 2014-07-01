@@ -56,7 +56,7 @@ describe('Feeds Controller', function () {
     });
 
     describe('loadAllFeeds Function', function () {
-        it.skip('should access the database and get latest 20 records per type', function () {
+        it('should access the database and get latest 20 records per type', function () {
             var data = getFeedsData().allFeeds,
                 socketSpy = {emit: sinon.spy()},
                 execSpy = sinon.spy(function (callback) {
@@ -71,7 +71,7 @@ describe('Feeds Controller', function () {
 
             expect(execSpy.called).to.be.ok;
             expect(socketSpy.emit.called).to.be.ok;
-            expect(socketSpy.emit.args[0][1].length).to.equal(60);
+            expect(socketSpy.emit.args[0][1].length).to.equal(63);
 
         });
     });

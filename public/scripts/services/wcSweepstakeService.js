@@ -473,5 +473,5 @@ angular.module('mercuriousApp')
             };
 
             return flags;
-        }
+        };
     });
