@@ -1,19 +1,16 @@
 'use strict';
 angular.module('mercuriousApp')
     .controller('CodeReviewOverviewCtrl', function ($scope, socket, githubService) {
-        githubService.getUserInfo('chapperz').then(function (data) {
-                $scope.user = data;
-                console.log(data);
-            }
-        );
-
-        githubService.getUserRepos('chapperz').then(function (data) {
-            $scope.repositories = data;
-            console.log(data);
-        });
+        $scope.pullRequests = [];
 
         githubService.getUserSubscriptions('chapperz').then(function (data) {
-            $scope.subscriptions = data;
-            console.log(data);
+            for (var sub in data) {
+                if (data[sub] && data[sub].open_issues !== 0) {
+                    githubService.getPullRequest(data[sub].full_name).then(function (data) {
+                        $scope.pullRequests.push(data);
+                    });
+                }
+            }
+
         });
     });

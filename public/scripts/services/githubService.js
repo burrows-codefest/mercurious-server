@@ -4,6 +4,20 @@ angular.module('mercuriousApp')
     .service('githubService', function ($http, $q) {
         var gitUrl = 'https://api.github.com/';
 
+        function getUserSubs (user) {
+            var defer = $q.defer(),
+                repoUrl = gitUrl + 'users/' + user + '/subscriptions';
+
+            $http({method: 'GET', url: repoUrl}).success(function (data) {
+                defer.resolve(data);
+            }).
+                error(function (data, status) {
+                    defer.reject(status + ' | bad');
+                });
+
+            return defer.promise;
+        }
+
         this.getUserInfo = function (user) {
             var defer = $q.defer(),
                 repoUrl = gitUrl + 'users/' + user;
@@ -33,16 +47,21 @@ angular.module('mercuriousApp')
         };
 
         this.getUserSubscriptions = function (user) {
-            var defer = $q.defer(),
-                repoUrl = gitUrl + 'users/' + user + '/subscriptions';
+            return getUserSubs(user);
+        };
 
-            $http({method: 'GET', url: repoUrl}).success(function (data) {
-                defer.resolve(data);
-            }).
+        this.getPullRequest = function (fullname) {
+            var deferPR = $q.defer();
+
+            $http({method: 'GET', url: gitUrl + 'repos/' + fullname + '/pulls'})
+                .success(function (data) {
+                    deferPR.resolve(data);
+                    console.log('hre', data);
+                }).
                 error(function (data, status) {
-                    defer.reject(status + ' | bad');
+                    deferPR.reject(status + ' | bad');
                 });
 
-            return defer.promise;
+            return deferPR.promise;
         };
     });

@@ -3,7 +3,8 @@
 describe('Services: githubService', function () {
     var githubS, httpMock,
         user = 'testUser',
-        gitUserUrl = 'https://api.github.com/users/';
+        gitUrl = 'https://api.github.com/',
+        gitUserUrl = gitUrl + 'users/';
 
     beforeEach(module('mercuriousApp'));
 
@@ -51,5 +52,18 @@ describe('Services: githubService', function () {
 
         httpMock.flush();
         expect(promiseResult).toBe('test1');
+    });
+
+    it('should return all users pull requests', function () {
+        var mockPR;
+
+        httpMock.expectGET(gitUrl + 'repos/' + user + '/pulls').respond('test1');
+
+        githubS.getPullRequest(user).then(function (data) {
+            mockPR = data;
+        });
+
+        httpMock.flush();
+        expect(mockPR).toBe('test1');
     });
 });

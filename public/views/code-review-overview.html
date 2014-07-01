@@ -27,3 +27,13 @@
         </div>
     </li>
 </ul>
+
+<h2>PR's</h2>
+<ul>
+    <li ng-repeat="repo in pullRequests | orderBy:'-watchers_count' | limitTo: 20">
+        <div class="repo-info">
+            <a href="#/repo/{{ user }}/{{ repo.name }}">{{ repo.name }}</a><br />
+            <span class="last-updated">Last updated: {{ repo.updated_at | date:'medium'}}</span>
+        </div>
+    </li>
+</ul>
