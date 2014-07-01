@@ -11,7 +11,7 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
+                templateUrl: 'views/mainCtrl.html',
                 controller: 'MainCtrl'
             })
             .when('/create-meme/', {
