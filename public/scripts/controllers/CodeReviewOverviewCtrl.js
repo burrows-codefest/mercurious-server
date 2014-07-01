@@ -1,31 +1,19 @@
 'use strict';
 angular.module('mercuriousApp')
-    .controller('CodeReviewOverviewCtrl', function ($scope, socket, dbService) {
-        $scope.createMeme = false;
-        $scope.feed = [];
-
-        socket.emit('message', {type: 'feed'});
-
-        socket.on('message', function (data) {
-            $scope.feed = data;
-        });
-
-        socket.on('vote', function (data) {
-            for (var item in $scope.feed) {
-                if ($scope.feed[item]._id && ($scope.feed[item]._id.indexOf(data.id) !== -1)) {
-                    $scope.feed[item][data.type] = data.value;
-                }
+    .controller('CodeReviewOverviewCtrl', function ($scope, socket, githubService) {
+        githubService.getUserInfo('chapperz').then(function (data) {
+                $scope.user = data;
+                console.log(data);
             }
+        );
+
+        githubService.getUserRepos('chapperz').then(function (data) {
+            $scope.repositories = data;
+            console.log(data);
         });
 
-        socket.on('new item', function (data) {
-            $scope.feed.push(data);
+        githubService.getUserSubscriptions('chapperz').then(function (data) {
+            $scope.subscriptions = data;
+            console.log(data);
         });
-        socket.on('ping', function () {
-            socket.emit('pong');
-        });
-
-        $scope.sendVote = function(memeId, action) {
-            dbService.sendVote(memeId, action);
-        };
     });

@@ -5,8 +5,7 @@ angular
         'ngCookies',
         'ngResource',
         'ngSanitize',
-        'ngRoute',
-        'firebase'
+        'ngRoute'
     ])
     .config(function ($routeProvider) {
         $routeProvider
