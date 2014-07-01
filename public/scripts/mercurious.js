@@ -11,7 +11,7 @@ angular
     .config(function ($routeProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/mainCtrl.html',
+                templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
             .when('/create-meme/', {
@@ -25,6 +25,10 @@ angular
             .when('/meme/:id', {
                 templateUrl: 'views/view-meme.html',
                 controller: 'ViewMemeCtrl'
+            })
+            .when('/cr/', {
+                templateUrl: 'views/code-review-overview.html',
+                controller: 'CodeReviewOverviewCtrl'
             })
             .otherwise({
                 redirectTo: '/'
