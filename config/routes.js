@@ -71,7 +71,7 @@ module.exports = function (app, socks) {
 
         socket.on(constants.SOCKET.PING_RETURN, function () {});
 
-        socket.on(constants.SOCKET.GITHUB_PR, function () {
+        socket.on(constants.SOCKET.GITHUB_ALL_PR, function () {
             github.getAllRequests(socket);
         });
     });
