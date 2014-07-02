@@ -1,0 +1,9 @@
+<h2>Code Reviews</h2>
+<ul>
+    <li ng-repeat="pr in pullRequests | orderBy:'-watchers_count' | limitTo: 20">
+        <a ng-href="{{ pr.url }}" target="_blank">{{ pr.title }}</a> by {{ pr.publishedUserName }} | Date: {{ pr.publishedDate | date:'medium'}}<br />
+        {{ pr.repositoryName }}
+
+        <div class="repo-forks">{{ pr.open_issues }}</div>
+    </li>
+</ul>
