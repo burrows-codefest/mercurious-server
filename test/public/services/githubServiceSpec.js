@@ -10,7 +10,7 @@ describe('Services: githubService', function () {
 
     beforeEach(inject(function ($httpBackend) {
         httpMock = $httpBackend;
-        inject(function($injector) {
+        inject(function ($injector) {
             githubS = $injector.get('githubService');
         });
     }));
@@ -52,6 +52,47 @@ describe('Services: githubService', function () {
 
         httpMock.flush();
         expect(promiseResult).toBe('test1');
+    });
+
+    it('should return a github users with subscriptions that only have issues', function () {
+        var promiseResult,
+            mockSubscriptions = [
+                {
+                    "id": 16324626,
+                    "name": "test1",
+                    "full_name": "user1/test1",
+                    "open_issues": 0
+                },
+                {
+                    "id": 16324627,
+                    "name": "test2",
+                    "full_name": "user1/test2",
+                    "open_issues": 3
+                },
+                {
+                    "id": 16324628,
+                    "name": "test3",
+                    "full_name": "user2/test3",
+                    "open_issues": 0
+                },
+                {
+                    "id": 16324627,
+                    "name": "test4",
+                    "full_name": "user1/test4",
+                    "open_issues": 1
+                },
+            ];
+
+        httpMock.expectGET(gitUserUrl + user + '/subscriptions').respond(mockSubscriptions);
+
+        githubS.getUserSubscriptionsWithIssues(user).then(function (data) {
+            promiseResult = data;
+        });
+
+        httpMock.flush();
+        expect(promiseResult.length).toBe(2);
+        expect(promiseResult[0].name).toBe('test2');
+        expect(promiseResult[1].name).toBe('test4');
     });
 
     it('should return all users pull requests', function () {
