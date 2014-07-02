@@ -1,6 +1,7 @@
 'use strict';
 
 var GithubModel = require('../models/Github'),
+    constants = require('../../config/constants'),
     socks;
 
 exports.loadFeed = function (socketIO) {
@@ -10,10 +11,20 @@ exports.loadFeed = function (socketIO) {
 exports.addRecord = function (record) {
     var dbRecord = new GithubModel(record);
 
-    dbRecord.save();
+    dbRecord.save(function (err, newRecord) {
+        socks.emit(constants.SOCKET.GITHUB_NEW_PR, newRecord);
+    });
 };
 
 exports.updateRecord = function (record) {
     GithubModel.findOneAndUpdate({id: record.id}, {$set: {status: record.status, closedDate: record.closedDate}},
-        function () {});
+        function (err, updatedRecord) {
+            socks.emit(constants.SOCKET.GITHUB_UPDATED_PR, updatedRecord);
+        });
+};
+
+exports.getAllRecords = function (callback) {
+    GithubModel.find({}, function (err, results) {
+        callback(results);
+    });
 };
