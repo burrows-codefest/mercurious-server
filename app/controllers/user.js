@@ -19,9 +19,9 @@ exports.authenticate = function (req, res) {
         .exec(function (err, results) {
             if (results.length === 1) {
                 req.session.user = true;
-                res.redirect('/admin');
+                res.redirect(constants.PATH.ADMIN);
             } else {
-                res.redirect('/signin');
+                res.redirect(constants.PATH.LOGIN);
             }
         });
 };

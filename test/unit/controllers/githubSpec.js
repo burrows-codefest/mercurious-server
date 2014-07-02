@@ -69,4 +69,31 @@ describe('Github Controller', function () {
             expect(githubServiceSpy.updateRecord.called).to.be.ok;
         });
     });
+
+    describe('getAllRequests Function', function () {
+        it('should not be undefined', function () {
+            expect(github.getAllRequests).to.be.ok;
+        });
+
+        it('should call github services to get all requests', function () {
+            var results = 'results object',
+                socketSpy = {
+                    emit: sinon.spy()
+                },
+                githubServiceSpy = {
+                    getAllRecords: sinon.spy(function (callback) {
+                      callback(results);
+                    })
+                };
+
+            github.__set__('githubService', githubServiceSpy);
+
+            github.getAllRequests(socketSpy);
+
+            expect(githubServiceSpy.getAllRecords.called).to.be.ok;
+            expect(socketSpy.emit.called).to.be.ok;
+            expect(socketSpy.emit.args[0][0]).to.equal(constants.SOCKET.GITHUB_ALL_PR);
+            expect(socketSpy.emit.args[0][1]).to.equal(results);
+        });
+    });
 });
