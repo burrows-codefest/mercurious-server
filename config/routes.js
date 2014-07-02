@@ -68,6 +68,11 @@ module.exports = function (app, socks) {
         socket.on(constants.SOCKET.MESSAGE, function (data) {
             socketIO.incomingMessage(socks, socket, data);
         });
+
         socket.on(constants.SOCKET.PING_RETURN, function () {});
+
+        socket.on(constants.SOCKET.GITHUB_PR, function () {
+            github.getAllRequests(socket);
+        });
     });
 };

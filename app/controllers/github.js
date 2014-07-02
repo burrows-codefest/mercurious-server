@@ -37,6 +37,8 @@ exports.incomingWebhook = function (req, res) {
     res.send();
 };
 
-exports.getLatestRequests = function () {
-
+exports.getAllRequests = function (socket) {
+    githubService.getAllRecords(function (results) {
+        socket.emit(constants.SOCKET.GITHUB_ALL_PR, results);
+    });
 };
