@@ -17,6 +17,10 @@ module.exports = {
         GITHUB: 'github',
         USER: 'User'
     },
+    PATH: {
+        ADMIN: '/admin',
+        LOGIN: '/signin'
+    },
     SOCKET: {
         DEFAULT_CHANNEL: 'mercurious',
         ERROR: 'error',
