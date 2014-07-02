@@ -1,39 +1,9 @@
 <ng-include src="'views/header.html'"></ng-include>
 
-<h2>Repos</h2>
+<h2>Subscriptions With Issues</h2>
 <ul>
-    <li ng-repeat="repo in repositories | orderBy:'-watchers_count' | limitTo: 20">
-        <div class="repo-info">
-            <a href="#/repo/{{ user }}/{{ repo.name }}">{{ repo.name }}</a><br />
-            <span class="last-updated">Last updated: {{ repo.updated_at | date:'medium'}}</span>
-        </div>
-        <div class="repo-stats">
-            <div class="repo-watchers">{{ repo.watchers_count }}</div>
-            <div class="repo-forks">{{ repo.forks_count }}</div>
-        </div>
-    </li>
-</ul>
-
-<h2>Subscriptions</h2>
-<ul>
-    <li ng-repeat="repo in subscriptions | orderBy:'-watchers_count' | limitTo: 20">
-        <div class="repo-info">
-            <a href="#/repo/{{ user }}/{{ repo.name }}">{{ repo.name }}</a><br />
-            <span class="last-updated">Last updated: {{ repo.updated_at | date:'medium'}}</span>
-        </div>
-        <div class="repo-stats">
-            <div class="repo-watchers">{{ repo.watchers_count }}</div>
-            <div class="repo-forks">{{ repo.open_issues }}</div>
-        </div>
-    </li>
-</ul>
-
-<h2>PR's</h2>
-<ul>
-    <li ng-repeat="repo in pullRequests | orderBy:'-watchers_count' | limitTo: 20">
-        <div class="repo-info">
-            <a href="#/repo/{{ user }}/{{ repo.name }}">{{ repo.name }}</a><br />
-            <span class="last-updated">Last updated: {{ repo.updated_at | date:'medium'}}</span>
-        </div>
+    <li ng-repeat="subscription in subscriptionsWithIssues | orderBy:'-watchers_count' | limitTo: 20">
+        {{ subscription.name }} | Last updated: {{ subscription.updated_at | date:'medium'}}
+        <div class="repo-forks">{{ subscription.open_issues }}</div>
     </li>
 </ul>

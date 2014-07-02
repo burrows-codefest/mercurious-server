@@ -4,7 +4,7 @@ angular.module('mercuriousApp')
     .service('githubService', function ($http, $q) {
         var gitUrl = 'https://api.github.com/';
 
-        function getUserSubs (user) {
+        function getUserSubs(user) {
             var defer = $q.defer(),
                 repoUrl = gitUrl + 'users/' + user + '/subscriptions';
 
@@ -48,6 +48,26 @@ angular.module('mercuriousApp')
 
         this.getUserSubscriptions = function (user) {
             return getUserSubs(user);
+        };
+
+        this.getUserSubscriptionsWithIssues = function (user) {
+            var defer = $q.defer(),
+                repoUrl = gitUrl + 'users/' + user + '/subscriptions';
+
+            $http({method: 'GET', url: repoUrl}).success(function (data) {
+                var i, subsWithIss = [];
+
+                for (i = 0; i < data.length; i += 1) {
+                    if (data[i] && data[i].open_issues !== 0) {
+                        subsWithIss.push(data[i]);
+                    }
+                }
+                defer.resolve(subsWithIss);
+            }).error(function (data, status) {
+                defer.reject(status + ' | bad');
+            });
+
+            return defer.promise;
         };
 
         this.getPullRequest = function (fullname) {
