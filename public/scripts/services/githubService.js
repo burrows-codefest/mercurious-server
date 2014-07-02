@@ -10,10 +10,9 @@ angular.module('mercuriousApp')
 
             $http({method: 'GET', url: repoUrl}).success(function (data) {
                 defer.resolve(data);
-            }).
-                error(function (data, status) {
-                    defer.reject(status + ' | bad');
-                });
+            }).error(function (data, status) {
+                defer.reject(status + ' | bad');
+            });
 
             return defer.promise;
         }
@@ -24,10 +23,9 @@ angular.module('mercuriousApp')
 
             $http({method: 'GET', url: repoUrl}).success(function (data) {
                 defer.resolve(data);
-            }).
-                error(function (data, status) {
-                    defer.reject(status + ' | bad');
-                });
+            }).error(function (data, status) {
+                defer.reject(status + ' | bad');
+            });
 
             return defer.promise;
         };
@@ -38,10 +36,9 @@ angular.module('mercuriousApp')
 
             $http({method: 'GET', url: repoUrl}).success(function (data) {
                 defer.resolve(data);
-            }).
-                error(function (data, status) {
-                    defer.reject(status + ' | bad');
-                });
+            }).error(function (data, status) {
+                defer.reject(status + ' | bad');
+            });
 
             return defer.promise;
         };
@@ -76,7 +73,6 @@ angular.module('mercuriousApp')
             $http({method: 'GET', url: gitUrl + 'repos/' + fullname + '/pulls'})
                 .success(function (data) {
                     deferPR.resolve(data);
-                    console.log('hre', data);
                 }).
                 error(function (data, status) {
                     deferPR.reject(status + ' | bad');
