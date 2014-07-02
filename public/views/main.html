@@ -1,60 +1,64 @@
 <ng-include src="'views/header.html'"></ng-include>
+<div class="left-col">
+    <div class="search">
+        <input ng-model="search.$" placeholder="Search"> <a ng-click="search = ''" href>&#9447;</a>
 
-<div class="search">
-    <input ng-model="search.$" placeholder="Search"> <a ng-click="search = ''" href>&#9447;</a>
-  
-    <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
+        <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
 
-    <table class="filter">
-        <tr>
-            <td><label for="typeSearch-all"    >All</label></td>
-            <td><label for="typeSearch-meme"   ><img src="../images/meme-logo.png" class="filter-image"/></label></td>
-            <td><label for="typeSearch-b"      ><img src="../images/burrows_logo.png" class="filter-image"/></label></td>
-            <td><label for="typeSearch-twitter"><img src="../images/twitter_logo_blue.png" class="filter-image" /></label></td>
-            <td><label for="typeSearch-race"   ><img src="../images/forza-logo.jpg" class="filter-image"/></label></td>
-            <td><label for="typeSearch-git"    ><img src="../images/git-logo.png" class="filter-image"/></label></td>
-        </tr>
-        <tr>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-all"     value="all"  ng-checked="true" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-meme"    value="meme" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-b"       value="b-intheknow" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-twitter" value="twitter" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-race"    value="raceReport" /></td>
-            <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-git"     value="github" /></td>
-        </tr>
-    </table>
+        <table class="filter">
+            <tr>
+                <td><label for="typeSearch-all"    >All</label></td>
+                <td><label for="typeSearch-meme"   ><img src="../images/meme-logo.png" class="filter-image"/></label></td>
+                <td><label for="typeSearch-b"      ><img src="../images/burrows_logo.png" class="filter-image"/></label></td>
+                <td><label for="typeSearch-twitter"><img src="../images/twitter_logo_blue.png" class="filter-image" /></label></td>
+                <td><label for="typeSearch-race"   ><img src="../images/forza-logo.jpg" class="filter-image"/></label></td>
+                <td><label for="typeSearch-git"    ><img src="../images/git-logo.png" class="filter-image"/></label></td>
+            </tr>
+            <tr>
+                <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-all"     value="all"  ng-checked="true" /></td>
+                <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-meme"    value="meme" /></td>
+                <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-b"       value="b-intheknow" /></td>
+                <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-twitter" value="twitter" /></td>
+                <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-race"    value="raceReport" /></td>
+                <td><input type="radio" name="typeSearch" ng-model="search.type" id="typeSearch-git"     value="github" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <ul class="feed-list">
+        <li ng-repeat="item in feed | filter: search | orderBy: '-publishedDate'" ng-switch="item.type" class="item item_{{ item.type }}">
+            <div ng-switch-default>
+                <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
+                <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
+                <div class="item-desc" ng-bind-html="item.text"></div>
+            </div>
+
+            <div ng-switch-when="meme" class="meme">
+                <div class="meme-template">
+                    <img ng-src="{{ item.imgUrl }}" width="250" height="180" />
+                    <span class="meme-textline meme-textline-top" ng-class="item.fontColor" >{{ item.title }}</span>
+                    <span class="meme-textline meme-textline-bottom" ng-class="item.fontColor" >{{ item.text }}</span>
+                </div>
+
+                <div class="meme-vote" ng-show="item._id" >
+                    <a ng-click="sendVote(item._id, 'likes')"><img src="../images/like.png" width="15" /></a><span class="meme-like">{{ item.likes }}</span>
+                    </a><span class="meme-dislike">{{ item.dislikes }}</span><a ng-click="sendVote(item._id, 'dislikes')"><img src="../images/dislike.png" width="15" />
+                </div>
+
+                <a ng-href="/#/create-meme/{{ item._id }}"><img src="../images/reply-logo.png" width="20" height="20" /></a>
+                <div class="item-date">Context: <span ng-bind-html="item.context"></span></div>
+                <div class="item-date">
+                    {{ item.publishedDate | date:'medium'}}
+                </div>
+                <a ng-href="/#/meme/{{ item._id }}" ng-show="item._id" style="font-size: 13px">View</a>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="right-col">
+    <mer-code-review-status></mer-code-review-status>
 </div>
 
 <div ng-show="feed">
     <mer-wc-sweepstake></mer-wc-sweepstake>
 </div>
-
-<ul class="feed-list">
-    <li ng-repeat="item in feed | filter: search | orderBy: '-publishedDate'" ng-switch="item.type" class="item item_{{ item.type }}">
-        <div ng-switch-default>
-            <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
-            <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
-            <div class="item-desc" ng-bind-html="item.text"></div>
-        </div>
-
-        <div ng-switch-when="meme" class="meme">
-            <div class="meme-template">
-                <img ng-src="{{ item.imgUrl }}" width="250" height="180" />
-                <span class="meme-textline meme-textline-top" ng-class="item.fontColor" >{{ item.title }}</span>
-                <span class="meme-textline meme-textline-bottom" ng-class="item.fontColor" >{{ item.text }}</span>
-            </div>
-
-            <div class="meme-vote" ng-show="item._id" >
-                <a ng-click="sendVote(item._id, 'likes')"><img src="../images/like.png" width="15" /></a><span class="meme-like">{{ item.likes }}</span>
-                </a><span class="meme-dislike">{{ item.dislikes }}</span><a ng-click="sendVote(item._id, 'dislikes')"><img src="../images/dislike.png" width="15" />
-            </div>
-
-            <a ng-href="/#/create-meme/{{ item._id }}"><img src="../images/reply-logo.png" width="20" height="20" /></a>
-            <div class="item-date">Context: <span ng-bind-html="item.context"></span></div>
-            <div class="item-date">
-                {{ item.publishedDate | date:'medium'}}
-            </div>
-            <a ng-href="/#/meme/{{ item._id }}" ng-show="item._id" style="font-size: 13px">View</a>
-        </div>
-    </li>
-</ul>
