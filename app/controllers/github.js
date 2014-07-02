@@ -37,4 +37,6 @@ exports.incomingWebhook = function (req, res) {
     res.send();
 };
 
+exports.getLatestRequests = function () {
 
+};
