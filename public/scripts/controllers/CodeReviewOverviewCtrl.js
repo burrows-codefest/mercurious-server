@@ -2,11 +2,11 @@
 angular.module('mercuriousApp')
     .controller('CodeReviewOverviewCtrl', function ($scope, socket) {
         $scope.pullRequests = [];
+
         socket.emit('githubAllPullRequest', {});
 
         socket.on('githubAllPullRequest', function (data) {
             $scope.pullRequests = data;
-            console.log(data);
         });
 
         socket.on('githubNewPullRequest', function(data) {

@@ -1,8 +1,11 @@
-<h2>Code Reviews</h2>
-<ul>
-    <li ng-repeat="pr in pullRequests | orderBy:'-publishedDate' | limitTo: 20">
-        <a ng-href="{{ pr.url }}" target="_blank">{{ pr.title }}</a> ({{ pr.repositoryName }}) by {{ pr.publishedUserName }}<br />
-        Date: {{ pr.publishedDate | date:'medium'}}<br />
-        {{ pr.body }}
-    </li>
-</ul>
+<div class="code-review-directive">
+    <h2>Code Reviews</h2>
+    <ul>
+        <li ng-repeat="pr in pullRequests | orderBy:'-publishedDate' | limitTo: 20">
+            <a ng-href="{{ pr.url }}" target="_blank">{{ pr.title }}</a> ({{ pr.repositoryName }}) by {{
+            pr.publishedUserName }}<br/>
+            Date: {{ pr.publishedDate | date:'medium'}}<br/>
+            {{ pr.body }}
+        </li>
+    </ul>
+</div>
