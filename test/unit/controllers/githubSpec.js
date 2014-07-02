@@ -69,4 +69,10 @@ describe('Github Controller', function () {
             expect(githubServiceSpy.updateRecord.called).to.be.ok;
         });
     });
+
+    describe('getLatestRequests Function', function () {
+        it('should not be undefined', function () {
+            expect(github.getLatestRequests).to.be.ok;
+        });
+    });
 });
