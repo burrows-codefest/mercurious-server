@@ -91,7 +91,8 @@ angular.module('mercuriousApp')
                     id: 12,
                     country: 'United States',
                     rank: 13,
-                    owner: 'Tim'
+                    owner: 'Tim',
+                    eliminated: true
                 },
                 {
                     id: 13,
@@ -215,7 +216,8 @@ angular.module('mercuriousApp')
                 {
                     id: 31,
                     country: 'Switzerland',
-                    rank: 7
+                    rank: 7,
+                    eliminated: true
                 }
             ];
 
@@ -473,5 +475,5 @@ angular.module('mercuriousApp')
             };
 
             return flags;
-        }
+        };
     });

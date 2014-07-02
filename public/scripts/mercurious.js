@@ -5,8 +5,7 @@ angular
         'ngCookies',
         'ngResource',
         'ngSanitize',
-        'ngRoute',
-        'firebase'
+        'ngRoute'
     ])
     .config(function ($routeProvider) {
         $routeProvider
@@ -25,6 +24,10 @@ angular
             .when('/meme/:id', {
                 templateUrl: 'views/view-meme.html',
                 controller: 'ViewMemeCtrl'
+            })
+            .when('/cr/', {
+                templateUrl: 'views/code-review-overview.html',
+                controller: 'CodeReviewOverviewCtrl'
             })
             .otherwise({
                 redirectTo: '/'

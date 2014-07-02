@@ -16,10 +16,10 @@ module.exports = function(config) {
             'public/components/angular-cookies/angular-cookies.js',
             'public/components/angular-sanitize/angular-sanitize.js',
             'public/components/angular-route/angular-route.js',
+            'public/components/angular-mocks/angular-mocks.js',
             'public/scripts/*.js',
             'public/scripts/**/*.js',
-            'test/public/**/*.js',
-            'test/app/**/*.js'
+            'test/public/**/*.js'
         ],
 
         // list of files / patterns to exclude
