@@ -12,7 +12,6 @@ angular.module('mercuriousApp')
 
                 socket.on('githubAllPullRequest', function (data) {
                     scope.pullRequests = data;
-                    console.log(data);
                 });
 
                 socket.on('githubNewPullRequest', function(data) {
