@@ -1,0 +1,35 @@
+
+<ul class="feed-list">
+    <li ng-repeat="item in merFeed | filter: merFilter | orderBy: '-publishedDate'" ng-switch="item.type" class="item item_{{ item.type }}">
+        <div ng-switch-default>
+            <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>
+            <div class="item-date">{{ item.publishedDate | date:'medium'}}</div>
+            <div class="item-desc" ng-bind-html="item.text"></div>
+        </div>
+
+        <div ng-switch-when="meme" class="meme">
+            <div class="meme-template">
+                <a ng-href="/#/meme/{{ item._id }}"><span class="meme-textline meme-textline-top" ng-class="item.fontColor" >{{ item.title }}</span></a>
+                <a ng-href="/#/meme/{{ item._id }}"><img ng-src="{{ item.imgUrl }}" width="250" height="180" /></a>
+                <a ng-href="/#/meme/{{ item._id }}"><span class="meme-textline meme-textline-bottom" ng-class="item.fontColor" >{{ item.text }}</span></a>
+            </div>
+
+            <div class="item-date">
+                {{ item.publishedDate | date:'medium'}}
+            </div>
+
+            <div class="meme-vote" ng-show="item._id" >
+                <a ng-click="sendVote(item._id, 'likes')"><img src="../images/like.png" width="15" />
+                    <span class="meme-like">{{ item.likes }}</span>
+                </a>
+                <span class="meme-dislike">{{ item.dislikes }}</span>
+
+                <a ng-click="sendVote(item._id, 'dislikes')"><img src="../images/dislike.png" width="15" /></a>
+            </div>
+
+            <a ng-href="/#/create-meme/{{ item._id }}"><img src="../images/reply-logo.png" width="20" height="20" /></a>
+
+            <div class="context" ng-bind-html="item.context"></div>
+        </div>
+    </li>
+</ul>

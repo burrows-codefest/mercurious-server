@@ -13,6 +13,7 @@
     box-shadow: 0 0 10px 1px #0cf;
   }
   .meme-textline {
+    height: $meme-line-height;
     display: block;
     font-size: 19px;
     color: white;
@@ -22,24 +23,26 @@
   }
   .meme-textline-top {
     position: relative;
-    top: -180px;
+    top: 35px;
   }
   .meme-textline-bottom {
     position: relative;
-    top: -75px;
+    top: -45px;
+  }
+  .context {
+    font-size: 14px;
+    width: 100%;
+    height: 20px;
+    overflow: hidden;
   }
 }
 
 .meme-template {
-  height: 180px;
+  height: 189px;
   margin: 10px 0 0 0;
+  top: -$meme-line-height;
+  position: relative;
   clear: both;
-}
-
-.meme-context {
-  color: #000;
-  font-size: 10px;
-  background-color: white;
 }
 
 .meme-button {
