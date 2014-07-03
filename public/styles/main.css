@@ -1,0 +1,266 @@
+html {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  padding: 20px 0;
+  background-color: #e3e3e3;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #333333; }
+
+a {
+  color: #428bca;
+  text-decoration: none; }
+
+input {
+  color: inherit; }
+
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 30px; }
+
+.text-muted {
+  color: #999999; }
+
+.search {
+  position: absolute;
+  top: 6px;
+  left: 256px;
+  background-color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  padding: 8px 4px 8px 12px; }
+
+.filter {
+  padding: 0;
+  margin: 0; }
+  .filter td {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 30px; }
+
+.filter label, .filter input {
+  cursor: pointer; }
+
+.filter-image {
+  width: 25px; }
+
+ul.feed-list {
+  padding: 0;
+  list-style: none; }
+
+.item {
+  float: left;
+  width: 250px;
+  height: 300px;
+  padding: 0 10px 10px 10px;
+  margin: 10px 10px 10px 0;
+  overflow: hidden;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  text-align: center; }
+  .item h3 {
+    margin: 10px 0 0 23px;
+    padding: 0;
+    width: 200px; }
+
+.item.item_b-intheknow {
+  background-image: url('../images/burrows_logo.png');
+  background-size: 10%;
+  background-repeat: no-repeat;
+  background-position: 10px 10px; }
+
+.item.item_twitter {
+  background-image: url('../images/twitter_logo_blue.png');
+  background-size: 10%;
+  background-repeat: no-repeat;
+  background-position: 10px 10px; }
+
+.item-desc {
+  width: 250px;
+  height: 230px;
+  text-align: left;
+  font-size: 11px;
+  overflow-y: auto; }
+  .item-desc img {
+    width: 100%; }
+
+.item_twitter .item-desc {
+  font-size: 15px;
+  padding-top: 15px; }
+
+.item-date {
+  font-size: 11px;
+  padding: 0;
+  margin: 0; }
+
+.traffic-status {
+  position: absolute; }
+  .traffic-status .road {
+    width: 50px; }
+  .traffic-status .roads {
+    width: 50px; }
+  .traffic-status .road.good {
+    background-color: green;
+    color: #ffffff; }
+  .traffic-status .road.accident {
+    background-color: red; }
+
+.meme {
+  text-align: center;
+  font-size: 20px; }
+  .meme input[type=text].meme-textline {
+    background: transparent;
+    border: 0;
+    width: 100%;
+    text-align: center; }
+  .meme input:focus {
+    outline: 0;
+    box-shadow: 0 0 10px 1px #0cf; }
+  .meme .meme-textline {
+    display: block;
+    font-size: 19px;
+    color: white;
+    font-family: "Arial Narrow", Arial, sans-serif;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+  .meme .meme-textline-top {
+    position: relative;
+    top: -180px; }
+  .meme .meme-textline-bottom {
+    position: relative;
+    top: -75px; }
+
+.meme-template {
+  height: 180px;
+  margin: 10px 0 0 0;
+  clear: both; }
+
+.meme-context {
+  color: #000;
+  font-size: 10px;
+  background-color: white; }
+
+.meme-button {
+  border: 2px solid #428bca;
+  background-color: #fff;
+  padding: 5px;
+  height: 24px;
+  margin-left: 50px; }
+
+.meme-vote {
+  font-size: 18px; }
+  .meme-vote img {
+    margin: 0 5px; }
+  .meme-vote .meme-like {
+    color: green; }
+  .meme-vote .meme-dislike {
+    color: red; }
+
+.meme-creator-template {
+  width: 25%;
+  max-width: 250px;
+  float: left;
+  clear: left; }
+
+.choose-template {
+  width: 70%;
+  margin-left: 5%;
+  float: left; }
+
+ul.template-selection {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+  ul.template-selection li {
+    float: left;
+    margin: 0 5px 0 0;
+    padding: 0; }
+    ul.template-selection li img {
+      cursor: pointer; }
+
+ul.color-picker {
+  list-style: none; }
+  ul.color-picker li {
+    float: left;
+    padding: 0;
+    margin: 5px; }
+
+.color-picker .meme-color {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e3e3e3; }
+.color-picker .selected {
+  border: 3px solid orange; }
+.color-picker .black-bg {
+  background-color: black; }
+.color-picker .white-bg {
+  background-color: white; }
+.color-picker .red-bg {
+  background-color: red; }
+.color-picker .blue-bg {
+  background-color: blue; }
+.color-picker .green-bg {
+  background-color: green; }
+.color-picker .yellow-bg {
+  background-color: yellow; }
+
+html body .container .black-font {
+  color: black; }
+html body .container .white-font {
+  color: white; }
+html body .container .red-font {
+  color: red; }
+html body .container .blue-font {
+  color: blue; }
+html body .container .green-font {
+  color: green; }
+html body .container .yellow-font {
+  color: yellow; }
+
+.sweepstake {
+  background-color: #fff;
+  box-shadow: 0 0 10px 1px #333;
+  width: 100%;
+  margin: 0;
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  left: 0;
+  padding: 0 10px; }
+  .sweepstake h2 {
+    font-size: 13px;
+    margin: 0;
+    padding: 0; }
+  .sweepstake ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    clear: both;
+    background-color: #fff; }
+    .sweepstake ul li {
+      float: left;
+      font-size: 11px;
+      border: 1px #428bca solid;
+      margin: 2px;
+      padding: 2px;
+      height: 11px;
+      line-height: 10px;
+      width: 225px; }
+  .sweepstake img {
+    float: right; }
+  .sweepstake .team {
+    width: 140px;
+    float: left; }
+  .sweepstake .owner {
+    width: 60px;
+    float: left;
+    clear: right; }
+  .sweepstake .eliminated li {
+    background-color: red;
+    color: #eee; }
