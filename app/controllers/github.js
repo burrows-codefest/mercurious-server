@@ -9,9 +9,10 @@ exports.incomingWebhook = function (req, res) {
         githubEvent = req.headers[constants.GITHUB.EVENT_HEADER];
 
     if (githubEvent === constants.GITHUB.EVENTS.PULL_REQUEST) {
-        if(requestBody.action === constants.GITHUB.ACTIONS.OPEN) {
+        if (requestBody.action === constants.GITHUB.ACTIONS.OPEN) {
             newRecord = {
                 id: requestBody.pull_request.id,
+                issueNumber: requestBody.number,
                 title: requestBody.pull_request.title,
                 body: requestBody.pull_request.body,
                 status: requestBody.action,
@@ -32,6 +33,27 @@ exports.incomingWebhook = function (req, res) {
                 closedDate: new Date(requestBody.pull_request.closed_at)
             });
         }
+    } else if (githubEvent === constants.GITHUB.EVENTS.ISSUE_COMMENT ||
+        githubEvent === constants.GITHUB.EVENTS.PULL_REQUEST_COMMENT) {
+        var comment = {
+            id: requestBody.comment.id,
+            url: requestBody.comment.html_url,
+            body: requestBody.comment.body,
+            publishedDate: new Date(requestBody.comment.created_at),
+            repositoryId: requestBody.repository.id
+        };
+
+        if (requestBody.issue) {
+            comment.issueNumber = requestBody.issue.number;
+            comment.publishUserId = requestBody.issue.user.id;
+            comment.publishedUserName = requestBody.issue.user.login;
+        } else {
+            comment.issueNumber = requestBody.pull_request.number;
+            comment.publishUserId = requestBody.comment.user.id;
+            comment.publishedUserName = requestBody.comment.user.login;
+        }
+
+        githubService.addComment(comment);
     }
 
     res.send();

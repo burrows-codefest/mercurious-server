@@ -23,6 +23,19 @@ exports.updateRecord = function (record) {
         });
 };
 
+exports.addComment = function (record) {
+    GithubModel.findOne({issueNumber: record.issueNumber, repositoryId: record.repositoryId},
+        function (err, dbRecord) {
+            delete record.issueNumber;
+            delete record.repositoryId;
+
+            dbRecord.comments.push(record);
+            dbRecord.save(function (err, updatedRecord) {
+                socks.emit(constants.SOCKET.GITHUB_UPDATED_PR, updatedRecord);
+            });
+        });
+};
+
 exports.getAllRecords = function (callback) {
     GithubModel.find({}, function (err, results) {
         callback(results);

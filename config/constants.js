@@ -8,7 +8,9 @@ module.exports = {
         },
         EVENTS: {
             PUSH: 'push',
-            PULL_REQUEST: 'pull_request'
+            PULL_REQUEST: 'pull_request',
+            ISSUE_COMMENT: 'issue_comment',
+            PULL_REQUEST_COMMENT: 'pull_request_review_comment'
         },
         EVENT_HEADER: 'x-github-event'
     },

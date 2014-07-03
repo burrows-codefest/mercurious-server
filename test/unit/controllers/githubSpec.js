@@ -68,6 +68,26 @@ describe('Github Controller', function () {
             expect(sendSpy.called).to.be.ok;
             expect(githubServiceSpy.updateRecord.called).to.be.ok;
         });
+
+        it('should receive a new issue comment hook', function () {
+            var data = getGithubData().issueOpen,
+                headers = {},
+                sendSpy = sinon.spy(),
+                githubServiceSpy = {
+                    addComment: sinon.spy()
+                };
+
+            github.__set__('githubService', githubServiceSpy);
+            headers[constants.GITHUB.EVENT_HEADER] = constants.GITHUB.EVENTS.ISSUE_COMMENT;
+
+            github.incomingWebhook({
+                body: data,
+                headers: headers
+            }, {send: sendSpy});
+
+            expect(sendSpy.called).to.be.ok;
+            expect(githubServiceSpy.addComment.called).to.be.ok;
+        });
     });
 
     describe('getAllRequests Function', function () {
