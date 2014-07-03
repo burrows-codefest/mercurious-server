@@ -17,6 +17,7 @@ module.exports = {
     ],
 
     'test': [
+        'sass',
         'jshint',
         'karma',
         'mocha-chai-sinon:unit'

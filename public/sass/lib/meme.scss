@@ -1,0 +1,134 @@
+.meme {
+  text-align: center;
+  font-size: 20px; }
+
+.meme-template {
+  height: 180px;
+  margin: 10px 0 0 0;
+  clear: both; }
+
+.meme .meme-textline {
+  display: block;
+  font-size: 19px;
+  color: white;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  text-transform: uppercase;
+  text-shadow: 2px 2px 0 #000, -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; }
+
+.meme .meme-textline-top {
+  position: relative;
+  top: -180px; }
+
+.meme .meme-textline-bottom {
+  position: relative;
+  top: -75px; }
+
+.meme input[type=text].meme-textline {
+  background: transparent;
+  border: 0;
+  width: 100%;
+  text-align: center; }
+
+.meme input:focus {
+  outline: 0;
+  box-shadow: 0 0 10px 1px #0cf; }
+
+.meme-context {
+  color: #000;
+  font-size: 10px;
+  background-color: white; }
+
+.meme-button {
+  border: 2px solid #428bca;
+  background-color: #fff;
+  padding: 5px;
+  height: 24px;
+  margin-left: 50px; }
+
+.meme-vote {
+  font-size: 18px; }
+
+.meme-vote img {
+  margin: 0 5px; }
+
+.meme-like {
+  color: green; }
+
+.meme-dislike {
+  color: red; }
+
+.meme-creator-template {
+  width: 25%;
+  max-width: 250px;
+  float: left;
+  clear: left; }
+
+.choose-template {
+  width: 70%;
+  margin-left: 5%;
+  float: left; }
+
+ul.template-selection {
+  list-style: none;
+  margin: 0;
+  padding: 0; }
+
+.template-selection li {
+  float: left;
+  margin: 0 5px 0 0;
+  padding: 0; }
+
+.template-selection li img {
+  cursor: pointer; }
+
+ul.color-picker {
+  list-style: none; }
+
+ul.color-picker li {
+  float: left;
+  padding: 0;
+  margin: 5px; }
+
+.color-picker .meme-color {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #e3e3e3; }
+
+.color-picker .selected {
+  border: 3px solid orange; }
+
+.color-picker .black-bg {
+  background-color: black; }
+
+.color-picker .white-bg {
+  background-color: white; }
+
+.color-picker .red-bg {
+  background-color: red; }
+
+.color-picker .blue-bg {
+  background-color: blue; }
+
+.color-picker .green-bg {
+  background-color: green; }
+
+.color-picker .yellow-bg {
+  background-color: yellow; }
+
+html body .container .black-font {
+  color: black; }
+
+html body .container .white-font {
+  color: white; }
+
+html body .container .red-font {
+  color: red; }
+
+html body .container .blue-font {
+  color: blue; }
+
+html body .container .green-font {
+  color: green; }
+
+html body .container .yellow-font {
+  color: yellow; }
