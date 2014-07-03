@@ -12,6 +12,7 @@ exports.incomingWebhook = function (req, res) {
         if(requestBody.action === constants.GITHUB.ACTIONS.OPEN) {
             newRecord = {
                 id: requestBody.pull_request.id,
+                issueNumber: requestBody.number,
                 title: requestBody.pull_request.title,
                 body: requestBody.pull_request.body,
                 status: requestBody.action,
@@ -32,8 +33,18 @@ exports.incomingWebhook = function (req, res) {
                 closedDate: new Date(requestBody.pull_request.closed_at)
             });
         }
+    } else if (githubEvent === constants.GITHUB.EVENTS.ISSUE_COMMENT) {
+        githubService.addComment({
+            id: requestBody.comment.id,
+            issueNumber: requestBody.issue.number,
+            url: requestBody.comment.html_url,
+            body: requestBody.comment.body,
+            publishUserId: requestBody.issue.user.id,
+            publishedUserName: requestBody.issue.user.login,
+            publishedDate: new Date(requestBody.comment.created_at),
+            repositoryId: requestBody.repository.id
+        });
     }
-
     res.send();
 };
 
