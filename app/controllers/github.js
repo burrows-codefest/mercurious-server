@@ -44,6 +44,17 @@ exports.incomingWebhook = function (req, res) {
             publishedDate: new Date(requestBody.comment.created_at),
             repositoryId: requestBody.repository.id
         });
+    } else if(githubEvent === constants.GITHUB.EVENTS.PULL_REQUEST_COMMENT) {
+        githubService.addComment({
+            id: requestBody.comment.id,
+            issueNumber: requestBody.pull_request.number,
+            url: requestBody.comment.html_url,
+            body: requestBody.comment.body,
+            publishUserId: requestBody.comment.user.id,
+            publishedUserName: requestBody.comment.user.login,
+            publishedDate: new Date(requestBody.comment.created_at),
+            repositoryId: requestBody.repository.id
+        });
     }
     res.send();
 };
