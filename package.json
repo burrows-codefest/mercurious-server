@@ -13,11 +13,11 @@
     "mongoose": "~3.6.14",
     "oauth": "^0.9.12",
     "parserss": "0.0.1",
-    "socket.io": "^1.0.2"
+    "socket.io": "^1.0.2",
+    "grunt": "~0.4.1",
+    "grunt-sass": "^0.14.0"
   },
   "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-compass": "~0.6.0",
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-sass": "^0.14.0",
