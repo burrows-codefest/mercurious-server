@@ -1,32 +1,37 @@
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%; }
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding: 20px 0;
   background-color: #e3e3e3;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.428571429;
-  color: #333333; }
+  line-height: 1.4;
+  color: #333333;
+}
 
 a {
   color: #428bca;
-  text-decoration: none; }
+  text-decoration: none;
+}
 
 input {
-  color: inherit; }
+  color: inherit;
+}
 
 .container {
   margin-right: auto;
   margin-left: auto;
-  padding: 0 30px; }
+  padding: 0 30px;
+}
 
 .text-muted {
-  color: #999999; }
+  color: #999999;
+}
 
 .search {
   position: absolute;
@@ -34,27 +39,33 @@ input {
   left: 256px;
   background-color: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  padding: 8px 4px 8px 12px; }
+  padding: 8px 4px 8px 12px;
+}
 
 .filter {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+
+  td {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 30px;
+  }
+}
 
 .filter label, .filter input {
-  cursor: pointer; }
-
-.filter td {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  width: 30px; }
+  cursor: pointer;
+}
 
 .filter-image {
-  width: 25px; }
+  width: 25px;
+}
 
 ul.feed-list {
   padding: 0;
-  list-style: none; }
+  list-style: none;
+}
 
 .item {
   float: left;
@@ -65,56 +76,63 @@ ul.feed-list {
   overflow: hidden;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   background-color: #ffffff;
-  text-align: center; }
-
-.item h3 {
-  margin: 10px 0 0 23px;
-  padding: 0;
-  width: 200px; }
+  text-align: center;
+  h3 {
+    margin: 10px 0 0 23px;
+    padding: 0;
+    width: 200px;
+  }
+}
 
 .item.item_b-intheknow {
   background-image: url('../images/burrows_logo.png');
   background-size: 10%;
   background-repeat: no-repeat;
-  background-position: 10px 10px; }
+  background-position: 10px 10px;
+}
 
 .item.item_twitter {
   background-image: url('../images/twitter_logo_blue.png');
   background-size: 10%;
   background-repeat: no-repeat;
-  background-position: 10px 10px; }
+  background-position: 10px 10px;
+}
 
 .item-desc {
   width: 250px;
   height: 230px;
   text-align: left;
   font-size: 11px;
-  overflow-y: auto; }
+  overflow-y: auto;
+  img {
+    width: 100%;
+  }
+}
 
 .item_twitter .item-desc {
   font-size: 15px;
-  padding-top: 15px; }
+  padding-top: 15px;
+}
 
 .item-date {
   font-size: 11px;
   padding: 0;
-  margin: 0; }
-
-.item-desc img {
-  width: 100%; }
+  margin: 0;
+}
 
 .traffic-status {
-  position: absolute; }
-
-.traffic-status .roads {
-  width: 50px; }
-
-.traffic-status .road {
-  width: 50px; }
-
-.traffic-status .road.good {
-  background-color: green;
-  color: #ffffff; }
-
-.traffic-status .road.accident {
-  background-color: red; }
+  position: absolute;
+  .road {
+    width: 50px;
+  }
+  .roads {
+    width: 50px;
+  }
+  .road.good {
+    background-color: green;
+    color: #ffffff;
+  }
+  .road.accident {
+    background-color: red;
+  }
+}

@@ -9,48 +9,49 @@
   z-index: 100;
   left: 0;
   padding: 0 10px;
-}
 
-.sweepstake h2 {
-  font-size: 13px;
-  margin: 0;
-  padding: 0;
-}
+  h2 {
+    font-size: 13px;
+    margin: 0;
+    padding: 0;
+  }
 
-.sweepstake ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  clear: both;
-  background-color: #fff;
-}
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    clear: both;
+    background-color: #fff;
 
-.sweepstake li {
-  float: left;
-  font-size: 11px;
-  border: 1px #428bca solid;
-  margin: 2px;
-  padding: 2px;
-  height: 11px;
-  line-height: 10px;
-  width: 225px;
-}
+    li {
+      float: left;
+      font-size: 11px;
+      border: 1px #428bca solid;
+      margin: 2px;
+      padding: 2px;
+      height: 11px;
+      line-height: 10px;
+      width: 225px;
+    }
+  }
 
-.sweepstake .team {
-  width: 140px;
-  float: left;
-}
+  img {
+    float: right;
+  }
 
-.sweepstake .owner {
-  width: 60px;
-  float: left;
-  clear: right;
-}
-.sweepstake img {
-  float: right;
-}
+  .team {
+    width: 140px;
+    float: left;
+  }
 
-.sweepstake .eliminated li {
-  background-color: red;
-  color: #eee;
+  .owner {
+    width: 60px;
+    float: left;
+    clear: right;
+  }
+
+  .eliminated li {
+    background-color: red;
+    color: #eee;
+  }
 }
