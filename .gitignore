@@ -2,3 +2,4 @@
 node_modules/
 .project
 public/components
+public/style
