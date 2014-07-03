@@ -107,6 +107,7 @@ if [[ "$IN_PLACE_DEPLOYMENT" -ne "1" ]]; then
 fi
 
 # 2. Select node version
+
 selectNodeVersion
 
 # 3. Install npm packages
