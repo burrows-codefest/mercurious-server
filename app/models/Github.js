@@ -8,6 +8,7 @@ var model,
 function getSchema() {
     return {
         id: Number,
+        issueNumber: Number,
         title: String,
         body: String,
         status: String,
@@ -17,7 +18,17 @@ function getSchema() {
         publishedDate: Date,
         closedDate: Date,
         repositoryId: Number,
-        repositoryName: String
+        repositoryName: String,
+        comments: [
+            {
+                id: Number,
+                url: String,
+                body: String,
+                publishUserId: String,
+                publishedUserName: String,
+                publishedDate: Date
+            }
+        ]
     };
 }
 

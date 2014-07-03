@@ -1,6 +1,5 @@
 .idea/
 node_modules/
-
-.idea/modules.xml
-
 .project
+public/components
+public/styles
