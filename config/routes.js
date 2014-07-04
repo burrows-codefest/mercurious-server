@@ -5,6 +5,7 @@ var home = require('../app/controllers/home'),
     traffic = require('../app/controllers/traffic'),
     user = require('../app/controllers/user'),
     github = require('../app/controllers/github'),
+    tinysong = require('../app/controllers/tinysong'),
     admin = require('../app/controllers/admin'),
     feeds = require('../app/controllers/feeds'),
     mongoose = require('mongoose'),
@@ -14,6 +15,7 @@ var home = require('../app/controllers/home'),
 
 module.exports = function (app, socks) {
 
+    app.get('/api/song/*', tinysong.search);
     app.get('/signin', user.loginPage);
     app.get('/admin',admin.index);
     app.get('/', home.index);
