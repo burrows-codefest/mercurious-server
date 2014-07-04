@@ -1,46 +1,35 @@
 <ng-include src="'views/header.html'"></ng-include>
 <h2>Meme Creator</h2>
 <div class="meme-creator-template">
-    <ul class="color-picker">
-        <li>
-            <div class="meme-color black-bg" ng-click="changeFontColor('black')"></div>
-        </li>
-        <li>
-            <div class="meme-color white-bg" ng-click="changeFontColor('white')"></div>
-        </li>
-        <li>
-            <div class="meme-color red-bg" ng-click="changeFontColor('red')"></div>
-        </li>
-        <li>
-            <div class="meme-color blue-bg" ng-click="changeFontColor('blue')"></div>
-        </li>
-        <li>
-            <div class="meme-color green-bg" ng-click="changeFontColor('green')"></div>
-        </li>
-        <li>
-            <div class="meme-color yellow-bg" ng-click="changeFontColor('yellow')"></div>
-        </li>
-    </ul>
+    <mer-view-meme mer-meme="meme" mer-create-mode="true"></mer-view-meme>
+
     <form class="meme" ng-submit="submit()">
-        <div class="meme-template">
-            <img ng-src="{{ meme.imgUrl }}" width="250" height="180"/>
-            <input type="text" ng-model="meme.title" class="meme-textline meme-textline-top"
-                   autofocus="autofocus" ng-class="meme.fontColor" placeholder="Meme line 1"/>
-            <input type="text" class="meme-textline meme-textline-bottom" placeholder="Meme line 2"
-                   ng-model="meme.text" ng-class="meme.fontColor"/>
-        </div>
-        <input type="text" ng-model="meme.context" placeholder="Context" class="meme-context"/>
-        <br />
-        <input type="submit" value="Submit" id="memeForm__submit"/>
+        <ul class="color-picker">
+            <li><div class="meme-color black-bg" ng-click="changeFontColor('black')"></div></li>
+            <li><div class="meme-color white-bg" ng-click="changeFontColor('white')"></div></li>
+            <li><div class="meme-color red-bg" ng-click="changeFontColor('red')"></div></li>
+            <li><div class="meme-color blue-bg" ng-click="changeFontColor('blue')"></div></li>
+            <li><div class="meme-color green-bg" ng-click="changeFontColor('green')"></div></li>
+            <li><div class="meme-color yellow-bg" ng-click="changeFontColor('yellow')"></div></li>
+        </ul>
+
+        <input type="text" ng-model="meme.title" autofocus="autofocus" placeholder="Meme line 1"/><br />
+        <input type="text" placeholder="Meme line 2" ng-model="meme.text" />
+
+        <input type="text" ng-model="meme.context" placeholder="Context" /><br />
+
+        <input type="submit" value="Submit" />
     </form>
 </div>
 <div class="choose-template">
-    Image URL: <input ng-model="imgUrl" ng-change="customTemplate(imgUrl)" style="width: 500px;"/>
-    <span ng-show="invalidImg" class="red-font">Invalid image URL</span>
-    <br />
-    <ul class="template-selection">
-        <li ng-repeat="memeTemplate in memeTemplates | orderBy: 'name'">
-            <img ng-src="{{ memeTemplate.imgUrl }}" ng-click="setTemplate(memeTemplate)" width="100" height="72"/>
-        </li>
-    </ul>
+    <form class="meme" ng-submit="submit()">
+        Image URL: <input ng-model="imgUrl" ng-change="customTemplate(imgUrl)" />
+        <span ng-show="invalidImg" class="red-font">Invalid image URL</span>
+        <br />
+        <ul class="template-selection">
+            <li ng-repeat="memeTemplate in memeTemplates | orderBy: 'name'">
+                <img ng-src="{{ memeTemplate.imgUrl }}" ng-click="setTemplate(memeTemplate)" width="100" height="72"/>
+            </li>
+        </ul>
+    </form>
 </div>

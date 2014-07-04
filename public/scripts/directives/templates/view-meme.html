@@ -1,0 +1,28 @@
+<div class="meme">
+    <div class="meme-template">
+        <a ng-href="/#/meme/{{ merMeme._id }}">
+            <span class="meme-textline meme-textline-top" ng-class="merMeme.fontColor">{{ merMeme.title }}</span>
+        </a>
+        <a ng-href="/#/meme/{{ merMeme._id }}"><img ng-src="{{ merMeme.imgUrl }}" width="250" height="180"/></a>
+        <a ng-href="/#/meme/{{ merMeme._id }}">
+            <span class="meme-textline meme-textline-bottom" ng-class="merMeme.fontColor">{{ merMeme.text }}</span>
+        </a>
+    </div>
+
+    <div class="item-date">
+        {{ merMeme.publishedDate | date:'medium'}}
+    </div>
+
+    <div class="meme-vote" ng-show="merMeme._id || !merCreateMode">
+        <a ng-click="sendVote(merMeme._id, 'likes')"><img src="../images/like.png" width="15"/>
+            <span class="meme-like">{{ merMeme.likes }}</span>
+        </a>
+        <span class="meme-dislike">{{ merMeme.dislikes }}</span>
+
+        <a ng-click="sendVote(merMeme._id, 'dislikes')"><img src="../images/dislike.png" width="15"/></a>
+    </div>
+
+    <a ng-hide="merCreateMode" ng-href="/#/create-meme/{{ merMeme._id }}"><img src="../images/reply-logo.png" width="20" height="20"/></a>
+
+    <div class="context" ng-bind-html="merMeme.context"></div>
+</div>
