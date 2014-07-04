@@ -70,6 +70,7 @@ ul.feed-list {
 
 .item {
   width: $item-desc-width;
+  float: left;
   padding: 0 10px 10px 10px;
   margin: 10px 10px 10px 0;
   overflow: hidden;
@@ -137,4 +138,14 @@ ul.feed-list {
 
 mer-feed, mer-code-review-status {
   float: left;
+  border-right: 3px dotted #fefefe;
+  margin-left: 10px;
+}
+
+.column-1 {
+  width: $column-width;
+}
+
+.column-2 {
+  width: $column-width*2;
 }

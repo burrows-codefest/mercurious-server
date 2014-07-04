@@ -6,8 +6,16 @@ angular.module('mercuriousApp')
             restrict: 'E',
             scope: {
                 'merFeed': '=',
-                'merFilter': '='
+                'merFilter': '=',
+                'merLimit': '=',
+                'merTitle': '='
             },
-            templateUrl: '/scripts/directives/templates/feed.html'
+            templateUrl: '/scripts/directives/templates/feed.html',
+            link: function (scope) {
+                scope.limit = 20;
+                if (scope.merLimit) {
+                    scope.limit = scope.merLimit;
+                }
+            }
         };
     });

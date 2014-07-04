@@ -57,6 +57,7 @@ ul.feed-list {
 
 .item {
   width: 250px;
+  float: left;
   padding: 0 10px 10px 10px;
   margin: 10px 10px 10px 0;
   overflow: hidden;
@@ -110,7 +111,15 @@ ul.feed-list {
     background-color: red; }
 
 mer-feed, mer-code-review-status {
-  float: left; }
+  float: left;
+  border-right: 3px dotted #fefefe;
+  margin-left: 10px; }
+
+.column-1 {
+  width: 280px; }
+
+.column-2 {
+  width: 560px; }
 
 .meme {
   text-align: center;
