@@ -1,5 +1,5 @@
 <div class="meme">
-    <div class="meme-template">
+    <div class="meme-template" ng-hide="merCreateMode">
         <a ng-href="/#/meme/{{ merMeme._id }}">
             <span class="meme-textline meme-textline-top" ng-class="merMeme.fontColor">{{ merMeme.title }}</span>
         </a>
@@ -7,6 +7,12 @@
         <a ng-href="/#/meme/{{ merMeme._id }}">
             <span class="meme-textline meme-textline-bottom" ng-class="merMeme.fontColor">{{ merMeme.text }}</span>
         </a>
+    </div>
+
+    <div class="meme-template" ng-show="merCreateMode">
+        <span class="meme-textline meme-textline-top" ng-class="merMeme.fontColor">{{ merMeme.title }}</span>
+        <img ng-src="{{ merMeme.imgUrl }}" width="250" height="180"/>
+        <span class="meme-textline meme-textline-bottom" ng-class="merMeme.fontColor">{{ merMeme.text }}</span>
     </div>
 
     <div class="item-date">

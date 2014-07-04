@@ -193,6 +193,11 @@ angular.module('mercuriousApp')
                     id: 37,
                     imgUrl: 'images/memeTemplates/Model-Selection.png',
                     name: 'Design Fail'
+                },
+                {
+                    id: 38,
+                    imgUrl: 'images/memeTemplates/BrsYwL-CMAEoYy1.png',
+                    name: 'Brotherly love'
                 }
 
             ];
