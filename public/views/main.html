@@ -3,11 +3,9 @@
     <a ng-href="/#/create-meme/" class="meme-button">Add Meme</a>
 </div>
 
-<mer-feed mer-feed="feed" mer-filter="search.type = 'meme'"></mer-feed>
-<mer-feed mer-feed="feed" mer-filter="search.type = 'b-intheknow'"></mer-feed>
-<mer-feed mer-feed="feed" mer-filter="search.type = 'twitter'"></mer-feed>
-<mer-code-review-status></mer-code-review-status>
+<mer-feed mer-feed="feed" class="column-2" mer-title="'MEME'" mer-filter="search.type = 'meme'"></mer-feed>
+<mer-code-review-status class="column-1"></mer-code-review-status>
+<mer-feed mer-feed="feed" class="column-1" mer-title="'b in the know'" mer-filter="search.type = 'b-intheknow'"></mer-feed>
+<mer-feed mer-feed="feed" class="column-1" mer-title="'Twitter'" mer-filter="search.type = 'twitter'"></mer-feed>
 
-<div ng-show="feed">
-    <mer-wc-sweepstake></mer-wc-sweepstake>
-</div>
+<mer-wc-sweepstake></mer-wc-sweepstake>

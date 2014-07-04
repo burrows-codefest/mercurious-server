@@ -6,7 +6,8 @@ angular.module('mercuriousApp')
             restrict: 'E',
             scope: {
                 'merFeed': '=',
-                'merFilter': '='
+                'merFilter': '=',
+                'merTitle': '='
             },
             templateUrl: '/scripts/directives/templates/feed.html'
         };
