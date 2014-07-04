@@ -7,7 +7,7 @@ html {
 body {
   margin: 0;
   padding: 20px 0;
-  background-color: #e3e3e3;
+  background-color: #eee;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 1.4;
@@ -65,12 +65,11 @@ input {
 ul.feed-list {
   padding: 0;
   list-style: none;
+  float: left;
 }
 
 .item {
-  float: left;
-  width: 250px;
-  height: 300px;
+  width: $item-desc-width;
   padding: 0 10px 10px 10px;
   margin: 10px 10px 10px 0;
   overflow: hidden;
@@ -99,8 +98,7 @@ ul.feed-list {
 }
 
 .item-desc {
-  width: 250px;
-  height: 230px;
+  width: $item-desc-width;
   text-align: left;
   font-size: 11px;
   overflow-y: auto;
@@ -135,4 +133,8 @@ ul.feed-list {
   .road.accident {
     background-color: red;
   }
+}
+
+mer-feed, mer-code-review-status {
+  float: left;
 }

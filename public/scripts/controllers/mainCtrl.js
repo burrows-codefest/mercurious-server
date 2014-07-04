@@ -1,7 +1,6 @@
 'use strict';
 angular.module('mercuriousApp')
-    .controller('MainCtrl', function ($scope, socket, dbService) {
-        $scope.createMeme = false;
+    .controller('MainCtrl', function ($scope, socket) {
         $scope.feed = [];
 
         socket.emit('message', {type: 'feed'});
@@ -24,8 +23,4 @@ angular.module('mercuriousApp')
         socket.on('ping', function () {
             socket.emit('pong');
         });
-
-        $scope.sendVote = function(memeId, action) {
-            dbService.sendVote(memeId, action);
-        };
     });

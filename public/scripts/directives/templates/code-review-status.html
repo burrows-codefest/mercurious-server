@@ -1,11 +1,10 @@
-<div class="code-review-directive">
-    <h2>Code Reviews</h2>
-    <ul>
-        <li ng-repeat="pr in pullRequests | orderBy:'-publishedDate' | limitTo: 20">
-            <a ng-href="{{ pr.url }}" target="_blank">{{ pr.title }}</a> ({{ pr.repositoryName }}) by {{
-            pr.publishedUserName }}<br/>
-            Date: {{ pr.publishedDate | date:'medium'}}<br/>
-            {{ pr.body }}
-        </li>
-    </ul>
-</div>
+<ul class="feed-list">
+    <li ng-repeat="pr in pullRequests | orderBy:'-publishedDate'" class="item">
+        <div>
+            <h3><a ng-href="{{ pr.url }}" target="_blank">{{ pr.title }}</a> by {{pr.publishedUserName }}</h3>
+            ({{ pr.repositoryName }})
+            <div class="item-date">{{ pr.publishedDate | date:'medium'}}</div>
+            <div class="item-desc" ng-bind-html="item.text"></div>
+        </div>
+    </li>
+</ul>
