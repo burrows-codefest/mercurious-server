@@ -1,4 +1,3 @@
-
 <ul class="feed-list">
     <li ng-repeat="item in merFeed | filter: merFilter | orderBy: '-publishedDate'" ng-switch="item.type" class="item item_{{ item.type }}">
         <div ng-switch-default>
