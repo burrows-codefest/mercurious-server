@@ -17,6 +17,7 @@ module.exports = {
     MODEL: {
         FEED: 'Feed',
         GITHUB: 'github',
+        PLAYLIST: 'playlist',
         USER: 'User'
     },
     PATH: {
@@ -32,7 +33,8 @@ module.exports = {
         MESSAGE: 'message',
         NEW_ITEM: 'new item',
         PING: 'ping',
-        PING_RETURN: 'pong'
+        PING_RETURN: 'pong',
+        PLAYLIST_ALL: 'getAllPlaylistItems'
 
     },
     TEMPLATE: {
@@ -42,5 +44,8 @@ module.exports = {
     },
     TIMER: {
         MINUTES_15: (1000 * 60 * 15)
+    },
+    TINYSONG: {
+        API_KEY: '48377801be8985b646d5c7cd1bfe5ac1'
     }
 };
