@@ -1,6 +1,6 @@
 <h2>Code Reviews</h2>
 <ul class="feed-list">
-    <li ng-repeat="pr in pullRequests | orderBy:'status' | orderBy:'-publishedDate'" class="item">
+    <li ng-repeat="pr in pullRequests | orderBy:'-status'" class="item">
         <h3><a ng-class="pr.status" ng-href="{{ pr.url }}" target="_blank">{{ pr.title }}</a> by {{pr.publishedUserName }}</h3>
         ({{ pr.repositoryName }})
         <div class="item-date">{{ pr.publishedDate | date:'medium'}}</div>
