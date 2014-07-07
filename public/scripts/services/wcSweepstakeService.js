@@ -71,7 +71,8 @@ angular.module('mercuriousApp')
                     id: 9,
                     country: 'Costa Rica',
                     rank: 31,
-                    owner: 'Bullitt'
+                    owner: 'Bullitt',
+                    eliminated: true
                 },
                 {
                     id: 10,
@@ -117,7 +118,8 @@ angular.module('mercuriousApp')
                     id: 16,
                     country: 'Colombia',
                     rank: 4,
-                    owner: 'Sid'
+                    owner: 'Sid',
+                    eliminated: true
                 },
                 {
                     id: 17,
@@ -137,7 +139,8 @@ angular.module('mercuriousApp')
                     id: 19,
                     country: 'Belgium',
                     rank: 5,
-                    owner: 'Ben Smith'
+                    owner: 'Ben Smith',
+                    eliminated: true
                 },
                 {
                     id: 20,
@@ -164,7 +167,8 @@ angular.module('mercuriousApp')
                     id: 23,
                     country: 'France',
                     rank: 21,
-                    owner: 'Toast'
+                    owner: 'Toast',
+                    eliminated: true
                 },
                 {
                     id: 24,
