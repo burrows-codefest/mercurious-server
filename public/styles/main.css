@@ -121,6 +121,12 @@ mer-feed, mer-code-review-status {
 .column-2 {
   width: 560px; }
 
+mer-code-review-status h3 .opened {
+  color: green; }
+
+mer-code-review-status h3 .closed {
+  color: red; }
+
 .meme {
   text-align: center;
   font-size: 20px; }
