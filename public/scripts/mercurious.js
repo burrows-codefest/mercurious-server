@@ -25,6 +25,10 @@ angular
                 templateUrl: 'views/view-meme.html',
                 controller: 'ViewMemeCtrl'
             })
+            .when('/view-all-the-memes/', {
+                templateUrl: 'views/view-all-memes.html',
+                controller: 'MainCtrl'
+            })
             .when('/cr/', {
                 templateUrl: 'views/code-review-overview.html',
                 controller: 'CodeReviewOverviewCtrl'
