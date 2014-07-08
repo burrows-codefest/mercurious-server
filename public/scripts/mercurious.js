@@ -13,19 +13,19 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/create-meme/', {
+            .when('/memes/create-meme/', {
                 templateUrl: 'views/create-meme.html',
                 controller: 'CreateMemeCtrl'
             })
-            .when('/create-meme/:context', {
+            .when('/memes/create-meme/:context', {
                 templateUrl: 'views/create-meme.html',
                 controller: 'CreateMemeCtrl'
             })
-            .when('/meme/:id', {
+            .when('/memes/meme/:id', {
                 templateUrl: 'views/view-meme.html',
                 controller: 'ViewMemeCtrl'
             })
-            .when('/view-all-the-memes/', {
+            .when('/memes/view-all-the-memes/', {
                 templateUrl: 'views/view-all-memes.html',
                 controller: 'MainCtrl'
             })
