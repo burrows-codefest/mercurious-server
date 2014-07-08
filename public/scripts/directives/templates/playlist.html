@@ -1,0 +1,17 @@
+<div>
+    <h2>Playlist</h2>
+    <ul>
+        <li ng-repeat="pr in playlistItems">
+            {{ pr.songTitle }}
+        </li>
+    </ul>
+
+    <h2>Search For Songs</h2>
+    <input type="text" id="searchSong" ng-model="searchText">
+    <a ng-click="getSongsBasedOnText()">search</a>
+    <ul>
+        <li ng-repeat="song in searchResults">
+            {{ song.SongName }} <a>add</a>
+        </li>
+    </ul>
+</div>
