@@ -38,7 +38,8 @@ input {
     border: 2px solid #428bca;
     background-color: #fff;
     padding: 5px;
-    height: 24px; }
+    height: 24px;
+    cursor: pointer; }
 
 .filter {
   padding: 0;
