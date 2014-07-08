@@ -1,4 +1,4 @@
-<div class="code-review-directive">
+<div>
     <h2>Playlist</h2>
     <ul>
         <li ng-repeat="pr in playlistItems">
@@ -10,10 +10,8 @@
     <input type="text" id="searchSong" ng-model="searchText">
     <a ng-click="getSongsBasedOnText()">search</a>
     <ul>
-        <li ng-repeat="res in searchResults">
-            {{ res.SongName }} <a>add</a>
+        <li ng-repeat="song in searchResults">
+            {{ song.SongName }} <a>add</a>
         </li>
     </ul>
-
-
 </div>

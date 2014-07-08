@@ -20,7 +20,6 @@ angular.module('mercuriousApp')
 
                 scope.getSongsBasedOnText = function () {
                     tinysongService.getSongs(scope.searchText).then(function (data) {
-                        console.log(data);
                         scope.searchResults = data;
                     });
                 };
