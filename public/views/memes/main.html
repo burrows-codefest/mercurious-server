@@ -1,18 +1,25 @@
 <ng-include src="'views/header.html'"></ng-include>
 
-<mer-feed mer-feed="feed" class="column-2" mer-title="'MEME'" mer-filter="search.type = 'meme'"></mer-feed>
-<mer-code-review-status class="column-1"></mer-code-review-status>
-<mer-feed class="column-1"
+<mer-feed class="column-2"
           mer-feed="feed"
-          mer-title="'b in the know'"
-          mer-limit="5"
-          mer-filter="search.type = 'b-intheknow'">
-</mer-feed>
-<mer-feed class="column-1"
-          mer-feed="feed"
-          mer-title="'Twitter'"
+          mer-orderby="'-publishedDate'"
           mer-limit="10"
-          mer-filter="search.type = 'twitter'">
+          mer-title="'Recent Memes'"
+          mer-filter="search.type = 'meme'">
 </mer-feed>
 
-<mer-wc-sweepstake></mer-wc-sweepstake>
+<mer-feed class="column-1"
+          mer-feed="feed"
+          mer-title="'Most Liked Memes'"
+          mer-orderby="'-likes'"
+          mer-limit="5"
+          mer-filter="search.type = 'meme'">
+</mer-feed>
+
+<mer-feed class="column-1"
+          mer-feed="feed"
+          mer-title="'Most Disliked Memes'"
+          mer-orderby="'-dislikes'"
+          mer-limit="5"
+          mer-filter="search.type = 'meme'">
+</mer-feed>
