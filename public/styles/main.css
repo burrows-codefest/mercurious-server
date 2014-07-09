@@ -27,14 +27,14 @@ input {
 .text-muted {
   color: #999999; }
 
-.search {
-  position: absolute;
-  top: 6px;
-  left: 256px;
+.nav {
+  list-style: none;
   background-color: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
   padding: 8px 4px; }
-  .search .nav-button {
+  .nav li {
+    float: left; }
+  .nav a {
     border: 2px solid #428bca;
     background-color: #fff;
     padding: 5px;
