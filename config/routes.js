@@ -1,5 +1,14 @@
 'use strict';
 
+function auth (req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        res.statusCode = 401;
+        res.send();
+    }
+}
+
 var home = require('../app/controllers/home'),
     socketIO = require('../app/controllers/socketIO'),
     traffic = require('../app/controllers/traffic'),
@@ -48,7 +57,7 @@ module.exports = function (app, socks) {
         });
     });
 
-    app.get('/api/getItem/:reqId', function(req, res) {
+    app.get('/api/getItem/:reqId', auth,  function(req, res) {
         FeedsModel.findById(req.params.reqId, function(err, item) {
             if (err) {
                 res.send(err);
