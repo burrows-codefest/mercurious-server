@@ -1,14 +1,5 @@
 'use strict';
 
-function auth (req, res, next) {
-    if (req.session.user) {
-        next();
-    } else {
-        res.statusCode = 401;
-        res.send();
-    }
-}
-
 var home = require('../app/controllers/home'),
     socketIO = require('../app/controllers/socketIO'),
     traffic = require('../app/controllers/traffic'),
@@ -30,7 +21,7 @@ module.exports = function (app, socks) {
     app.post('/login',user.authenticate);
     app.post('/api/github',github.incomingWebhook);
 
-    app.post('/api/sendVote/:reqId', function(req, res) {
+    app.post('/api/sendVote/:reqId', user.isUserAuth, function(req, res) {
         var id = req.params.reqId;
 
         FeedsModel.findById(id, function(err, item) {
@@ -57,7 +48,7 @@ module.exports = function (app, socks) {
         });
     });
 
-    app.get('/api/getItem/:reqId', auth,  function(req, res) {
+    app.get('/api/getItem/:reqId', user.isUserAuth,  function(req, res) {
         FeedsModel.findById(req.params.reqId, function(err, item) {
             if (err) {
                 res.send(err);
