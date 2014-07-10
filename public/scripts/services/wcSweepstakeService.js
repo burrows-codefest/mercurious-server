@@ -105,7 +105,8 @@ angular.module('mercuriousApp')
                     id: 14,
                     country: 'Brazil',
                     rank: 11,
-                    owner: 'Kirt'
+                    owner: 'Kirt',
+                    eliminated: true
                 },
                 {
                     id: 15,
@@ -194,7 +195,8 @@ angular.module('mercuriousApp')
                     id: 27,
                     country: 'Netherlands',
                     rank: 8,
-                    owner: 'Dan B'
+                    owner: 'Dan B',
+                    eliminated: true
                 },
                 {
                     id: 28,

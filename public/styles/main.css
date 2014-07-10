@@ -27,13 +27,20 @@ input {
 .text-muted {
   color: #999999; }
 
-.search {
-  position: absolute;
-  top: 6px;
-  left: 256px;
+.nav {
+  list-style: none;
   background-color: white;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-  padding: 8px 4px 8px 12px; }
+  padding: 8px 4px;
+  margin-bottom: 20px; }
+  .nav li {
+    float: left; }
+  .nav a {
+    border: 2px solid #428bca;
+    background-color: #fff;
+    padding: 5px;
+    height: 24px;
+    cursor: pointer; }
 
 .filter {
   padding: 0;
@@ -164,13 +171,6 @@ mer-code-review-status h3 .closed {
   top: -26px;
   position: relative;
   clear: both; }
-
-.meme-button {
-  border: 2px solid #428bca;
-  background-color: #fff;
-  padding: 5px;
-  height: 24px;
-  margin-left: 50px; }
 
 .meme-vote {
   font-size: 18px; }
