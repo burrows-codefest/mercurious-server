@@ -17,6 +17,9 @@ angular.module('mercuriousApp')
                 if (scope.merLimit) {
                     scope.limit = scope.merLimit;
                 }
+
+                scope.search = {};
+                scope.search.type = scope.merFilter;
             }
         };
     });
