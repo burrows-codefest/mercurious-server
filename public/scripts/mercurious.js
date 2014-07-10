@@ -14,8 +14,8 @@ angular
                 controller: 'MainCtrl'
             })
             .when('/signin', {
-                templateUrl: 'views/memes/main.html',
-                controller: 'MainCtrl'
+                templateUrl: 'views/signin.html',
+                controller: 'SigninCtrl'
             })
             .when('/memes/', {
                 templateUrl: 'views/memes/main.html',
