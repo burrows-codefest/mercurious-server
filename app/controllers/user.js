@@ -2,7 +2,7 @@
 
 var crypto = require('crypto'),
     constants = require('../../config/constants'),
-    UserModel = require('../models/User')();
+    UserModel = require('../models/User');
 
 function encryptPassword(password) {
     return crypto.createHash('sha1').update(password).digest('hex').toString('base64');
