@@ -12,16 +12,6 @@ exports.loginPage = function (req, res) {
     res.render(constants.TEMPLATE.LOGIN);
 };
 
-
-exports.isUserAuth = function (req, res, next) {
-    if (req.session.user) {
-        next();
-    } else {
-        res.statusCode = 401;
-        res.send();
-    }
-};
-
 exports.authenticate = function (req, res) {
     UserModel.find()
         .where('username').equals(req.body.username)
@@ -34,4 +24,13 @@ exports.authenticate = function (req, res) {
                 res.redirect(constants.PATH.LOGIN);
             }
         });
+};
+
+exports.isUserAuth = function (req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        res.statusCode = 401;
+        res.send();
+    }
 };
