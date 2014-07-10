@@ -195,7 +195,8 @@ angular.module('mercuriousApp')
                     id: 27,
                     country: 'Netherlands',
                     rank: 8,
-                    owner: 'Dan B'
+                    owner: 'Dan B',
+                    eliminated: true
                 },
                 {
                     id: 28,
