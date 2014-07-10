@@ -1,6 +1,6 @@
 <h2>{{ merTitle }}</h2>
 <ul class="feed-list">
-    <li ng-repeat="item in merFeed | filter: merFilter | orderBy: '-publishedDate' | limitTo : limit"
+    <li ng-repeat="item in merFeed | filter: merFilter | orderBy: merOrderby | limitTo : limit"
         ng-switch="item.type" class="item item_{{ item.type }}">
         <div ng-switch-default>
             <h3><a href="{{ item.link }}" target="_blank">{{ item.title }}</a></h3>

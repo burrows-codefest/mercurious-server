@@ -8,6 +8,7 @@ angular.module('mercuriousApp')
                 'merFeed': '=',
                 'merFilter': '=',
                 'merLimit': '=',
+                'merOrderby': '=',
                 'merTitle': '='
             },
             templateUrl: '/scripts/directives/templates/feed.html',

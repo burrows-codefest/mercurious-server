@@ -9,7 +9,7 @@ angular.module('mercuriousApp')
         $scope.meme = {};
 
         if ($routeParams.context) {
-            $scope.meme.context = '<a href="/#/meme/' + $routeParams.context + '">Meme</a>';
+            $scope.meme.context = '<a href="/#/memes/meme/' + $routeParams.context + '">Meme</a>';
         } else {
             $scope.meme.context = '';
         }
@@ -51,7 +51,7 @@ angular.module('mercuriousApp')
 
             socket.emit('message', $scope.meme);
             $timeout(function(){
-                $location.path('/');
+                $location.path('/memes/');
             }, 1000);
         };
     });
