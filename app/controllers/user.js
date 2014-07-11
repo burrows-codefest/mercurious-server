@@ -13,7 +13,20 @@ exports.loginPage = function (req, res) {
 };
 
 exports.registerPage = function (req, res) {
-    res.render(constants.TEMPLATE.LOGIN);
+    res.render(constants.TEMPLATE.REGISTER);
+};
+
+exports.registerSubmit = function (req, res) {
+    UserModel.find()
+        .where('username').equals(req.body.username)
+        .exec(function (err, results) {
+            if (results.length === 1) {
+                req.session.user = true;
+                res.redirect(constants.PATH.ADMIN);
+            } else {
+                res.redirect(constants.PATH.REGISTER);
+            }
+        });
 };
 
 exports.authenticate = function (req, res) {
