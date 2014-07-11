@@ -159,3 +159,11 @@ mer-feed, mer-code-review-status {
 .column-2 {
   width: $column-width*2;
 }
+
+.info {
+  list-style: none;
+  background-color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  max-width: 1000px;
+}
