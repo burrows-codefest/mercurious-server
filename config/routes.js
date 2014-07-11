@@ -5,6 +5,7 @@ var home = require('../app/controllers/home'),
     traffic = require('../app/controllers/traffic'),
     user = require('../app/controllers/user'),
     github = require('../app/controllers/github'),
+    playlist = require('../app/controllers/playlist'),
     tinysong = require('../app/controllers/tinysong'),
     admin = require('../app/controllers/admin'),
     feeds = require('../app/controllers/feeds'),
@@ -75,6 +76,10 @@ module.exports = function (app, socks) {
 
         socket.on(constants.SOCKET.GITHUB_ALL_PR, function () {
             github.getAllRequests(socket);
+        });
+
+        socket.on(constants.SOCKET.PLAYLIST_ADD_SONG, function (data) {
+            playlist.addSongToPlaylist(socks, data);
         });
     });
 };

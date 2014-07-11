@@ -4,6 +4,10 @@ function setupSocketListeners(scope, socket) {
     socket.on('getAllPlaylistItems', function (data) {
         scope.pullRequests = data;
     });
+
+    socket.on('addSong', function (data) {
+        scope.playlistItems.push(data);
+    });
 }
 
 angular.module('mercuriousApp')
@@ -22,6 +26,10 @@ angular.module('mercuriousApp')
                     tinysongService.getSongs(scope.searchText).then(function (data) {
                         scope.searchResults = data;
                     });
+                };
+
+                scope.addSong = function (song) {
+                    socket.emit('addSong', song);
                 };
             }
         };

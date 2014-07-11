@@ -34,7 +34,8 @@ module.exports = {
         NEW_ITEM: 'new item',
         PING: 'ping',
         PING_RETURN: 'pong',
-        PLAYLIST_ALL: 'getAllPlaylistItems'
+        PLAYLIST_ALL: 'getAllPlaylistItems',
+        PLAYLIST_ADD_SONG: 'addSong'
 
     },
     TEMPLATE: {

@@ -1,7 +1,7 @@
 'use strict';
 
-var PlaylistModel = require('../models/Playlist'),
-    socks;
+var socks,
+    PlaylistModel = require('../models/Playlist');
 
 exports.loadFeed = function (socketIO) {
     socks = socketIO;
@@ -10,5 +10,13 @@ exports.loadFeed = function (socketIO) {
 exports.getAllRecords = function (callback) {
     PlaylistModel.find({}, function (err, results) {
         callback(results);
+    });
+};
+
+exports.addRecord = function (song, callback) {
+    var dbRecord = new PlaylistModel(song);
+
+    dbRecord.save(function (err, song) {
+        callback(song);
     });
 };
