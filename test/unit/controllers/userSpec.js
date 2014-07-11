@@ -86,5 +86,23 @@ describe('User Controller', function () {
             expect(sessionData.user).to.not.be.ok;
             expect(redirectSpy.args[0][0]).to.equal(constants.PATH.LOGIN);
         });
+
+        it('should successfully show user is auth', function () {
+            var redirectSpy = sinon.spy();
+
+            user.isUserAuth({body: {username: 'jason', password: 'bad pass'}, session: {user: true}}, {}, redirectSpy);
+
+            expect(redirectSpy.called).to.be.ok;
+        });
+
+        it('should not successfully show user is auth', function () {
+            var redirectSpy = sinon.spy(),
+                req = {send: redirectSpy, statusCode: ''};
+
+            user.isUserAuth({body: {username: 'jason', password: 'bad pass'}, session: {user: false}}, req);
+
+            expect(redirectSpy.called).to.be.ok;
+            expect(req.statusCode).to.equal(401);
+        });
     });
 });

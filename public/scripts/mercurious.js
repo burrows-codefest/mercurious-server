@@ -7,11 +7,15 @@ angular
         'ngSanitize',
         'ngRoute'
     ])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider, $httpProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
+            })
+            .when('/signin', {
+                templateUrl: 'views/signin.html',
+                controller: 'SigninCtrl'
             })
             .when('/memes/', {
                 templateUrl: 'views/memes/main.html',
@@ -40,4 +44,15 @@ angular
             .otherwise({
                 redirectTo: '/'
             });
+
+        $httpProvider.responseInterceptors.push(function ($q, $location) {
+            return function (promise) {
+                return promise.then(function (response) { return response; }, function (response) {
+                    if (response.status === 401) {
+                        $location.url('/signin');
+                    }
+                    return $q.reject(response);
+                });
+            };
+        });
     });
