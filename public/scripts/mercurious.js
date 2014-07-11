@@ -50,7 +50,6 @@ angular
                 return promise.then(function (response) { return response; }, function (response) {
                     if (response.status === 401) {
                         $location.url('/signin');
-                        console.log('Get outta here');
                     }
                     return $q.reject(response);
                 });
