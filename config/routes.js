@@ -16,6 +16,7 @@ var home = require('../app/controllers/home'),
 module.exports = function (app, socks) {
 
     app.get('/signin', user.loginPage);
+    app.get('/register', user.registerPage);
     app.get('/admin',admin.index);
     app.get('/', home.index);
 

@@ -12,6 +12,10 @@ exports.loginPage = function (req, res) {
     res.render(constants.TEMPLATE.LOGIN);
 };
 
+exports.registerPage = function (req, res) {
+    res.render(constants.TEMPLATE.LOGIN);
+};
+
 exports.authenticate = function (req, res) {
     UserModel.find()
         .where('username').equals(req.body.username)

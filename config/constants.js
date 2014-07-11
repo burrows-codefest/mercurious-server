@@ -38,6 +38,7 @@ module.exports = {
     TEMPLATE: {
         INDEX: 'home/index',
         LOGIN: 'home/login',
+        REGISTER: 'home/register',
         USER: 'home/user'
     },
     TIMER: {
