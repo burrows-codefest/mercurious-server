@@ -2,7 +2,7 @@
     <h2>Playlist</h2>
     <ul>
         <li ng-repeat="pr in playlistItems">
-            {{ pr.songTitle }}
+            {{ pr.songName }}
         </li>
     </ul>
 
@@ -11,7 +11,7 @@
     <a ng-click="getSongsBasedOnText()">search</a>
     <ul>
         <li ng-repeat="song in searchResults">
-            {{ song.SongName }} <a>add</a>
+            {{ song.SongName }} <a ng-click="addSong(song)">add</a>
         </li>
     </ul>
 </div>

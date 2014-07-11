@@ -8,3 +8,9 @@ exports.getAllPlaylistItems = function (socket) {
         socket.emit(constants.SOCKET.PLAYLIST_ALL, playlistItems);
     });
 };
+
+exports.addSongToPlaylist = function (socks, song) {
+    playlistService.addRecord(song, function (newSong) {
+        socks.emit(constants.SOCKET.PLAYLIST_ADD_SONG, newSong);
+    });
+};
