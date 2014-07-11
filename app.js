@@ -17,7 +17,7 @@ db.on('error', function () {
     throw new Error('unable to connect to database at ' + config.db);
 });
 
-require('./config/express')(app, config);
+require('./config/express')(app, socks, config);
 require('./config/routes')(app, socks);
 
 socketIO.startPingToClients(socks);

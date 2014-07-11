@@ -15,16 +15,16 @@ var home = require('../app/controllers/home'),
 module.exports = function (app, socks) {
 
     app.get('/signin', user.loginPage);
-    app.get('/admin',admin.index);
+    app.get('/admin', admin.index);
     app.get('/', home.index);
 
-    app.post('/login',user.authenticate);
-    app.post('/api/github',github.incomingWebhook);
+    app.post('/login', user.authenticate);
+    app.post('/api/github', github.incomingWebhook);
 
-    app.post('/api/sendVote/:reqId', user.isUserAuth, function(req, res) {
+    app.post('/api/sendVote/:reqId', user.isUserAuth, function (req, res) {
         var id = req.params.reqId;
 
-        FeedsModel.findById(id, function(err, item) {
+        FeedsModel.findById(id, function (err, item) {
             var newTotal,
                 obj = {},
                 voteType = req.body.type;
@@ -48,15 +48,14 @@ module.exports = function (app, socks) {
         });
     });
 
-    app.get('/api/getItem/:reqId', user.isUserAuth,  function(req, res) {
-        FeedsModel.findById(req.params.reqId, function(err, item) {
+    app.get('/api/getItem/:reqId', user.isUserAuth, function (req, res) {
+        FeedsModel.findById(req.params.reqId, function (err, item) {
             if (err) {
                 res.send(err);
             }
             res.json(item);
         });
     });
-
 
     socks.sockets.on('connection', function (socket) {
 
