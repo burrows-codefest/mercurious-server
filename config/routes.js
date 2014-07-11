@@ -3,6 +3,7 @@
 var home = require('../app/controllers/home'),
     socketIO = require('../app/controllers/socketIO'),
     traffic = require('../app/controllers/traffic'),
+    meme = require('../app/controllers/meme'),
     user = require('../app/controllers/user'),
     github = require('../app/controllers/github'),
     admin = require('../app/controllers/admin'),
@@ -22,30 +23,7 @@ module.exports = function (app, socks) {
     app.post('/api/github',github.incomingWebhook);
 
     app.post('/api/sendVote/:reqId', user.isUserAuth, function(req, res) {
-        var id = req.params.reqId;
-
-        FeedsModel.findById(id, function(err, item) {
-            var newTotal,
-                obj = {},
-                voteType = req.body.type;
-
-            if (!item[voteType]) {
-                item[voteType] = 0;
-            }
-            newTotal = item[voteType] + 1;
-
-            obj[voteType] = newTotal;
-
-            FeedsModel.findByIdAndUpdate(id, { $set: obj}, function () {
-                var changedObj = {};
-                changedObj.id = id;
-                changedObj.type = voteType;
-                changedObj.value = newTotal;
-
-                socks.sockets.emit('vote', changedObj);
-                res.json(item);
-            });
-        });
+        meme.updateVote(socks, req, res);
     });
 
     app.get('/api/getItem/:reqId', user.isUserAuth,  function(req, res) {
@@ -56,7 +34,6 @@ module.exports = function (app, socks) {
             res.json(item);
         });
     });
-
 
     socks.sockets.on('connection', function (socket) {
 
