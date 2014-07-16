@@ -1,24 +1,23 @@
 <form method="post" role="form" action="register">
     <% if (!username) { %>
-    <label class="sr-only" for="username">Username</label>
-    <input class="form-control" id="username" name="username" placeholder="Username" type="text"/>
+    <label for="username">Username</label>
+    <input id="username" name="username" placeholder="Username" type="text"/>
     <% } %>
-    
+
     <% if (username) { %>
     <span style="color: red;">Username is already taken.</span><br/>
-    <label class="sr-only" for="username">Username</label>
-    <input class="form-control" id="username" name="username" value="<%= username %>" placeholder="Username"
-           type="text"/>
+    <label for="username">Username</label>
+    <input id="username" name="username" value="<%= username %>" placeholder="Username" type="text"/>
     <% } %>
     <br/>
 
-    <label class="sr-only" for="email">Email</label>
-    <input class="form-control" id="email" name="email" placeholder="Email" type="email"/>
+    <label for="email">Email</label>
+    <input id="email" name="email" placeholder="Email" type="email"/>
     <br/>
 
-    <label class="sr-only" for="password">Password</label>
-    <input class="form-control" id="password" name="password" placeholder="Password" type="password"/>
+    <label for="password">Password</label>
+    <input id="password" name="password" placeholder="Password" type="password"/>
     <br />
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit">Submit</button>
 </form>
