@@ -31,6 +31,28 @@ describe('User Controller', function () {
         });
     });
 
+    describe('registerPage Function', function () {
+        it('should render the register page', function () {
+            var renderSpy = sinon.spy(),
+                sessionData = {user: false};
+
+            user.registerPage({body: {username: ''}, session: sessionData}, {render: renderSpy});
+
+            expect(renderSpy.called).to.be.ok;
+            expect(renderSpy.args[0][0]).to.equal(constants.TEMPLATE.REGISTER);
+        });
+
+        it('should not render the register page', function () {
+            var redirectSpy = sinon.spy(),
+                sessionData = {user: true};
+
+            user.registerPage({body: {username: ''}, session: sessionData}, {redirect: redirectSpy});
+
+            expect(redirectSpy.called).to.be.ok;
+            expect(redirectSpy.args[0][0]).to.equal(constants.PATH.ADMIN);
+        });
+    });
+
     describe('authenticate Function', function () {
 
         function getSpoofModelWithExecSpy(execSpy) {
