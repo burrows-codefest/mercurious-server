@@ -21,7 +21,8 @@ module.exports = {
     },
     PATH: {
         ADMIN: '/admin',
-        LOGIN: '/signin'
+        LOGIN: '/signin',
+        REGISTER: '/register'
     },
     SOCKET: {
         DEFAULT_CHANNEL: 'mercurious',

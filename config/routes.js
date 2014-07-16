@@ -21,7 +21,7 @@ module.exports = function (app, socks) {
     app.get('/', home.index);
 
     app.post('/login',user.authenticate);
-    app.post('/registered', user.registerSubmit);
+    app.post('/register', user.registerSubmit);
     app.post('/api/github',github.incomingWebhook);
 
     app.post('/api/sendVote/:reqId', user.isUserAuth, function(req, res) {

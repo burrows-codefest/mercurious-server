@@ -9,11 +9,19 @@ function encryptPassword(password) {
 }
 
 exports.loginPage = function (req, res) {
-    res.render(constants.TEMPLATE.LOGIN);
+    if (req.session.user) {
+        res.redirect(constants.PATH.ADMIN);
+    } else {
+        res.render(constants.TEMPLATE.LOGIN);
+    }
 };
 
 exports.registerPage = function (req, res) {
-    res.render(constants.TEMPLATE.REGISTER);
+    if (req.session.user) {
+        res.redirect(constants.PATH.ADMIN);
+    } else {
+        res.render(constants.TEMPLATE.REGISTER, {'username': req.body.username});
+    }
 };
 
 exports.registerSubmit = function (req, res) {
@@ -21,10 +29,16 @@ exports.registerSubmit = function (req, res) {
         .where('username').equals(req.body.username)
         .exec(function (err, results) {
             if (results.length === 1) {
+                res.render(constants.TEMPLATE.REGISTER, {'username': req.body.username});
+            } else {
+                var record = new UserModel(
+                    {username: req.body.username, password: encryptPassword(req.body.password)}
+                );
+
+                record.save();
+
                 req.session.user = true;
                 res.redirect(constants.PATH.ADMIN);
-            } else {
-                res.redirect(constants.PATH.REGISTER);
             }
         });
 };

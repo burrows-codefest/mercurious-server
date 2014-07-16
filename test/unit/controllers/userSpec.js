@@ -20,17 +20,6 @@ describe('User Controller', function () {
         expect(user).to.be.ok;
     });
 
-    describe('loginPage Function', function () {
-        it('should render the log in page', function () {
-            var renderSpy = sinon.spy();
-
-            user.loginPage({}, {render: renderSpy});
-
-            expect(renderSpy.called).to.be.ok;
-            expect(renderSpy.args[0][0]).to.equal(constants.TEMPLATE.LOGIN);
-        });
-    });
-
     describe('authenticate Function', function () {
 
         function getSpoofModelWithExecSpy(execSpy) {
