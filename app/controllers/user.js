@@ -9,11 +9,7 @@ function encryptPassword(password) {
 }
 
 exports.loginPage = function (req, res) {
-    if (req.session.user) {
-        res.redirect(constants.PATH.ADMIN);
-    } else {
-        res.render(constants.TEMPLATE.LOGIN);
-    }
+    res.render(constants.TEMPLATE.LOGIN);
 };
 
 exports.registerPage = function (req, res) {
