@@ -26,8 +26,6 @@ describe('User Controller', function () {
 
             user.loginPage({}, {render: renderSpy});
 
-            console.log(user.session);
-
             expect(renderSpy.called).to.be.ok;
             expect(renderSpy.args[0][0]).to.equal(constants.TEMPLATE.LOGIN);
         });
