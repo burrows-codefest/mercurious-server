@@ -27,9 +27,11 @@ exports.registerSubmit = function (req, res) {
             if (results.length === 1) {
                 res.render(constants.TEMPLATE.REGISTER, {'username': req.body.username});
             } else {
-                var record = new UserModel(
-                    {username: req.body.username, password: encryptPassword(req.body.password)}
-                );
+                var record = new UserModel({
+                        username: req.body.username,
+                        password: encryptPassword(req.body.password),
+                        email: req.body.email
+                    });
 
                 record.save();
 
