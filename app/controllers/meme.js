@@ -1,6 +1,7 @@
 'use strict';
 
-var FeedsModel = require('../models/Feeds');
+var FeedsModel = require('../models/Feeds'),
+    constants = require('../../config/constants');
 
 exports.updateVote = function(socks, req, res) {
     var id = req.params.reqId;
@@ -23,7 +24,7 @@ exports.updateVote = function(socks, req, res) {
             changedObj.type = voteType;
             changedObj.value = newTotal;
 
-            socks.sockets.emit('vote', changedObj);
+            socks.sockets.emit(constants.SOCKET.VOTE, changedObj);
             res.json(item);
         });
     });
