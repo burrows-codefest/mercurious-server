@@ -12,6 +12,35 @@ exports.loginPage = function (req, res) {
     res.render(constants.TEMPLATE.LOGIN);
 };
 
+exports.registerPage = function (req, res) {
+    if (req.session.user) {
+        res.redirect(constants.PATH.ADMIN);
+    } else {
+        res.render(constants.TEMPLATE.REGISTER, {'username': req.body.username});
+    }
+};
+
+exports.registerSubmit = function (req, res) {
+    UserModel.find()
+        .where('username').equals(req.body.username)
+        .exec(function (err, results) {
+            if (results.length === 1) {
+                res.render(constants.TEMPLATE.REGISTER, {'username': req.body.username});
+            } else {
+                var record = new UserModel({
+                        username: req.body.username,
+                        password: encryptPassword(req.body.password),
+                        email: req.body.email
+                    });
+
+                record.save();
+
+                req.session.user = true;
+                res.redirect(constants.PATH.ADMIN);
+            }
+        });
+};
+
 exports.authenticate = function (req, res) {
     UserModel.find()
         .where('username').equals(req.body.username)

@@ -21,7 +21,8 @@ module.exports = {
     },
     PATH: {
         ADMIN: '/admin',
-        LOGIN: '/signin'
+        LOGIN: '/signin',
+        REGISTER: '/register'
     },
     SOCKET: {
         DEFAULT_CHANNEL: 'mercurious',
@@ -32,12 +33,14 @@ module.exports = {
         MESSAGE: 'message',
         NEW_ITEM: 'new item',
         PING: 'ping',
-        PING_RETURN: 'pong'
+        PING_RETURN: 'pong',
+        VOTE: 'vote'
 
     },
     TEMPLATE: {
         INDEX: 'home/index',
         LOGIN: 'home/login',
+        REGISTER: 'home/register',
         USER: 'home/user'
     },
     TIMER: {
