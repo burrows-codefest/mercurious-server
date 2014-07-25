@@ -198,8 +198,17 @@ angular.module('mercuriousApp')
                     id: 38,
                     imgUrl: 'images/memeTemplates/BrsYwL-CMAEoYy1.png',
                     name: 'Brotherly love'
+                },
+                {
+                    id: 39,
+                    imgUrl: 'images/memeTemplates/image007.jpg',
+                    name: 'Only the lonely'
+                },
+                {
+                    id: 40,
+                    imgUrl: 'images/memeTemplates/joffrey.jpg',
+                    name: 'Joffrey?'
                 }
-
             ];
 
             return memeImages;
