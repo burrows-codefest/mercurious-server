@@ -1,9 +1,12 @@
 'use strict';
 angular.module('mercuriousApp')
-    .controller('BunomaticOrderCtrl', function ($scope) {
+    .controller('BunomaticOrderCtrl', function ($scope, bunomaticService) {
+      function initFillingIds() {
+        $scope.order.fillingIds = [];
+      }
+
       $scope.order = {};
-      $scope.order.id = '123';
-      $scope.order.fillingIds = [];
+      initFillingIds();
 
       $scope.breads = {
         'bread0': {'id': 'bread0', 'name': 'Sandwich'},
@@ -42,5 +45,8 @@ angular.module('mercuriousApp')
         }
 
         delete $scope.order.fillingIds;
+        initFillingIds();
+
+        $scope.order.id = bunomaticService.getNewOrderId($scope.order.name);
       };
     });
