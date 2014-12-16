@@ -13,6 +13,10 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
+            .when('/bunomatic/order', {
+                templateUrl: 'views/bunomatic/order.html',
+                controller: 'BunomaticOrderCtrl'
+            })
             .when('/memes/', {
                 templateUrl: 'views/memes/main.html',
                 controller: 'MainCtrl'
