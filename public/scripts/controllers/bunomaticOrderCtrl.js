@@ -3,7 +3,7 @@ angular.module('mercuriousApp')
     .controller('BunomaticOrderCtrl', function ($scope) {
       $scope.order = {};
       $scope.order.id = '123';
-      $scope.order.fillings = [];
+      $scope.order.fillingIds = [];
 
       $scope.breads = {
         'bread0': {'id': 'bread0', 'name': 'Sandwich'},
@@ -23,16 +23,24 @@ angular.module('mercuriousApp')
       };
 
       $scope.toggleFilling = function (fillingId) {
-        var fillingIndex = $scope.order.fillings.indexOf(fillingId);
+        var fillingIndex = $scope.order.fillingIds.indexOf(fillingId);
 
         if (fillingIndex === -1) {
-          $scope.order.fillings.push(fillingId);
+          $scope.order.fillingIds.push(fillingId);
         } else {
-          $scope.order.fillings.splice(fillingIndex, 1);
+          $scope.order.fillingIds.splice(fillingIndex, 1);
         }
       };
 
-      $scope.completeOrder = function (order) {
-        console.log(order);
+      $scope.completeOrder = function () {
+        var i;
+
+        $scope.order.fillings = [];
+
+        for (i = 0; i < $scope.order.fillingIds.length; i += 1) {
+          $scope.order.fillings.push($scope.fillings[$scope.order.fillingIds[i]]);
+        }
+
+        delete $scope.order.fillingIds;
       };
     });
