@@ -13,7 +13,19 @@ describe('Ctrl: BunomaticOrderCtrl', function() {
         });
     }));
 
-    it('should test scope', function () {
-        expect(scope.test).toBe('123');
+    it('should add filling to order', function () {
+        scope.order = {fillings: ['filling1']};
+
+        scope.toggleFilling('filling2');
+
+        expect(scope.order.fillings.length).toBe(2);
+    });
+
+    it('should remove filling from order', function () {
+        scope.order = {fillings: ['filling1']};
+
+        scope.toggleFilling('filling1');
+
+        expect(scope.order.fillings.length).toBe(0);
     });
 });
