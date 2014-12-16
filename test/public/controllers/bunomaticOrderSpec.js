@@ -29,9 +29,9 @@ describe('Ctrl: BunomaticOrderCtrl', function() {
         expect(scope.order.fillingIds.length).toBe(0);
     });
 
-    it('should compile order', function () {
+    it('should order me a sausage and egg roll', function () {
         var mockOrder = {
-            bread: {'id':'bread1', 'name':'Roll'},
+            breadId: 'bread1',
             fillingIds: ['filling0', 'filling1'],
             name: 'Test 1',
             sauce: {'id':'sauce0', 'name':'Brown'}
@@ -43,8 +43,10 @@ describe('Ctrl: BunomaticOrderCtrl', function() {
 
         expect(scope.order.name).toBe('Test 1');
         expect(scope.order.id).toContain(scope.order.name.replace(/[aeiou]/ig,'').replace(' ', '').toUpperCase());
+        expect(scope.order.bread.name).toBe('Roll');
         expect(scope.order.fillings[0].name).toBe('Sausage');
         expect(scope.order.fillings[1].name).toBe('Egg');
+        expect(scope.order.price).toBe(3);
     });
 
 });

@@ -26,19 +26,18 @@
     <h3>Your Information</h3>
     <input type="text" id="name" ng-model="order.name" placeholder="Your name"/>
 
-    {{ order }}
-
     <h3>Your Order</h3>
     <ul>
         <li ng-repeat="bread in breads">
-            <input type="radio" name="bread" id="{{ bread.id }}" value="{{ bread }}" ng-model="order.bread"/>
+            <input type="radio" name="bread" id="{{ bread.id }}" value="{{ bread.id }}"
+                   ng-model="order.breadId" ng-change="updatePrice()" />
             <label for="{{ bread.id }}">{{ bread.name }}</label>
         </li>
     </ul>
     <ul>
         <li ng-repeat="filling in fillings">
             <input type="checkbox" id="{{ filling.id }}" ng-model="orderedFilling"
-                   ng-change="toggleFilling(filling.id)"/>
+                   ng-change="toggleFilling(filling.id); updatePrice()" />
             <label for="{{ filling.id }}">{{ filling.name }}</label>
         </li>
     </ul>
@@ -58,5 +57,6 @@
     <textarea id="info" ng-model="additionalInfo" placeholder="Any additional information"></textarea><br/>
     <span ng-show="additionalInfo">The above box is just to make you feel better, no information is saved, sent, read or cared about anywhere.</span>
     <br/>
+    <span ng-show="order.price">Price £{{ order.price }}</span><br />
     <input type="submit" value="Order" ng-click="completeOrder()">
 </form>

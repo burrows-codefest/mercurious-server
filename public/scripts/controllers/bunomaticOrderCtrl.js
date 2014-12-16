@@ -9,9 +9,9 @@ angular.module('mercuriousApp')
       initFillingIds();
 
       $scope.breads = {
-        'bread0': {'id': 'bread0', 'name': 'Sandwich'},
-        'bread1': {'id': 'bread1', 'name': 'Roll'},
-        'bread2': {'id': 'bread2', 'name': 'Baguette'}
+        'bread0': {'id': 'bread0', 'name': 'Sandwich', price: 2.70, extraItemPrice: 3.70,  theWorksPrice: 4.00},
+        'bread1': {'id': 'bread1', 'name': 'Roll', price: 1.80, extraItemPrice: 3.00,  theWorksPrice: 3.25},
+        'bread2': {'id': 'bread2', 'name': 'Baguette', price: 2.70, extraItemPrice: 3.70,  theWorksPrice: 4.00}
       };
 
       $scope.fillings = {
@@ -35,6 +35,22 @@ angular.module('mercuriousApp')
         }
       };
 
+      $scope.updatePrice = function () {
+        var pricingStrategy;
+
+        if ($scope.order.breadId) {
+          if ($scope.order.fillingIds.length === 1) {
+            pricingStrategy = 'price';
+          } else if ($scope.order.fillingIds.length === 2) {
+            pricingStrategy = 'extraItemPrice';
+          } else if ($scope.order.fillingIds.length >= 3) {
+            pricingStrategy = 'theWorksPrice';
+          }
+
+          $scope.order.price = $scope.breads[$scope.order.breadId][pricingStrategy];
+        }
+      };
+
       $scope.completeOrder = function () {
         var i;
 
@@ -44,8 +60,9 @@ angular.module('mercuriousApp')
           $scope.order.fillings.push($scope.fillings[$scope.order.fillingIds[i]]);
         }
 
-        delete $scope.order.fillingIds;
-        initFillingIds();
+        $scope.order.bread = $scope.breads[$scope.order.breadId];
+
+        $scope.updatePrice();
 
         $scope.order.id = bunomaticService.getNewOrderId($scope.order.name);
       };
