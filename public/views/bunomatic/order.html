@@ -1,0 +1,63 @@
+<ng-include src="'views/header.html'"></ng-include>
+
+<h1>
+    Bunomatic
+    <a ng-hide="bunomaticPrayer" ng-click="bunomaticPrayer = true">&#10013;</a>
+    <a ng-show="bunomaticPrayer" ng-click="bunomaticPrayer = false">x</a>
+</h1>
+<span ng-show="bunomaticPrayer">
+    <i>
+        The Bunomatic Prayer<br/>
+        Our Father, who gives us breakfast,<br/>
+        hallowed be thy bacon.<br/>
+        Thy sausage come, <br/>
+        i like thy well-done, <br/>
+        on earth as it is in breakfast.<br/>
+        Give us this day our daily bread.<br/>
+        And forgive us our Friday fat,<br/>
+        as we forgive those who eat it in front of us.<br/>
+        Lead us into the pub, <br/>
+        but deliver us from celery.<br/>
+        For thine is the sandwich, the sausage and the glory. forever and ever. Bacon!<br/>
+    </i>
+</span>
+
+<form>
+    <h3>Your Information</h3>
+    <input type="text" id="name" ng-model="order.name" placeholder="Your name"/>
+
+    <h3>Your Order</h3>
+    <ul>
+        <li ng-repeat="bread in breads">
+            <input type="radio" name="bread" id="{{ bread.id }}" value="{{ bread.id }}"
+                   ng-model="order.breadId" ng-change="updatePrice()" />
+            <label for="{{ bread.id }}">{{ bread.name }}</label>
+        </li>
+    </ul>
+    <ul>
+        <li ng-repeat="filling in fillings">
+            <input type="checkbox" id="{{ filling.id }}" ng-model="orderedFilling"
+                   ng-change="toggleFilling(filling.id); updatePrice()" />
+            <label for="{{ filling.id }}">{{ filling.name }}</label>
+        </li>
+    </ul>
+
+    <ul>
+        <li>
+            <input type="radio" name="sauce" ng-model="order.sauce" value="none" id="no-sauce"/>
+            <label for="no-sauce">No sauce</label>
+        </li>
+        <li ng-repeat="sauce in sauces">
+            <input type="radio" name="sauce" id="{{ sauce.id }}" value="{{ sauce }}" ng-model="order.sauce"/>
+            <label for="{{ sauce.id }}">{{ sauce.name }}</label>
+        </li>
+    </ul>
+
+    <h3>Additional Information</h3>
+    <textarea id="info" ng-model="additionalInfo" placeholder="Any additional information"></textarea><br/>
+    <span ng-show="additionalInfo">The above box is just to make you feel better, no information is saved, sent, read or cared about anywhere.</span>
+    <br/>
+    <span ng-show="order.price">Price £{{ order.price }}</span><br />
+    <input type="submit" value="Order" ng-click="completeOrder()">
+</form>
+        

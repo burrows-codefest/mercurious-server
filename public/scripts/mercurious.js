@@ -13,8 +13,9 @@ angular
                 templateUrl: 'views/main.html',
                 controller: 'MainCtrl'
             })
-            .when('/history/', {
-                templateUrl: 'pages/history.html'
+            .when('/bunomatic/order', {
+                templateUrl: 'views/bunomatic/order.html',
+                controller: 'BunomaticOrderCtrl'
             })
             .when('/memes/', {
                 templateUrl: 'views/memes/main.html',
